@@ -1,4 +1,4 @@
-#example_portfolio
+# example_portfolio
 
 # Adrian Eddy  
 📧 [ae2422@nyu.edu](mailto:ae2422@nyu.edu)  
