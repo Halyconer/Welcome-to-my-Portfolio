@@ -1,7 +1,4 @@
----
-layout: default
-title: Adrian Eddy
----
+#example_portfolio
 
 # Adrian Eddy  
 📧 [ae2422@nyu.edu](mailto:ae2422@nyu.edu)  
