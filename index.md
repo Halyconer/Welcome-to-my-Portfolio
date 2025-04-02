@@ -1,9 +1,10 @@
-<link rel="stylesheet" href="styles.css">
-
 ---
 layout: default
 title: Adrian Eddy
 ---
+
+<link rel="stylesheet" href="styles.css">
+
 
 # Adrian Eddy  
 📧 [ae2422@nyu.edu](mailto:ae2422@nyu.edu)  
