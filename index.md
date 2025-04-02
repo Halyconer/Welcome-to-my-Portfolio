@@ -1,8 +1,3 @@
----
-layout: default
-title: Adrian Eddy
----
-
 <link rel="stylesheet" href="styles.css">
 
 ---
