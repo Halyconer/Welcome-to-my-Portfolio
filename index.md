@@ -6,7 +6,7 @@ title: Adrian Eddy
 <link rel="stylesheet" href="styles.css">
 
 
-# Adrian Eddy  
+# Adrian Eddy 🚀 
 📧 [ae2422@nyu.edu](mailto:ae2422@nyu.edu)  
 🔗 [LinkedIn](https://www.linkedin.com/in/adrian3ddy/)  
 📄 [Download Resume](assets/Adrian_Eddy_Resume.pdf)
