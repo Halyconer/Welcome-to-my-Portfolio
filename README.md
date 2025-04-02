@@ -1,6 +1,5 @@
-# example_portfolio
+# Welcome to my Portfolio!
 
-# Adrian Eddy  
 📧 [ae2422@nyu.edu](mailto:ae2422@nyu.edu)  
 🔗 [LinkedIn](https://www.linkedin.com/in/adrian3ddy/)  
 📄 [Download Resume](assets/Adrian_Eddy_Resume.pdf)
