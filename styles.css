@@ -185,3 +185,30 @@ hr {
 	flex-wrap: wrap;
 	gap: 0.5rem;
 }
+
+/* Navigation styling */
+.nav {
+	list-style: none;
+	display: flex;
+	gap: 1rem;
+	padding: 0;
+	margin: 0 0 1rem 0;
+  }
+  
+  .nav li {
+	display: inline;
+  }
+  
+  .nav a {
+	text-decoration: none;
+	color: #0d3b66;
+	font-weight: 600;
+	padding: 0.5rem 1rem;
+	border-radius: 4px;
+	transition: background-color 0.2s ease;
+  }
+  
+  .nav a:hover {
+	background-color: #e9f5ff;
+  }
+  
