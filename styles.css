@@ -1,4 +1,4 @@
-/* Adrian Eddy — Resume Styling with Animations */
+/* Adrian Eddy — Resume Styling with Animations + Compact Sections */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
@@ -35,7 +35,6 @@ body {
 	line-height: 1.8;
 }
 
-
 h1, h2, h3 {
 	color: #0d3b66;
 	font-weight: 600;
@@ -52,7 +51,27 @@ h1 {
 
 h2 {
 	font-size: 1.5rem;
-	margin-top: 3rem;
+	margin-top: 2rem;
+}
+
+/* Compact + styled resume blocks */
+.resume-section {
+	background-color: #fafafa;
+	border-left: 4px solid #0d3b66;
+	border-radius: 6px;
+	padding: 1rem 1.2rem;
+	margin: 1.5rem 0;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+	animation: fadeIn 0.8s ease-in;
+}
+
+.resume-section ul {
+	padding-left: 1.2rem;
+	margin: 0.5rem 0;
+}
+
+.resume-section li {
+	margin-bottom: 0.4rem;
 }
 
 a {
@@ -66,43 +85,6 @@ a:hover {
 	color: #005fa3;
 }
 
-ul {
-	list-style: disc inside;
-	margin-left: 1rem;
-	animation: fadeIn 0.8s ease-in;
-}
-
-hr {
-	border: none;
-	border-top: 1px solid #e0e0e0;
-	margin: 2.5rem 0;
-}
-
-.resume-header {
-	background-color: #e9f5ff;
-	padding: 1rem;
-	border-radius: 0.5rem;
-	margin-bottom: 2rem;
-	box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-section {
-	margin-bottom: 2rem;
-}
-
-/* Subtle fade-in animation for the whole page */
-@keyframes fadeIn {
-	from { opacity: 0; }
-	to   { opacity: 1; }
-}
-
-/* Slide in effect for headings */
-@keyframes slideIn {
-	from { transform: translateX(-20px); opacity: 0; }
-	to   { transform: translateX(0); opacity: 1; }
-}
-
-/* Button style for links */
 a.button {
 	display: inline-block;
 	background: #0d3b66;
@@ -110,7 +92,7 @@ a.button {
 	padding: 0.5rem 1rem;
 	border-radius: 6px;
 	text-decoration: none;
-	margin: 0.5rem 0;
+	margin: 0.5rem 0.5rem 0.5rem 0;
 	transition: background 0.3s ease;
 }
 
@@ -118,7 +100,22 @@ a.button:hover {
 	background: #094c99;
 }
 
-/* Mobile responsive */
+hr {
+	display: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+@keyframes slideIn {
+	from { transform: translateX(-20px); opacity: 0; }
+	to   { transform: translateX(0); opacity: 1; }
+}
+
+/* Mobile friendly */
 @media (max-width: 600px) {
 	body {
 		padding: 1rem;
@@ -126,4 +123,39 @@ a.button:hover {
 	h1 {
 		font-size: 1.8rem;
 	}
+}
+.hero {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+	margin-bottom: 2rem;
+	flex-wrap: wrap;
+}
+
+.hero-pic {
+	width: 120px;
+	border-radius: 50%;
+	box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.hero-text {
+	flex: 1;
+}
+
+.hero-text h1 {
+	margin: 0;
+	font-size: 2.2rem;
+	color: #0d3b66;
+}
+
+.subtitle {
+	margin: 0.3rem 0 1rem;
+	font-size: 1.1rem;
+	color: #444;
+}
+
+.hero-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
 }
