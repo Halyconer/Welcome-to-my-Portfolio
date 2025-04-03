@@ -39,7 +39,6 @@ body {
 h1, h2, h3 {
     color: #0d3b66;
     font-weight: 600;
-    /* Removed border-bottom for a cleaner look */
     padding-bottom: 0.3rem;
     margin-top: 2rem;
     position: relative;
@@ -49,19 +48,17 @@ h1, h2, h3 {
 /* Compact and super clean resume blocks */
 .resume-section {
     background-color: #fafafa;
-    border: none;  /* Removed border lines */
+    border: none;
     border-radius: 6px;
-    padding: 0.8rem 1rem;  /* Reduced padding for compactness */
-    margin: 1rem 0;        /* Reduced margins between sections */
-    box-shadow: none;      /* Removed shadow for a flat design */
+    padding: 0.8rem 1rem;
+    margin: 1rem 0;
+    box-shadow: none;
     animation: fadeIn 0.8s ease-in;
 }
 
-/* Ensure hr is hidden if used elsewhere */
 hr {
     display: none;
 }
-
 
 h1 {
 	font-size: 2.4rem;
@@ -107,11 +104,6 @@ a.button:hover {
 	background: #094c99;
 }
 
-hr {
-	display: none;
-}
-
-/* Animations */
 @keyframes fadeIn {
 	from { opacity: 0; }
 	to   { opacity: 1; }
@@ -130,23 +122,25 @@ hr {
 	h1 {
 		font-size: 1.8rem;
 	}
+	.hero h1 {
+		font-size: 2.4rem;
+	}
 }
+
 .hero {
 	display: flex;
 	align-items: center;
 	gap: 1.5rem;
 	margin-bottom: 2rem;
-	/* No flex-wrap here for larger screens */
 }
 
 .hero-pic {
     width: 120px;
-    height: 120px;         /* Enforce a fixed height */
-    border-radius: 50%;    /* Makes it a circle */
-    object-fit: cover;     /* Ensures the image fills the container without distortion */
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 }
-
 
 .hero-text {
 	flex: 1;
@@ -154,8 +148,9 @@ hr {
 
 .hero-text h1 {
 	margin: 0;
-	font-size: 2.2rem;
+	font-size: 4.5rem;
 	color: #0d3b66;
+	line-height: 1.1;
 }
 
 .subtitle {
@@ -169,13 +164,14 @@ hr {
 	gap: 0.5rem;
 }
 
-/* For smaller screens, allow wrapping */
 @media (max-width: 600px) {
 	.hero {
 		flex-wrap: wrap;
 	}
+	.hero h1 {
+		font-size: 2.4rem;
+	}
 }
-
 
 .subtitle {
 	margin: 0.3rem 0 1rem;
@@ -189,38 +185,27 @@ hr {
 	gap: 0.5rem;
 }
 
-/* Navigation styling */
 .nav {
 	list-style: none;
 	display: flex;
 	gap: 1rem;
 	padding: 0;
 	margin: 0 0 1rem 0;
-  }
-  
-  .nav li {
+}
+
+.nav li {
 	display: inline;
-  }
-  
-  .nav a {
+}
+
+.nav a {
 	text-decoration: none;
 	color: #0d3b66;
 	font-weight: 600;
 	padding: 0.5rem 1rem;
 	border-radius: 4px;
 	transition: background-color 0.2s ease;
-  }
-  
-  .nav a:hover {
-	background-color: #e9f5ff;
-  }
+}
 
-  .about-pic {
-	width: 250px;      /* Adjust to your preferred square size */
-	height: 250px;     /* Equal height ensures a square aspect ratio */
-	object-fit: cover; /* Maintains a clean crop without distortion */
-	display: block;    /* Eliminates unwanted inline spacing */
-	margin: 0 auto;    /* Centers the image nicely */
-  }
-  
-  
+.nav a:hover {
+	background-color: #e9f5ff;
+}
