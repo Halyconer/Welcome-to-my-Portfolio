@@ -214,4 +214,13 @@ hr {
   .nav a:hover {
 	background-color: #e9f5ff;
   }
+
+  .about-pic {
+	width: 250px;      /* Adjust to your preferred square size */
+	height: 250px;     /* Equal height ensures a square aspect ratio */
+	object-fit: cover; /* Maintains a clean crop without distortion */
+	display: block;    /* Eliminates unwanted inline spacing */
+	margin: 0 auto;    /* Centers the image nicely */
+  }
+  
   
