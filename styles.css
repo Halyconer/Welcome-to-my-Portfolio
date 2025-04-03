@@ -35,15 +35,33 @@ body {
 	line-height: 1.8;
 }
 
+/* Updated headings (removed bottom borders) */
 h1, h2, h3 {
-	color: #0d3b66;
-	font-weight: 600;
-	border-bottom: 1px solid #ccc;
-	padding-bottom: 0.3rem;
-	margin-top: 2rem;
-	position: relative;
-	animation: slideIn 0.5s ease forwards;
+    color: #0d3b66;
+    font-weight: 600;
+    /* Removed border-bottom for a cleaner look */
+    padding-bottom: 0.3rem;
+    margin-top: 2rem;
+    position: relative;
+    animation: slideIn 0.5s ease forwards;
 }
+
+/* Compact and super clean resume blocks */
+.resume-section {
+    background-color: #fafafa;
+    border: none;  /* Removed border lines */
+    border-radius: 6px;
+    padding: 0.8rem 1rem;  /* Reduced padding for compactness */
+    margin: 1rem 0;        /* Reduced margins between sections */
+    box-shadow: none;      /* Removed shadow for a flat design */
+    animation: fadeIn 0.8s ease-in;
+}
+
+/* Ensure hr is hidden if used elsewhere */
+hr {
+    display: none;
+}
+
 
 h1 {
 	font-size: 2.4rem;
@@ -52,17 +70,6 @@ h1 {
 h2 {
 	font-size: 1.5rem;
 	margin-top: 2rem;
-}
-
-/* Compact + styled resume blocks */
-.resume-section {
-	background-color: #fafafa;
-	border-left: 4px solid #0d3b66;
-	border-radius: 6px;
-	padding: 1rem 1.2rem;
-	margin: 1.5rem 0;
-	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
-	animation: fadeIn 0.8s ease-in;
 }
 
 .resume-section ul {
@@ -129,7 +136,7 @@ hr {
 	align-items: center;
 	gap: 1.5rem;
 	margin-bottom: 2rem;
-	flex-wrap: wrap;
+	/* No flex-wrap here for larger screens */
 }
 
 .hero-pic {
@@ -147,6 +154,25 @@ hr {
 	font-size: 2.2rem;
 	color: #0d3b66;
 }
+
+.subtitle {
+	margin: 0.3rem 0 1rem;
+	font-size: 1.1rem;
+	color: #444;
+}
+
+.hero-links {
+	display: flex;
+	gap: 0.5rem;
+}
+
+/* For smaller screens, allow wrapping */
+@media (max-width: 600px) {
+	.hero {
+		flex-wrap: wrap;
+	}
+}
+
 
 .subtitle {
 	margin: 0.3rem 0 1rem;
