@@ -140,10 +140,13 @@ hr {
 }
 
 .hero-pic {
-	width: 120px;
-	border-radius: 50%;
-	box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    width: 120px;
+    height: 120px;         /* Enforce a fixed height */
+    border-radius: 50%;    /* Makes it a circle */
+    object-fit: cover;     /* Ensures the image fills the container without distortion */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 }
+
 
 .hero-text {
 	flex: 1;
