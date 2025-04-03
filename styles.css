@@ -13,6 +13,29 @@ body {
 	animation: fadeIn 0.6s ease-in-out;
 }
 
+.intro {
+	display: flex;
+	align-items: flex-start;
+	gap: 2rem;
+	margin-bottom: 2rem;
+	animation: fadeIn 1s ease-in-out;
+	flex-wrap: wrap;
+}
+
+.profile-pic {
+	width: 160px;
+	border-radius: 12px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	animation: slideIn 1s ease-in;
+}
+
+.intro-text p {
+	margin-bottom: 1.2rem;
+	font-size: 1rem;
+	line-height: 1.8;
+}
+
+
 h1, h2, h3 {
 	color: #0d3b66;
 	font-weight: 600;
