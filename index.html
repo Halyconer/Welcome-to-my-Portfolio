@@ -6,6 +6,166 @@
   <title>Adrian Eddy's Portfolio</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    .interactive-greeting {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .interactive-greeting::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+      animation: float 20s infinite linear;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-100px) rotate(360deg); }
+    }
+    
+    .greeting-content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .greeting-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+    }
+    
+    .greeting-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+    
+    .light-control-container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      margin-top: 2rem;
+    }
+    
+    .brightness-slider {
+      width: 100%;
+      height: 8px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      outline: none;
+      margin: 1.5rem 0;
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .brightness-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #fff;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .brightness-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+    
+    .brightness-slider::-moz-range-thumb {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #fff;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    
+    .brightness-display {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    
+    .brightness-value {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #fff;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .brightness-icons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.5rem;
+      opacity: 0.7;
+    }
+    
+    .control-button {
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .control-button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+    
+    .control-button:active {
+      transform: translateY(0);
+    }
+    
+    .status-message {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      min-height: 1.5rem;
+      opacity: 0.9;
+    }
+    
+    .pulse-effect {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+    }
+  </style>
 </head>
 <body>
   <!-- Navigation -->
@@ -21,7 +181,43 @@
     <div class="hero-text">
       <h1 style="font-size: 3rem; margin-bottom: 0.5rem;">Hello,<br>I'm Adrian.</h1>
       <p class="subtitle">Economics @ NYU · Data, Markets & Machines</p>
-      <a href="#about" class="button animate-button">Discover My Story</a>
+      <a href="#light-greeting" class="button animate-button">Say Hello</a>
+    </div>
+  </section>
+
+  <!-- Interactive Light Control Section -->
+  <section id="light-greeting" class="about-me" style="text-align: center;">
+    <div class="about-me-container">
+      <div class="about-text">
+        <div class="about-content">
+          <h2 style="margin-bottom: 1rem;">Say Hi by Controlling My Room Lights</h2>
+          <p style="margin-bottom: 2rem;">
+            Welcome to where economics meets engineering. From anywhere in the world, you can adjust the ambient lighting in my NYU dorm room—because a simple hello is just the beginning of what's possible when you connect systems thoughtfully.
+          </p>
+          
+          <div style="max-width: 400px; margin: 0 auto;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+              <span>Brightness</span>
+              <span id="brightnessValue" style="font-weight: 600;">75</span>%
+            </div>
+            
+            <input 
+              type="range" 
+              id="brightnessSlider" 
+              min="1" 
+              max="100" 
+              value="75"
+              style="width: 100%; margin: 1rem 0;"
+            />
+            
+            <button id="setBrightnessBtn" class="button" style="margin-top: 1rem;">
+              Send Your Greeting
+            </button>
+            
+            <p id="brightnessStatus" style="margin-top: 1rem; min-height: 1.2rem;"></p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -54,6 +250,48 @@
   </section>
 
   <script>
+    // Replace with your actual ngrok or server URL:
+    const API_URL = 'https://d16b-173-52-217-235.ngrok-free.app';
+
+    const slider = document.getElementById('brightnessSlider');
+    const label  = document.getElementById('brightnessValue');
+    const btn    = document.getElementById('setBrightnessBtn');
+    const msg    = document.getElementById('brightnessStatus');
+
+    // Live-update the numeric readout with smooth animation
+    slider.addEventListener('input', () => {
+      label.textContent = slider.value;
+      // Add visual feedback
+      slider.style.background = `linear-gradient(to right, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.8) ${slider.value}%, rgba(255,255,255,0.2) ${slider.value}%, rgba(255,255,255,0.2) 100%)`;
+    });
+
+    // Initialize slider background
+    slider.style.background = `linear-gradient(to right, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.8) ${slider.value}%, rgba(255,255,255,0.2) ${slider.value}%, rgba(255,255,255,0.2) 100%)`;
+
+    btn.addEventListener('click', () => {
+      const brightness = slider.value;
+        msg.textContent = `Setting brightness to ${brightness}%...`;
+
+      fetch(`${API_URL}/set_brightness`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ brightness })
+      })
+      .then(r => r.json())
+      .then(data => {
+        if (data.status === 'success') {
+          msg.textContent = `✅ Your greeting lit up my room at ${data.brightness_set}%—thanks for saying hi!`;
+        } else {
+          msg.textContent = `❌ ${data.error || 'Unknown error'}`;
+        }
+      })
+      .catch(err => {
+        msg.textContent = `⚠️ Connection failed: ${err.message}`;
+      });
+    });
+  </script>
+
+  <script>
     // Add scroll animation for the button
     document.addEventListener('DOMContentLoaded', function() {
       const button = document.querySelector('.animate-button');
@@ -81,6 +319,7 @@
       });
     });
   </script>
+  
   <footer>
     <p>© 2025 Adrian Eddy. All rights reserved.</p>
   </footer>
