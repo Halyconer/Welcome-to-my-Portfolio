@@ -1,328 +1,501 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adrian Eddy's Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <style>
-    .interactive-greeting {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 4rem 2rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .interactive-greeting::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
-      animation: float 20s infinite linear;
-    }
-    
-    @keyframes float {
-      0% { transform: translateY(0px) rotate(0deg); }
-      100% { transform: translateY(-100px) rotate(360deg); }
-    }
-    
-    .greeting-content {
-      position: relative;
-      z-index: 2;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    
-    .greeting-title {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      font-weight: 300;
-      letter-spacing: -0.02em;
-    }
-    
-    .greeting-subtitle {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      opacity: 0.9;
-      line-height: 1.6;
-    }
-    
-    .light-control-container {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 2rem;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      margin-top: 2rem;
-    }
-    
-    .brightness-slider {
-      width: 100%;
-      height: 8px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.2);
-      outline: none;
-      margin: 1.5rem 0;
-      -webkit-appearance: none;
-      appearance: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .brightness-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: #fff;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      transition: all 0.3s ease;
-    }
-    
-    .brightness-slider::-webkit-slider-thumb:hover {
-      transform: scale(1.2);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-    }
-    
-    .brightness-slider::-moz-range-thumb {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: #fff;
-      cursor: pointer;
-      border: none;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-    
-    .brightness-display {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-    
-    .brightness-value {
-      font-size: 2rem;
-      font-weight: 600;
-      color: #fff;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    }
-    
-    .brightness-icons {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 0.5rem;
-      opacity: 0.7;
-    }
-    
-    .control-button {
-      background: rgba(255, 255, 255, 0.2);
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      color: white;
-      padding: 12px 30px;
-      border-radius: 50px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-top: 1.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .control-button:hover {
-      background: rgba(255, 255, 255, 0.3);
-      border-color: rgba(255, 255, 255, 0.5);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-    }
-    
-    .control-button:active {
-      transform: translateY(0);
-    }
-    
-    .status-message {
-      margin-top: 1rem;
-      font-size: 0.95rem;
-      min-height: 1.5rem;
-      opacity: 0.9;
-    }
-    
-    .pulse-effect {
-      animation: pulse 2s infinite;
-    }
-    
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
-      70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
-    }
-  </style>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Adrian Eddy's Portfolio</title>
+	<link rel="stylesheet" href="styles.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+	<style>
+		.interactive-greeting {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			padding: 4rem 2rem;
+			text-align: center;
+			position: relative;
+			overflow: hidden;
+		}
+		
+		.interactive-greeting::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+			animation: float 20s infinite linear;
+		}
+		
+		@keyframes float {
+			0% { transform: translateY(0px) rotate(0deg); }
+			100% { transform: translateY(-100px) rotate(360deg); }
+		}
+		
+		.greeting-content {
+			position: relative;
+			z-index: 2;
+			max-width: 600px;
+			margin: 0 auto;
+		}
+		
+		.greeting-title {
+			font-size: 2.5rem;
+			margin-bottom: 1rem;
+			font-weight: 300;
+			letter-spacing: -0.02em;
+		}
+		
+		.greeting-subtitle {
+			font-size: 1.2rem;
+			margin-bottom: 2rem;
+			opacity: 0.9;
+			line-height: 1.6;
+		}
+		
+		.light-control-container {
+			background: rgba(255, 255, 255, 0.1);
+			backdrop-filter: blur(10px);
+			border-radius: 20px;
+			padding: 2rem;
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			margin-top: 2rem;
+		}
+		
+		/* Enhanced Slider Styles */
+		.slider-container {
+			position: relative;
+			margin: 2rem 0;
+		}
+		
+		.brightness-slider {
+			width: 100%;
+			height: 14px;
+			border-radius: 25px;
+			background: linear-gradient(to right, 
+				rgba(255, 215, 0, 0.3) 0%, 
+				rgba(255, 215, 0, 0.6) 50%, 
+				rgba(255, 215, 0, 1) 100%);
+			outline: none;
+			-webkit-appearance: none;
+			appearance: none;
+			cursor: pointer;
+			transition: all 0.4s ease;
+			position: relative;
+			box-shadow: 
+				inset 0 2px 8px rgba(255, 215, 0, 0.3),
+				0 2px 15px rgba(255, 215, 0, 0.4),
+				0 0 20px rgba(255, 215, 0, 0.2);
+		}
+		
+		.brightness-slider:hover {
+			box-shadow: 
+				inset 0 2px 8px rgba(255, 215, 0, 0.4),
+				0 4px 20px rgba(255, 215, 0, 0.6),
+				0 0 30px rgba(255, 215, 0, 0.4);
+		}
+		
+		.brightness-slider::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			appearance: none;
+			width: 28px;
+			height: 28px;
+			border-radius: 50%;
+			background: radial-gradient(circle, #fff 0%, #ffd700 50%, #ffb000 100%);
+			cursor: pointer;
+			box-shadow: 
+				0 0 15px rgba(255, 215, 0, 0.8),
+				0 4px 20px rgba(0,0,0,0.2),
+				inset 0 1px 0 rgba(255,255,255,0.9);
+			transition: all 0.3s ease;
+			border: 2px solid rgba(255, 215, 0, 0.8);
+		}
+		
+		.brightness-slider::-webkit-slider-thumb:hover {
+			transform: scale(1.2);
+			box-shadow: 
+				0 0 25px rgba(255, 215, 0, 1),
+				0 0 40px rgba(255, 215, 0, 0.6),
+				0 6px 25px rgba(0,0,0,0.3),
+				inset 0 1px 0 rgba(255,255,255,1);
+		}
+		
+		.brightness-slider::-webkit-slider-thumb:active {
+			transform: scale(1.1);
+			box-shadow: 
+				0 0 30px rgba(255, 215, 0, 1),
+				0 0 50px rgba(255, 215, 0, 0.8);
+		}
+		
+		.brightness-slider::-moz-range-thumb {
+			width: 28px;
+			height: 28px;
+			border-radius: 50%;
+			background: radial-gradient(circle, #fff 0%, #ffd700 50%, #ffb000 100%);
+			cursor: pointer;
+			border: 2px solid rgba(255, 215, 0, 0.8);
+			box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+		}
+		
+		.brightness-display {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 1rem;
+		}
+		
+		/* Fixed brightness value - no more blur */
+		.brightness-value {
+			font-size: 2.2rem;
+			font-weight: 700;
+			color: #ffffff;
+			text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+			transition: transform 0.15s ease;
+		}
+		
+		.brightness-icons {
+			display: flex;
+			justify-content: space-between;
+			margin-top: 0.5rem;
+			opacity: 0.7;
+		}
+		
+		/* Enhanced prominent button */
+		.control-button {
+			background: linear-gradient(145deg, #ff6b35, #f7931e);
+			border: 3px solid #ffffff;
+			color: white;
+			padding: 20px 45px;
+			border-radius: 50px;
+			font-size: 1.3rem;
+			font-weight: 700;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			margin-top: 2rem;
+			position: relative;
+			overflow: hidden;
+			box-shadow: 
+				0 8px 25px rgba(255, 107, 53, 0.4),
+				0 4px 15px rgba(0,0,0,0.2),
+				inset 0 1px 0 rgba(255,255,255,0.3);
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			min-width: 280px;
+		}
+		
+		.control-button::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+			transition: left 0.5s ease;
+		}
+		
+		.control-button:hover {
+			background: linear-gradient(145deg, #ff7b45, #ff8c1e);
+			transform: translateY(-5px) scale(1.05);
+			box-shadow: 
+				0 15px 35px rgba(255, 107, 53, 0.6),
+				0 8px 25px rgba(0,0,0,0.3),
+				inset 0 1px 0 rgba(255,255,255,0.4);
+			border-color: #ffd700;
+		}
+		
+		.control-button:hover::before {
+			left: 100%;
+		}
+		
+		.control-button:active {
+			transform: translateY(-2px) scale(1.02);
+		}
+		
+		/* Pulsing attention-grabber */
+		.control-button.pulse-attention {
+			animation: pulseAttention 2s infinite;
+		}
+		
+		@keyframes pulseAttention {
+			0%, 100% { 
+				box-shadow: 
+					0 8px 25px rgba(255, 107, 53, 0.4),
+					0 4px 15px rgba(0,0,0,0.2);
+			}
+			50% { 
+				box-shadow: 
+					0 12px 35px rgba(255, 107, 53, 0.7),
+					0 6px 20px rgba(0,0,0,0.3),
+					0 0 0 8px rgba(255, 107, 53, 0.2);
+			}
+		}
+		
+		.status-message {
+			margin-top: 1.5rem;
+			font-size: 1rem;
+			min-height: 1.5rem;
+			opacity: 0.9;
+			font-weight: 500;
+		}
+		
+		.pulse-effect {
+			animation: pulse 2s infinite;
+		}
+		
+		@keyframes pulse {
+			0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+			70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+			100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+		}
+
+		/* Animated Hero Text */
+		.hero h1 {
+			opacity: 0;
+			animation: slideInFromLeft 1.2s ease-out 0.5s forwards;
+		}
+
+		.hero .subtitle {
+			opacity: 0;
+			animation: slideInFromRight 1.2s ease-out 1s forwards;
+		}
+
+		.hero .button {
+			opacity: 0;
+			animation: fadeInUp 1s ease-out 1.5s forwards;
+		}
+
+		@keyframes slideInFromLeft {
+			0% {
+				opacity: 0;
+				transform: translateX(-50px);
+			}
+			100% {
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
+
+		@keyframes slideInFromRight {
+			0% {
+				opacity: 0;
+				transform: translateX(50px);
+			}
+			100% {
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
+
+		@keyframes fadeInUp {
+			0% {
+				opacity: 0;
+				transform: translateY(30px);
+			}
+			100% {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.lightbulb-note {
+			background: rgba(255, 193, 7, 0.15);
+			border: 1px solid rgba(255, 193, 7, 0.3);
+			border-radius: 12px;
+			padding: 1rem;
+			margin: 1rem 0;
+			font-size: 0.9rem;
+		}
+
+		.lightbulb-note a {
+			color: #ffd93d;
+			text-decoration: underline;
+			font-weight: 600;
+		}
+	</style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav>
-    <ul class="nav">
-      <li><a href="index.html">About Me</a></li>
-      <li><a href="resume.html">Resume</a></li>
-    </ul>
-  </nav>
+	<!-- Navigation -->
+	<nav>
+		<ul class="nav">
+			<li><a href="index.html">About Me</a></li>
+			<li><a href="resume.html">Resume</a></li>
+		</ul>
+	</nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-text">
-      <h1 style="font-size: 3rem; margin-bottom: 0.5rem;">Hello,<br>I'm Adrian.</h1>
-      <p class="subtitle">Economics @ NYU · Data, Markets & Machines</p>
-      <a href="#light-greeting" class="button animate-button">Say Hello</a>
-    </div>
-  </section>
+	<!-- Hero Section -->
+	<section class="hero">
+		<div class="hero-text">
+			<h1 style="font-size: 3rem; margin-bottom: 0.5rem;">Hello,<br>I'm Adrian.</h1>
+			<p class="subtitle">Economics @ NYU · Data, Markets & Machines</p>
+			<a href="#light-greeting" class="button animate-button">Say Hello</a>
+		</div>
+	</section>
 
-  <!-- Interactive Light Control Section -->
-  <section id="light-greeting" class="about-me" style="text-align: center;">
-    <div class="about-me-container">
-      <div class="about-text">
-        <div class="about-content">
-          <h2 style="margin-bottom: 1rem;">Say Hi by Controlling My Room Lights</h2>
-          <p style="margin-bottom: 2rem;">
-            Welcome to where economics meets engineering. From anywhere in the world, you can adjust the ambient lighting in my NYU dorm room—because a simple hello is just the beginning of what's possible when you connect systems thoughtfully.
-          </p>
-          
-          <div style="max-width: 400px; margin: 0 auto;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-              <span>Brightness</span>
-              <span id="brightnessValue" style="font-weight: 600;">75</span>%
-            </div>
-            
-            <input 
-              type="range" 
-              id="brightnessSlider" 
-              min="1" 
-              max="100" 
-              value="75"
-              style="width: 100%; margin: 1rem 0;"
-            />
-            
-            <button id="setBrightnessBtn" class="button" style="margin-top: 1rem;">
-              Send Your Greeting
-            </button>
-            
-            <p id="brightnessStatus" style="margin-top: 1rem; min-height: 1.2rem;"></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+	<!-- Interactive Light Control Section -->
+	<section id="light-greeting" class="about-me" style="text-align: center;">
+		<div class="about-me-container">
+			<div class="about-text">
+				<div class="about-content">
+					<h2 style="margin-bottom: 1rem;">Say Hi by Controlling My Room Lights</h2>
+					<p style="margin-bottom: 1.5rem;">
+						From anywhere in the world, you can adjust the ambient lighting in my NYU dorm room. Economics meets engineering—a simple hello becomes a connected experience.
+					</p>
+					
+					<div class="lightbulb-note">
+						💡 <strong>Plot twist:</strong> I bought the wrong lightbulb initially, but these <a href="https://www.amazon.com/ANWIO-Multicolor-Compatible-Assistant-Equivalent/dp/B08BR62RXM?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&smid=A1K3EE8JBBCBB6&gQT=0&gRefinements=TYPE%3ALED&th=1" target="_blank" rel="noopener">smart RGB bulbs</a> turned out to be the perfect mistake!
+					</div>
+					
+					<div style="max-width: 400px; margin: 0 auto;">
+						<div class="brightness-display">
+							<span>Brightness</span>
+							<span id="brightnessValue" class="brightness-value">75</span><span style="font-size: 1.2rem; opacity: 0.8;">%</span>
+						</div>
+						
+						<div class="slider-container">
+							<input 
+								type="range" 
+								id="brightnessSlider" 
+								min="1" 
+								max="100" 
+								value="75"
+								class="brightness-slider"
+							/>
+							<div class="brightness-icons">
+								<i class="fas fa-sun" style="font-size: 0.8rem;"></i>
+								<i class="fas fa-sun" style="font-size: 1.2rem;"></i>
+							</div>
+						</div>
+						
+						<button id="setBrightnessBtn" class="control-button pulse-attention">
+							🌟 Send Your Greeting 🌟
+						</button>
+						
+						<p id="brightnessStatus" class="status-message"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-  <!-- About Me Section -->
-  <section id="about" class="about-me">
-    <div class="about-me-container">		
-      <div class="about-text">
-        <div class="about-content">
-          <p>
-            Bridging worlds from the tropics to New York, I'm an Economics student at NYU with a fascination for understanding what makes our global systems tick. My journey combines analytical thinking with creative problem-solving, whether I'm diving into finance or coding new solutions in tech.
-          </p>
-          <p>
-            When I'm not immersed in data or market trends, you can find me in the garage with NYU Motorsports, or on the pier playing football. There's something magical about transforming technical knowledge into tangible results—whether it's optimising race performance through telemetry or building financial models that reveal hidden patterns.
-          </p>
-          <p>
-            I thrive in spaces where precision meets innovation. My self-taught coding adventures in Python have evolved from curiosity to creating practical applications, from race car dashboards to smart home solutions. This blend of quantitative analysis and technical creativity drives everything I do.
-          </p>
-          <p>
-            Sports have taught me the value of strategy, teamwork, and performance under pressure—principles I apply to every challenge I tackle. I'm constantly seeking connections between seemingly disparate fields, finding that the best solutions often emerge at these intersections.
-          </p>
-          <p>
-            Let's connect and explore ideas at <a href="mailto:ae2422@nyu.edu">ae2422@nyu.edu</a>—I'm always up for conversations that challenge perspectives and spark new possibilities.
-          </p>
-          <p style="margin-top: 1.5rem;">
-            <a href="resume.html" class="button">View My Resume</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+	<!-- About Me Section -->
+	<section id="about" class="about-me">
+		<div class="about-me-container">		
+			<div class="about-text">
+				<div class="about-content">
+					<p>
+						Economics student at NYU with a passion for connecting data, markets, and technology. I bridge analytical thinking with hands-on problem-solving—from building race car dashboards with NYU Motorsports to creating smart home solutions.
+					</p>
+					<p>
+						Self-taught in Python and fascinated by where finance meets innovation. When I'm not diving into market trends or coding, you'll find me on the football pitch or in the garage optimizing race performance through telemetry.
+					</p>
+					<p>
+						I thrive at intersections—where precision meets creativity, where theory becomes practice. Always seeking connections between disparate fields and the breakthrough solutions that emerge there.
+					</p>
+					<p>
+						Let's connect: <a href="mailto:ae2422@nyu.edu">ae2422@nyu.edu</a>
+					</p>
+					<p style="margin-top: 1.5rem;">
+						<a href="resume.html" class="button">View My Resume</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
 
-  <script>
-    // Replace with your actual ngrok or server URL:
-    const API_URL = 'https://valid-goblin-full.ngrok-free.app';
+	<script>
+		// Replace with your actual ngrok or server URL, and your secret key:
+		const API_URL = 'https://valid-goblin-full.ngrok-free.app';
+		const API_KEY = 'q7x!K3L9fN*zaP2vR1yW0hT8mB5sG4c';
 
-    const slider = document.getElementById('brightnessSlider');
-    const label  = document.getElementById('brightnessValue');
-    const btn    = document.getElementById('setBrightnessBtn');
-    const msg    = document.getElementById('brightnessStatus');
+		const slider = document.getElementById('brightnessSlider');
+		const label  = document.getElementById('brightnessValue');
+		const btn    = document.getElementById('setBrightnessBtn');
+		const msg    = document.getElementById('brightnessStatus');
 
-    // Live-update the numeric readout with smooth animation
-    slider.addEventListener('input', () => {
-      label.textContent = slider.value;
-      // Add visual feedback
-      slider.style.background = `linear-gradient(to right, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.8) ${slider.value}%, rgba(255,255,255,0.2) ${slider.value}%, rgba(255,255,255,0.2) 100%)`;
-    });
+		// Live-update the numeric readout with smooth animation
+		slider.addEventListener('input', () => {
+			label.textContent = slider.value;
+			
+			// Add subtle scaling animation to the value
+			label.style.transform = 'scale(1.1)';
+			setTimeout(() => {
+				label.style.transform = 'scale(1)';
+			}, 150);
+		});
 
-    // Initialize slider background
-    slider.style.background = `linear-gradient(to right, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.8) ${slider.value}%, rgba(255,255,255,0.2) ${slider.value}%, rgba(255,255,255,0.2) 100%)`;
+		btn.addEventListener('click', () => {
+			const brightness = slider.value;
+			msg.textContent = `Setting brightness to ${brightness}%...`;
+			
+			// Remove pulse animation and add loading state
+			btn.classList.remove('pulse-attention');
+			btn.style.transform = 'scale(0.95)';
+			btn.textContent = '⏳ Sending...';
 
-    btn.addEventListener('click', () => {
-      const brightness = slider.value;
-        msg.textContent = `Setting brightness to ${brightness}%...`;
+			fetch(`${API_URL}/set_brightness`, {
+				method: 'POST',
+				headers: { 
+					'Content-Type': 'application/json',
+					'X-API-Key': API_KEY 
+				},
+				body: JSON.stringify({ brightness })
+			})
+			.then(r => r.json())
+			.then(data => {
+				if (data.status === 'success') {
+					msg.textContent = `✅ Your greeting lit up my room at ${data.brightness_set}%—thanks for saying hi!`;
+				} else {
+					msg.textContent = `❌ ${data.error || 'Unknown error'}`;
+				}
+			})
+			.catch(err => {
+				msg.textContent = `⚠️ Connection failed: ${err.message}`;
+			})
+			.finally(() => {
+				// Reset button
+				btn.style.transform = 'scale(1)';
+				btn.textContent = '🌟 Send Your Greeting 🌟';
+				// Add pulse back after a delay
+				setTimeout(() => {
+					btn.classList.add('pulse-attention');
+				}, 3000);
+			});
+		});
+	</script>
 
-      fetch(`${API_URL}/set_brightness`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ brightness })
-      })
-      .then(r => r.json())
-      .then(data => {
-        if (data.status === 'success') {
-          msg.textContent = `✅ Your greeting lit up my room at ${data.brightness_set}%—thanks for saying hi!`;
-        } else {
-          msg.textContent = `❌ ${data.error || 'Unknown error'}`;
-        }
-      })
-      .catch(err => {
-        msg.textContent = `⚠️ Connection failed: ${err.message}`;
-      });
-    });
-  </script>
-
-  <script>
-    // Add scroll animation for the button
-    document.addEventListener('DOMContentLoaded', function() {
-      const button = document.querySelector('.animate-button');
-      
-      // Add pulse animation on load
-      setTimeout(() => {
-        button.classList.add('pulse');
-      }, 1500);
-      
-      // Smooth scroll for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          
-          const targetId = this.getAttribute('href');
-          const targetElement = document.querySelector(targetId);
-          
-          if (targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop,
-              behavior: 'smooth'
-            });
-          }
-        });
-      });
-    });
-  </script>
-  
-  <footer>
-    <p>© 2025 Adrian Eddy. All rights reserved.</p>
-  </footer>
-  
+	<script>
+		// Add scroll animation for the button
+		document.addEventListener('DOMContentLoaded', function() {
+			const button = document.querySelector('.animate-button');
+			
+			// Add pulse animation on load
+			setTimeout(() => {
+				button.classList.add('pulse');
+			}, 2000);
+			
+			// Smooth scroll for anchor links
+			document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+				anchor.addEventListener('click', function (e) {
+					e.preventDefault();
+					
+					const targetId = this.getAttribute('href');
+					const targetElement = document.querySelector(targetId);
+					
+					if (targetElement) {
+						window.scrollTo({
+							top: targetElement.offsetTop,
+							behavior: 'smooth'
+						});
+					}
+				});
+			});
+		});
+	</script>
+	
+	<footer>
+		<p>© 2025 Adrian Eddy. All rights reserved.</p>
+	</footer>
+	
 </body>
 </html>
