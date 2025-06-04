@@ -403,10 +403,10 @@
 		</div>
 	</section>
 
-	<script>
+<script>
 		// Replace with your actual ngrok or server URL, and your secret key:
 		const API_URL = 'https://valid-goblin-full.ngrok-free.app';
-		const API_KEY = 'q7x!K3L9fN*zaP2vR1yW0hT8mB5sG4c';
+		const API_KEY = 'your-secret-key';
 
 		const slider = document.getElementById('brightnessSlider');
 		const label  = document.getElementById('brightnessValue');
@@ -437,11 +437,17 @@
 				method: 'POST',
 				headers: { 
 					'Content-Type': 'application/json',
-					'X-API-Key': API_KEY 
+					'ngrok-skip-browser-warning': 'true',
+					'q7x!K3L9fN*zaP2vR1yW0hT8mB5sG4c': API_KEY
 				},
-				body: JSON.stringify({ brightness })
+				body: JSON.stringify({ brightness: parseInt(brightness) })
 			})
-			.then(r => r.json())
+			.then(response => {
+				if (!response.ok) {
+					throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+				}
+				return response.json();
+			})
 			.then(data => {
 				if (data.status === 'success') {
 					msg.textContent = `✅ Your greeting lit up my room at ${data.brightness_set}%—thanks for saying hi!`;
@@ -450,6 +456,7 @@
 				}
 			})
 			.catch(err => {
+				console.error('Fetch error:', err);
 				msg.textContent = `⚠️ Connection failed: ${err.message}`;
 			})
 			.finally(() => {
