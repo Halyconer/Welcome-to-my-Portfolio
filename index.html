@@ -231,13 +231,27 @@
 			}
 		}
 		
-		.status-message {
-			margin-top: 1.5rem;
-			font-size: 1rem;
-			min-height: 1.5rem;
-			opacity: 0.9;
-			font-weight: 500;
-		}
+                .status-message {
+                        margin-top: 1.5rem;
+                        font-size: 1rem;
+                        min-height: 1.5rem;
+                        opacity: 0.9;
+                        font-weight: 500;
+                }
+
+                /* Fixed panel for overall status updates */
+                .status-panel {
+                        position: fixed;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        background: #fff9c4;
+                        border-top: 1px solid #e0e0e0;
+                        padding: 0.75rem 1rem;
+                        text-align: center;
+                        font-weight: 600;
+                        z-index: 1000;
+                }
 		
 		.pulse-effect {
 			animation: pulse 2s infinite;
@@ -412,6 +426,7 @@ const slider = document.getElementById('brightnessSlider');
 const label = document.getElementById('brightnessValue');
 const btn = document.getElementById('setBrightnessBtn');
 const msg = document.getElementById('brightnessStatus');
+const panel = document.getElementById('statusPanel');
 
 // Live-update the numeric readout with smooth animation
 slider.addEventListener('input', () => {
@@ -427,6 +442,7 @@ slider.addEventListener('input', () => {
 btn.addEventListener('click', () => {
     const brightness = slider.value;
     msg.textContent = `Setting brightness to ${brightness}%...`;
+    panel.textContent = `Setting brightness to ${brightness}%...`;
     
     // Remove pulse animation and add loading state
     btn.classList.remove('pulse-attention');
@@ -452,13 +468,16 @@ btn.addEventListener('click', () => {
     .then(data => {
         if (data.status === 'success') {
             msg.textContent = `✅ Your greeting lit up my room at ${data.brightness_set}%—thanks for saying hi!`;
+            panel.textContent = `✅ Lights set to ${data.brightness_set}%`;
         } else {
             msg.textContent = `❌ ${data.error || 'Unknown error'}`;
+            panel.textContent = `❌ ${data.error || 'Unknown error'}`;
         }
     })
     .catch(err => {
         console.error('Fetch error:', err);
         msg.textContent = `⚠️ Connection failed: ${err.message}`;
+        panel.textContent = `⚠️ My super fancy home server is asleep`;
     })
     .finally(() => {
         // Reset button
@@ -503,9 +522,11 @@ btn.addEventListener('click', () => {
 		});
 	</script>
 	
-	<footer>
-		<p>© 2025 Adrian Eddy. All rights reserved.</p>
-	</footer>
-	
+        <footer>
+                <p>© 2025 Adrian Eddy. All rights reserved.</p>
+        </footer>
+
+        <div id="statusPanel" class="status-panel">Ready to greet!</div>
+
 </body>
 </html>
