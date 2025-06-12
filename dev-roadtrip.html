@@ -360,8 +360,8 @@
             // Load stats on page load
             document.addEventListener('DOMContentLoaded', loadStats);
             
-            // Refresh stats every 30 seconds
-            setInterval(loadStats, 30000);
+            // Refresh stats once per day (stats update daily)
+            setInterval(loadStats, 86400000);
         </script>
     </body>
 </html>

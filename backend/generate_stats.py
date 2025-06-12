@@ -18,7 +18,7 @@ try:
     stats = {
         'last_updated': datetime.now().isoformat(),
         'collection_period': '24_hours',
-        'update_frequency': 'every_15_minutes',
+        'update_frequency': 'daily',
         'total_calls_24h': conn.execute('''
             SELECT COUNT(*) FROM calls 
             WHERE timestamp > ?
@@ -54,7 +54,7 @@ try:
     with open(OUTPUT_PATH, 'w') as f:
         json.dump(stats, f, indent=2)
 
-    print(f"24-hour stats exported at {datetime.now()} (updates every 15 minutes)")
+    print(f"24-hour stats exported at {datetime.now()} (updates daily)")
 
 except sqlite3.Error as e:
     print(f"Database error: {e}")
