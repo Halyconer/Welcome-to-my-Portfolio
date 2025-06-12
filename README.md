@@ -5,6 +5,7 @@ A personal portfolio website showcasing economics student Adrian Eddy's backgrou
 ## Overview
 
 This portfolio features:
+
 - **Interactive light control** - Visitors can adjust Adrian's NYU dorm room lights remotely
 - **Professional resume** - Detailed experience in finance, data analysis, and economics
 - **Clean, modern design** - Responsive web interface with smooth animations
@@ -12,12 +13,14 @@ This portfolio features:
 ## Features
 
 ### Smart Light Integration
+
 - Real-time brightness control via web interface
 - Flask backend controlling Yeelight smart bulbs
 - Cross-origin resource sharing for secure web access
 - Interactive slider with visual feedback
 
 ### Portfolio Content
+
 - Economics student at NYU with data science focus
 - Professional experience at Equitable Advisors, Henry Social, and CIMB Bank
 - Leadership roles in NYU Motorsports and Data Science Club
@@ -26,12 +29,14 @@ This portfolio features:
 ## Tech Stack
 
 **Frontend:**
+
 - HTML5, CSS3, JavaScript
 - Font Awesome icons
 - Google Fonts (Inter)
 - Responsive CSS animations
 
 **Backend:**
+
 - Python Flask application
 - Yeelight Python library for smart bulb control
 - Flask-CORS for cross-origin requests
@@ -55,11 +60,13 @@ This portfolio features:
 ## Setup
 
 ### Frontend
+
 1. Clone the repository
 2. Open `index.html` in a web browser
 3. Navigate between pages using the navigation menu
 
 ### Backend (Optional - for smart light functionality)
+
 1. Install Python dependencies:
    ```bash
    cd backend
@@ -74,6 +81,7 @@ This portfolio features:
 ## Interactive Features
 
 The main page includes an interactive greeting system where visitors can:
+
 - Adjust brightness using a visual slider (1-100%)
 - Send their "greeting" by controlling the physical lights
 - Receive real-time feedback on the light changes
@@ -92,4 +100,4 @@ Visit the portfolio to experience the interactive light control and learn more a
 
 ---
 
-*Economics @ NYU · Data, Markets & Machines*
+_Economics @ NYU · Data, Markets & Machines_

@@ -2,7 +2,7 @@ title: Adrian Eddy
 theme: jekyll-theme-minimal
 show_downloads: false
 author:
-  email: ae2422@nyu.edu  
+  email: ae2422@nyu.edu
   linkedin: https://www.linkedin.com/in/adrian3ddy/
 
 # Custom styling
@@ -10,8 +10,7 @@ sass:
   style: compressed
 
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
     values:
       layout: default
