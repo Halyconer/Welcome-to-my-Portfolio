@@ -84,7 +84,19 @@ def set_brightness():
 # Endpoint to serve the stats.json file
 @app.route('/stats.json')
 def serve_stats():
-    return send_file('stats.json', mimetype='application/json')
+    try:
+        return send_file('stats.json', mimetype='application/json')
+    except FileNotFoundError:
+        # Return empty stats if file doesn't exist yet
+        return jsonify({
+            "last_updated": datetime.now().isoformat(),
+            "collection_period": "24_hours", 
+            "update_frequency": "daily",
+            "total_calls_24h": 0,
+            "successful_calls_24h": 0,
+            "hourly_breakdown": [],
+            "all_calls_24h": []
+        })
 
 # Endpoint to get current brightness
 # @app.route('/')
