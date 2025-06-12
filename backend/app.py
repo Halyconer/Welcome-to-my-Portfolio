@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 from yeelight import Bulb
 import sqlite3
@@ -35,7 +35,7 @@ def log_call(brightness, status):
     """Dead simple logging for now"""
     conn = sqlite3.connect('calls.db') # Will be located on the pi
 
-	# Define the table (if it doesn't exist)
+    # Define the table (if it doesn't exist)
     conn.execute('''
         CREATE TABLE IF NOT EXISTS calls (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -84,7 +84,7 @@ def set_brightness():
 # Endpoint to serve the stats.json file
 @app.route('/stats.json')
 def serve_stats():
-    return send_file('/home/pi/stats.json', mimetype='application/json')
+    return send_file('stats.json', mimetype='application/json')
 
 # Endpoint to get current brightness
 # @app.route('/')
