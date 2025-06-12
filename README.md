@@ -68,15 +68,15 @@ This portfolio features:
 ### Backend (Optional - for smart light functionality)
 
 1. Install Python dependencies:
-   ```bash
-   cd backend
-   pip install -r requirements.txt
-   ```
+    ```bash
+    cd backend
+    pip install -r requirements.txt
+    ```
 2. Configure your Yeelight bulb IP in `app.py`
 3. Run the Flask server:
-   ```bash
-   python app.py
-   ```
+    ```bash
+    python app.py
+    ```
 
 ## Interactive Features
 

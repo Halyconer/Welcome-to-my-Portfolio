@@ -2,16 +2,16 @@ title: Adrian Eddy
 theme: jekyll-theme-minimal
 show_downloads: false
 author:
-  email: ae2422@nyu.edu
-  linkedin: https://www.linkedin.com/in/adrian3ddy/
+    email: ae2422@nyu.edu
+    linkedin: https://www.linkedin.com/in/adrian3ddy/
 
 # Custom styling
 sass:
-  style: compressed
+    style: compressed
 
 defaults:
-  - scope:
-      path: ""
-    values:
-      layout: default
-      css: styles.css
+    - scope:
+          path: ''
+      values:
+          layout: default
+          css: styles.css
