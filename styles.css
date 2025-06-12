@@ -214,6 +214,18 @@ a.button:hover::after {
     animation: ripple 1s ease-out;
 }
 
+/* Fun bounce effect for Say Hello button - starts after initial fade in */
+.hero .button[href="#light-greeting"] {
+    animation: fadeInUp 1s ease-out 1.5s forwards, gentleBounce 2s ease-in-out 2.5s infinite;
+    opacity: 1 !important;
+}
+
+.hero .button[href="#light-greeting"]:hover {
+    animation: gentleBounce 1s ease-in-out infinite;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
 /* New Pulse Animation for Button */
 @keyframes ripple {
     0% {
@@ -245,6 +257,16 @@ a.button:hover::after {
         box-shadow: 0 0 0 0 rgba(13, 59, 102, 0);
     }
 }
+
+@keyframes gentleBounce {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
 
 /* Standard Animations */
 @keyframes fadeIn {
