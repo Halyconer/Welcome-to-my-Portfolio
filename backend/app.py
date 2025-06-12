@@ -81,6 +81,11 @@ def set_brightness():
         log_call(br, 500)  # Log the failure
         return jsonify({"error for some reason": f"For Adrian: {e}"}), 500
 
+# Endpoint to serve the stats.json file
+@app.route('/stats.json')
+def serve_stats():
+    return send_file('/home/pi/stats.json', mimetype='application/json')
+
 # Endpoint to get current brightness
 # @app.route('/')
 # def home():
