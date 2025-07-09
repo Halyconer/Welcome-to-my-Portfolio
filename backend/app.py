@@ -32,7 +32,6 @@ def get_bulb():
 
 # SQL database setup
 def log_call(brightness, status):
-    """Dead simple logging for now"""
     conn = sqlite3.connect('calls.db') # Will be located on the pi
 
     # Define the table (if it doesn't exist)
