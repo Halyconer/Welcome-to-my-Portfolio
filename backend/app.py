@@ -71,7 +71,7 @@ def set_brightness():
     bulb = get_bulb()
     if bulb is None:
         log_call(br, 500)  # Log the failure
-        return jsonify({"Either mah Bulb is ded or your connection is whack"}), 500
+        return jsonify({"Either my Bulb is dead or you have a bad connection."}), 500
 
     try:
         bulb.set_brightness(br)
