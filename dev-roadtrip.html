@@ -313,12 +313,13 @@
                     const stats = await response.json();
                     
                     // Update stat cards
-                    document.getElementById('totalCalls').textContent = stats.total_calls_24h || 0;
-                    document.getElementById('successfulCalls').textContent = stats.successful_calls_24h || 0;
+                     document.getElementById('totalCalls').textContent = stats.total_calls_all_time;
+                    document.getElementById('avgBrightness').textContent = stats.avg_brightness_all_time.toFixed(2);
+
                     
                     // Format last updated time
                     const lastUpdated = new Date(stats.last_updated);
-                    document.getElementById('lastUpdated').textContent = lastUpdated.toLocaleTimeString();
+                    document.getElementById('lastUpdated':wq).textContent = lastUpdated.toLocaleTimeString();
                     
                     // Display recent calls
                     const recentCallsList = document.getElementById('recentCallsList');
@@ -349,7 +350,6 @@
                     
                     // Show error state
                     document.getElementById('totalCalls').textContent = '?';
-                    document.getElementById('successfulCalls').textContent = '?';
                     document.getElementById('lastUpdated').textContent = 'Error';
                     
                     document.getElementById('recentCallsList').innerHTML = 
