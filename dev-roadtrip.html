@@ -214,7 +214,7 @@
         <!-- Introduction Section -->
         <section class="intro-section">
             <h2>How This Website Works</h2>
-            <p>Getting my toes wet with web dev and interfaces.</p>
+            <p>Getting my toes wet with web development and interfaces.</p>
         </section>
 
         <!-- Diagram Section -->
@@ -294,7 +294,7 @@
                         }
                     });
                     
-                    if (!response.ok) {
+                    if (!response.ok){ 
                         throw new Error(`HTTP ${response.status}`);
                     }
                     
@@ -309,7 +309,7 @@
                     document.getElementById('lastUpdated').textContent = lastUpdated.toLocaleTimeString();
                     
                     // For future reference, need to fix bnecause this is for a table of recent calls and data regarding them.
-                    if (stats.all_calls_24h && stats.all_calls_24h.length > 0) {
+                   /* if (stats.all_calls_24h && stats.all_calls_24h.length > 0) {
                         const callsHtml = stats.all_calls_24h.slice(0, 10).map(call => {
                             const time = new Date(call.time).toLocaleTimeString();
                             const statusClass = call.status === 200 ? 'success' : 'error';
@@ -329,16 +329,12 @@
                     } else {
                         recentCallsList.innerHTML = '<div class="loading">No recent calls found</div>';
                     }
+                    */
                     
                 } catch (error) {
                     console.error('Error loading stats:', error);
-                    
-                    // Show error state
-                    document.getElementById('totalCalls').textContent = '?';
-                    document.getElementById('lastUpdated').textContent = 'Error';
-                    
-                    document.getElementById('recentCallsList').innerHTML = 
-                        '<div class="error-message">Unable to load stats. Server may be offline.</div>';
+                    document.getElementById('totalCalls').textContent = 'Error';
+                    document.getElementById('avgBrightness').textContent = 'Error';
                 }
             }
             
