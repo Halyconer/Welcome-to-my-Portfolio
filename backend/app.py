@@ -94,7 +94,20 @@ def serve_stats():
             "total_calls_all_time": 0,
             "avg_brightness_all_time": 0
         })
-        
+       
+
+# Endpoint to serve the spotify stats file
+@app.route('/spotify_stats.json')
+def serve_spotify_stats():
+    try:
+        return send_file('spotify_top_artists.json', mimetype='application/json')
+    except FileNotFoundError:
+        # Return empty stats if file doesn't exist yet
+        return jsonify({
+            "last_updated_utc": datetime.utcnow().isoformat(),
+            "artists": []
+        })
+
 if __name__ == '__main__': # Only to be run when this file is executed directly on the Pi
 	app.run(host='0.0.0.0', port=5001, debug=False)
 

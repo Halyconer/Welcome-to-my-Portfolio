@@ -153,6 +153,118 @@
                 text-decoration: underline;
             }
 
+            /* Spotify Section Styles */
+            #spotify-stats {
+                background: linear-gradient(135deg, #1db954 0%, #1ed760 100%);
+                padding: 3rem 2rem;
+                color: white;
+            }
+
+            .spotify-wrapper {
+                max-width: 600px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .spotify-wrapper h2 {
+                font-size: 2rem;
+                font-weight: 300;
+                margin-bottom: 1rem;
+                letter-spacing: -0.02em;
+            }
+
+            .spotify-wrapper > p {
+                opacity: 0.9;
+                margin-bottom: 2rem;
+                line-height: 1.6;
+            }
+
+            .spotify-container {
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 16px;
+                padding: 2rem;
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .artists-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .artist-card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                transition: transform 0.3s ease;
+            }
+
+            .artist-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .artist-image {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin-bottom: 0.5rem;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                border: 2px solid rgba(255, 255, 255, 0.3);
+            }
+
+            .artist-placeholder {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.2);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 0.5rem;
+                font-size: 1.5rem;
+            }
+
+            .artist-name {
+                font-size: 0.8rem;
+                font-weight: 500;
+                text-align: center;
+                line-height: 1.2;
+                opacity: 0.9;
+            }
+
+            .last-updated {
+                font-size: 0.75rem;
+                opacity: 0.7;
+                margin-top: 1rem;
+            }
+
+            .loading-state {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 2rem;
+                font-size: 0.9rem;
+                opacity: 0.8;
+            }
+
+            .loading-spinner {
+                width: 20px;
+                height: 20px;
+                border: 2px solid rgba(255, 255, 255, 0.3);
+                border-top: 2px solid white;
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+                margin-right: 0.5rem;
+            }
+
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+
             .hero h1 {
                 opacity: 0;
                 animation: slideInFromLeft 1.2s ease-out 0.5s forwards;
@@ -276,6 +388,26 @@
             </div>
         </section>
 
+        <!-- Spotify Stats Section -->
+        <section id="spotify-stats">
+            <div class="spotify-wrapper">
+                <h2>Current Listening Habits</h2>
+                <p>
+                    A real-time glimpse into my musical taste—my top artists from the past month, 
+                    refreshed daily via Spotify's API.
+                </p>
+
+                <div class="spotify-container">
+                    <div id="spotify-content">
+                        <div class="loading-state">
+                            <div class="loading-spinner"></div>
+                            Fetching latest listening data...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- About Me Section -->
         <section id="about" class="about-me">
             <div class="about-me-container">
@@ -378,6 +510,67 @@
                         btn.textContent = 'Send Greeting'
                     })
             })
+
+            // Spotify Stats Functionality
+            async function loadSpotifyStats() {
+                const contentDiv = document.getElementById('spotify-content')
+                
+                try {
+                    const response = await fetch(`${API_URL}/spotify_stats.json`, {
+                        headers: {
+                            'ngrok-skip-browser-warning': 'true'
+                        }
+                    })
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}`)
+                    }
+                    
+                    const data = await response.json()
+                    
+                    if (data.artists && data.artists.length > 0) {
+                        const artistsHtml = data.artists.map(artist => `
+                            <div class="artist-card">
+                                ${artist.image_url 
+                                    ? `<img src="${artist.image_url}" alt="${artist.name}" class="artist-image" />`
+                                    : `<div class="artist-placeholder">🎵</div>`
+                                }
+                                <div class="artist-name">${artist.name}</div>
+                            </div>
+                        `).join('')
+                        
+                        const lastUpdated = new Date(data.last_updated_utc).toLocaleDateString('en-US', {
+                            month: 'short',
+                            day: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        })
+                        
+                        contentDiv.innerHTML = `
+                            <div class="artists-grid">
+                                ${artistsHtml}
+                            </div>
+                            <div class="last-updated">Last updated: ${lastUpdated}</div>
+                        `
+                    } else {
+                        contentDiv.innerHTML = `
+                            <div style="padding: 2rem; opacity: 0.8;">
+                                No recent listening data available—perhaps I've been too focused on coding!
+                            </div>
+                        `
+                    }
+                } catch (error) {
+                    console.error('Failed to load Spotify stats:', error)
+                    contentDiv.innerHTML = `
+                        <div style="padding: 2rem; opacity: 0.8;">
+                            🎵 Musical data temporarily unavailable—my Pi might be taking a break
+                        </div>
+                    `
+                }
+            }
+
+            // Load Spotify stats when page loads
+            document.addEventListener('DOMContentLoaded', loadSpotifyStats)
         </script>
 
         <script>
