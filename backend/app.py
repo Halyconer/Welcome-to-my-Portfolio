@@ -89,19 +89,12 @@ def serve_stats():
         # Return empty stats if file doesn't exist yet
         return jsonify({
             "last_updated": datetime.now().isoformat(),
-            "collection_period": "24_hours", 
-            "update_frequency": "daily",
-            "total_calls_24h": 0,
-            "successful_calls_24h": 0,
-            "hourly_breakdown": [],
-            "all_calls_24h": []
+            "collection_period": "24_hours",
+            "update_frequency": "daily", 
+            "total_calls_all_time": 0,
+            "avg_brightness_all_time": 0
         })
-
-# Endpoint to get current brightness
-# @app.route('/')
-# def home():
-# 	return "Yeelight Brightness Controller is running."
-
+        
 if __name__ == '__main__': # Only to be run when this file is executed directly on the Pi
 	app.run(host='0.0.0.0', port=5001, debug=False)
 

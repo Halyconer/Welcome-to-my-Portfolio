@@ -5,10 +5,12 @@ import requests
 import base64
 import json
 from datetime import datetime
+from dotenv import load_dotenv
+load_dotenv()
 
 # --- Configuration ---
 SPOTIFY_TOKEN_URL = 'https://accounts.spotify.com/api/token'
-SPOTIFY_API_BASE_URL = 'https://api.spotify.com/v1'
+SPOTIFY_API_BASE_URL = 'https://api.spotify.com/v1' 
 
 def get_access_token(client_id, client_secret, refresh_token):
     """
@@ -81,9 +83,7 @@ def main():
         for artist in top_artists_data.get('items', []):
             output_data['artists'].append({
                 'name': artist['name'],
-                'url': artist['external_urls']['spotify'],
                 'image_url': artist['images'][0]['url'] if artist['images'] else None,
-                'genres': artist.get('genres', [])
             })
         
         # 5. Write the data to a JSON file
