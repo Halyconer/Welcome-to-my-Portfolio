@@ -57,12 +57,12 @@ def main():
     print("Attempting to fetch Spotify top artists...")
 
     # 1. Get credentials from environment variables
-    client_id = os.environ.get('SPOTIPY_CLIENT_ID')
-    client_secret = os.environ.get('SPOTIPY_CLIENT_SECRET')
-    refresh_token = os.environ.get('SPOTIPY_REFRESH_TOKEN')
+    client_id = os.environ.get('SPOTIFY_CLIENT_ID')
+    client_secret = os.environ.get('SPOTIFY_CLIENT_SECRET')
+    refresh_token = os.environ.get('SPOTIFY_REFRESH_TOKEN')
 
     if not all([client_id, client_secret, refresh_token]):
-        print("Error: Make sure SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, and SPOTIPY_REFRESH_TOKEN are set as environment variables.")
+        print("Error: Make sure SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, and SPOTIFY_REFRESH_TOKEN are set as environment variables.")
         return
 
     try:
