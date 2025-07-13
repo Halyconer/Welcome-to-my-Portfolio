@@ -303,13 +303,14 @@
                     // Update stat cards
                     document.getElementById('totalCalls').textContent = stats.total_calls_all_time;
                     document.getElementById('avgBrightness').textContent = stats.avg_brightness_all_time.toFixed(2);
-                    
+                   
+                    /*
                     // Format last updated time
                     const lastUpdated = new Date(stats.last_updated);
                     document.getElementById('lastUpdated').textContent = lastUpdated.toLocaleTimeString();
                     
                     // For future reference, need to fix bnecause this is for a table of recent calls and data regarding them.
-                   /* if (stats.all_calls_24h && stats.all_calls_24h.length > 0) {
+                    if (stats.all_calls_24h && stats.all_calls_24h.length > 0) {
                         const callsHtml = stats.all_calls_24h.slice(0, 10).map(call => {
                             const time = new Date(call.time).toLocaleTimeString();
                             const statusClass = call.status === 200 ? 'success' : 'error';
