@@ -264,14 +264,14 @@
                 <p id="brightnessStatus" class="status-text"></p>
 
                 <div class="tech-note">
-                    💡 Powered by
+                    Powered by
                     <a
                         href="https://www.amazon.com/ANWIO-Multicolor-Compatible-Assistant-Equivalent/dp/B08BR62RXM"
                         target="_blank"
                         rel="noopener"
-                        >smart RGB bulbs</a
+                        >Smart bulbs</a
                     >
-                    and a custom API
+                    and a Flask API
                 </div>
             </div>
         </section>
@@ -314,8 +314,6 @@
 
         <script>
             const API_URL = 'https://valid-goblin-full.ngrok-free.app'
-            const API_KEY = 'your-secret-key'
-
             const slider = document.getElementById('brightnessSlider')
             const label = document.getElementById('brightnessValue')
             const btn = document.getElementById('setBrightnessBtn')

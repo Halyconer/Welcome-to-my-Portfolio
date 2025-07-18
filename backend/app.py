@@ -2,18 +2,21 @@ from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 from yeelight import Bulb
 import sqlite3
+from dotenv import load_dotenv
 from datetime import datetime
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
+
+load_dotenv() 
 
 # Configuration
 BULB_IP = "192.168.1.210"         # your bulb’s IP
-API_KEY = "your-secret-key"       # keep this truly secret!
 ALLOWED_ORIGIN = "https://halyconer.github.io/Welcome-to-my-Portfolio/"
 
 app = Flask(__name__)
 
 # Only allow CORS from your GitHub Pages domain on the /set_brightness route:
-# CORS(app, resources={r"/set_brightness": {"origins": ALLOWED_ORIGIN}})
-CORS(app)
+CORS(app, resources={r"/set_brightness": {"origins": ALLOWED_ORIGIN}})
 
 def get_bulb():
     try:
@@ -21,14 +24,18 @@ def get_bulb():
     except Exception:
         return None
 
-# @app.before_request
-# def check_auth():
-#     if request.endpoint != 'set_brightness':
-#         return  
-#     if request.headers.get(
-#         'q7x!K3L9fN*zaP2vR1yW0hT8mB5sG4c'
-#     ) != API_KEY:
-#         return jsonify({"error": "Unauthorized"}), 401
+@app.before_request
+@cross_origin()
+def check_auth():
+    if request.endpoint != 'set_brightness':
+         return  
+
+    origin = request.headers.get("Origin")
+    referer = request.headers.get("Referer")
+    
+    # origin and referrer are always automatically attached by browsers when making CO requests so this should block agains curl or postman
+    if origin != ALLOWED_ORIGIN  and (referer is None or not referer.startswith(ALLOWED_ORIGIN)):
+        return jsonify({"error": "Request origin not allowed"}), 403
 
 # SQL database setup
 def log_call(brightness, status):
