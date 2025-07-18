@@ -3,4 +3,5 @@ node_modules/
 GEMINI.md
 *.pyc
 __pycache__/
+refresh_token
 .venv/
