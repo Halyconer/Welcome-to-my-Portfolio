@@ -216,14 +216,18 @@ a.button:hover::after {
 
 /* Fun bounce effect for Say Hello button - starts after initial fade in */
 .hero .button[href="#light-greeting"] {
-    animation: fadeInUp 1s ease-out 1.5s forwards, gentleBounce 2s ease-in-out 2.5s infinite;
+    animation: fadeInUp 1s ease-out 1.5s forwards !important;
     opacity: 1 !important;
+    margin-top: 1rem !important;
+    display: inline-block;
+    position: relative;
+    z-index: 10;
 }
 
 .hero .button[href="#light-greeting"]:hover {
-    animation: gentleBounce 1s ease-in-out infinite;
+    animation: none !important;
     opacity: 1 !important;
-    transform: none !important;
+    transform: translateY(-2px) !important;
 }
 
 /* New Pulse Animation for Button */
@@ -289,6 +293,368 @@ a.button:hover::after {
     }
 }
 
+/* Light Greeting Section */
+#light-greeting {
+    background: #f8f9fa;
+    padding: 2.5rem 2rem 2rem;
+}
+
+.light-control-wrapper {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.light-control-wrapper h2 {
+    color: #2c3e50;
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.02em;
+}
+
+.light-control-wrapper > p {
+    color: #5a6c7d;
+    margin-bottom: 1.3rem;
+    line-height: 1.6;
+}
+
+.minimal-slider-container {
+    background: white;
+    border-radius: 16px;
+    padding: 1.8rem;
+    box-shadow: 0 2px 10px rgba(0, 41, 162, 0.08);
+    margin-bottom: 1.3rem;
+}
+
+.brightness-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.brightness-label span {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.7;
+}
+
+.brightness-percentage {
+    font-size: 1rem;
+    font-weight: 200;
+    color: #4a90e2;
+}
+
+/* Minimal slider */
+.minimal-slider {
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: #e0e7ff;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.minimal-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #4a90e2;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.minimal-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    background: #357abd;
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
+}
+
+.minimal-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #4a90e2;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.send-button {
+    background: #4a90e2;
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.send-button:hover {
+    background: #357abd;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+.send-button:active {
+    transform: translateY(0);
+}
+
+.status-text {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #5a6c7d;
+    min-height: 1.2rem;
+}
+
+.tech-note {
+    background: #e8f0fe;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: #5a6c7d;
+}
+
+.tech-note a {
+    color: #4a90e2;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.tech-note a:hover {
+    text-decoration: underline;
+}
+
+/* Floating Navigation */
+.floating-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 0;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.floating-nav .nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.floating-nav .nav a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.floating-nav .nav a:hover {
+    color: #4a90e2;
+}
+
+/* Projects Section Styles */
+.projects-section {
+    background: white;
+    padding: 4rem 2rem;
+    margin-bottom: 3rem;
+}
+
+.projects-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.projects-section h2 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 3rem;
+    letter-spacing: -0.02em;
+}
+
+.projects-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+    align-items: stretch;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.project-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 41, 162, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e8f0fe;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 41, 162, 0.15);
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-logo {
+    width: 60px;
+    height: 60px;
+    background: #e8f0fe;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+    font-size: 1.2rem;
+    color: #4a90e2;
+    overflow: hidden;
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.project-name {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+}
+
+.project-description {
+    font-size: 0.9rem;
+    color: #5a6c7d;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.project-description ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.project-description li {
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-description li:before {
+    content: "•";
+    color: #4a90e2;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.bottom-resume {
+    background: #f8f9fa;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.bottom-resume h3 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+}
+
+.bottom-resume p {
+    color: #5a6c7d;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Animation keyframes */
+@keyframes slideInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Override specific hero animations */
+.hero h1 {
+    opacity: 1;
+    animation: slideInFromLeft 1.2s ease-out 0.5s backwards;
+}
+
+.hero .subtitle {
+    opacity: 1;
+    animation: slideInFromRight 1.2s ease-out 1s backwards;
+}
+
+.hero .button {
+    opacity: 1;
+    animation: fadeInUp 1s ease-out 1.5s backwards;
+}
+
 /* Mobile friendly */
 @media (max-width: 600px) {
     body {
@@ -312,12 +678,20 @@ a.button:hover::after {
     padding: 0 10%;
     position: relative;
     background-color: #fdfdfd;
+    margin-top: 80px;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .hero-text h1 {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 600;
-    margin: 0;
+    margin-bottom: 0.5rem;
     line-height: 1.1;
     letter-spacing: -1px;
     background: linear-gradient(135deg, #0d3b66 0%, #3a7ca5 100%);
@@ -331,7 +705,8 @@ a.button:hover::after {
 .subtitle {
     font-size: 1.5rem;
     color: #555;
-    margin: 1.5rem 0 2.5rem;
+    margin-top: -0.4rem;
+    margin-bottom: 2.5rem;
     font-weight: 400;
     max-width: 600px;
     animation: fadeUp 1s ease-out 0.2s backwards;
@@ -339,7 +714,7 @@ a.button:hover::after {
 
 /* About Me Section Refinements */
 .about-me {
-    padding: 6rem 10%;
+    padding: 0.5rem 10%;
     background-color: #fafafa;
 }
 
