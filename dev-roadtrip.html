@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Adrian Eddy - My Dev Road Trip</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
+        <style>
+            .roadtrip-hero {
+                /* background: removed entirely */
+                color: #2c3e50;
+                padding: 4rem 2rem 2rem;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            .roadtrip-hero h1 {
+                font-size: 3.5rem;
+                margin-bottom: 1rem;
+                font-weight: 300;
+                letter-spacing: -0.02em;
+            }
+
+            .roadtrip-hero .subtitle {
+                font-size: 1.3rem;
+                opacity: 0.9;
+                margin-bottom: 2rem;
+                max-width: 600px;
+                line-height: 1.5;
+            }
+
+            .intro-section {
+                padding: 1rem 1rem;
+                max-width: 900px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .intro-section h2 {
+                font-size: 2.5rem;
+                color: #2c3e50;
+                margin-bottom: 1rem;
+                font-weight: 300;
+            }
+
+            .intro-section p {
+                font-size: 1.1rem;
+                line-height: 1.8;
+                color: #5a6c7d;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .diagram-section {
+                background: #f8f9fa;
+                padding: 4rem 2rem;
+                margin: 2rem 0;
+            }
+
+            .diagram-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .coming-soon {
+                background: whitesmoke;
+                border-radius: 12px;
+                padding: 2rem;
+                margin: 2rem 0;
+                text-align: center;
+            }
+
+            .coming-soon h3 {
+                color: #2c3e50;
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .coming-soon p {
+                color: #5a6c7d;
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+
+            .stats-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1.5rem;
+                margin: 2rem 0;
+            }
+
+            .stat-card {
+                background: white;
+                border-radius: 12px;
+                padding: 1.5rem;
+                text-align: center;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+                transition: transform 0.3s ease;
+            }
+
+            .stat-card:hover {
+                transform: translateY(-2px);
+            }
+
+            .stat-number {
+                font-size: 2rem;
+                font-weight: 600;
+                color: #4a90e2;
+                margin-bottom: 0.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.9rem;
+                color: #5a6c7d;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
+
+            .recent-calls {
+                margin-top: 3rem;
+            }
+
+            .recent-calls h3 {
+                color: #2c3e50;
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+
+            .calls-list {
+                background: white;
+                border-radius: 12px;
+                padding: 1.5rem;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+                max-height: 300px;
+                overflow-y: auto;
+            }
+
+            .call-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.75rem 0;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .call-item:last-child {
+                border-bottom: none;
+            }
+
+            .call-time {
+                font-size: 0.85rem;
+                color: #5a6c7d;
+            }
+
+            .call-brightness {
+                font-weight: 600;
+                color: #2c3e50;
+            }
+
+            .call-status {
+                padding: 0.25rem 0.5rem;
+                border-radius: 4px;
+                font-size: 0.75rem;
+                font-weight: 500;
+            }
+
+            .call-status.success {
+                background: #d4edda;
+                color: #155724;
+            }
+
+            .call-status.error {
+                background: #f8d7da;
+                color: #721c24;
+            }
+
+            .loading {
+                text-align: center;
+                color: #5a6c7d;
+                font-style: italic;
+            }
+
+            .error-message {
+                text-align: center;
+                color: #dc3545;
+                font-style: italic;
+            }
+
+            /* Spotify Section Styles */
+            #spotify-stats {
+                background: #f8f9fa;
+                padding: 4rem 2rem;
+            }
+
+            .spotify-wrapper {
+                max-width: 900px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .spotify-wrapper h2 {
+                font-size: 2.5rem;
+                color: #2c3e50;
+                margin-bottom: 1rem;
+                font-weight: 300;
+            }
+
+            .spotify-wrapper > p {
+                font-size: 1.1rem;
+                line-height: 1.8;
+                color: #5a6c7d;
+                margin-top: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .spotify-container {
+                background: white;
+                border-radius: 12px;
+                padding: 2rem;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            }
+
+            .artists-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .artist-card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                transition: transform 0.3s ease;
+            }
+
+            .artist-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .artist-image {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin-bottom: 0.5rem;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                border: 2px solid #e0e7ff;
+            }
+
+            .artist-placeholder {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                background: #e8f0fe;
+                color: #4a90e2;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 0.5rem;
+                font-size: 1.5rem;
+            }
+
+            .artist-name {
+                font-size: 0.8rem;
+                font-weight: 500;
+                text-align: center;
+                line-height: 1.2;
+                color: #5a6c7d;
+            }
+
+            .last-updated {
+                font-size: 0.75rem;
+                opacity: 0.7;
+                margin-top: 1rem;
+                color: #5a6c7d;
+            }
+
+            .loading-state {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 2rem;
+                font-size: 0.9rem;
+                color: #5a6c7d;
+            }
+
+            .loading-spinner {
+                width: 20px;
+                height: 20px;
+                border: 2px solid #e0e7ff;
+                border-top: 2px solid #4a90e2;
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+                margin-right: 0.5rem;
+            }
+
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav>
+            <ul class="nav">
+                <li><a href="index.html">About Me</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="dev-roadtrip.html">My Dev Road Trip</a></li>
+            </ul>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="roadtrip-hero">
+            <h1>My Trip So Far</h1>
+        </section>
+
+        <!-- Introduction Section -->
+        <section class="intro-section">
+            <h2>How This Website Works</h2>
+            <p>Getting my toes wet with web development and interfaces.</p>
+        </section>
+
+        <!-- Diagram Section -->
+        <section class="diagram-section">
+            <div class="diagram-container">
+                <img
+                    src="assets/lightbulb_diagram.jpg"
+                    alt="System Architecture Diagram"
+                />
+            </div>
+        </section>
+
+        <style>
+            .diagram-section {
+                padding: 2rem 0;
+                background: white;
+            }
+
+            .diagram-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: white;
+            }
+
+            .diagram-container img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 0px;
+                transition:
+                    transform 0.3s ease,
+                    box-shadow 0.3s ease;
+            }
+
+            .diagram-container img:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+            }
+        </style>
+
+        <!-- Database Stats Section -->
+        <section class="intro-section">
+            <h2>Live Database Stats</h2>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalCalls">-</div>
+                    <div class="stat-label">Total Calls</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="avgBrightness">-</div>
+                    <div class="stat-label">Average Brightness Set</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spotify Stats Section -->
+        <section id="spotify-stats">
+            <div class="spotify-wrapper">
+                <h2>Current Listening Habits</h2>
+                <p>
+                    A real-time glimpse into my musical taste—my top artists from the past month, 
+                    refreshed daily via Spotify's API.
+                </p>
+
+                <div class="spotify-container">
+                    <div id="spotify-content">
+                        <div class="loading-state">
+                            <div class="loading-spinner"></div>
+                            Fetching latest listening data...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coming Soon Section -->
+        <!--<section class="intro-section">
+            <div class="coming-soon">
+                <h3><i class="fas fa-rocket"></i> More Coming Soon</h3>
+                <p>Up next: a database schema of my altcoin mining journey.</p>
+            </div>
+        </section>-->
+
+        <footer>
+            <p>© 2025 Adrian Eddy. All rights reserved.</p>
+        </footer>
+
+        <script>
+            const API_URL = 'https://valid-goblin-full.ngrok-free.app';
+            
+            async function loadStats() {
+                try {
+                    const response = await fetch(`${API_URL}/stats.json`, {
+                        headers: {
+                            'ngrok-skip-browser-warning': 'true'
+                        }
+                    });
+                    
+                    if (!response.ok){ 
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                    
+                    const stats = await response.json();
+                    
+                    // Update stat cards
+                    document.getElementById('totalCalls').textContent = stats.total_calls_all_time;
+                    document.getElementById('avgBrightness').textContent = stats.avg_brightness_all_time.toFixed(2);
+                   
+                    /*
+                    // Format last updated time
+                    const lastUpdated = new Date(stats.last_updated);
+                    document.getElementById('lastUpdated').textContent = lastUpdated.toLocaleTimeString();
+                    
+                    // For future reference, need to fix bnecause this is for a table of recent calls and data regarding them.
+                    if (stats.all_calls_24h && stats.all_calls_24h.length > 0) {
+                        const callsHtml = stats.all_calls_24h.slice(0, 10).map(call => {
+                            const time = new Date(call.time).toLocaleTimeString();
+                            const statusClass = call.status === 200 ? 'success' : 'error';
+                            const statusText = call.status === 200 ? 'Success' : 'Error';
+                            const brightness = call.brightness || 'N/A';
+                            
+                            return `
+                                <div class="call-item">
+                                    <div class="call-time">${time}</div>
+                                    <div class="call-brightness">${brightness}%</div>
+                                    <div class="call-status ${statusClass}">${statusText}</div>
+                                </div>
+                            `;
+                        }).join('');
+                        
+                        recentCallsList.innerHTML = callsHtml;
+                    } else {
+                        recentCallsList.innerHTML = '<div class="loading">No recent calls found</div>';
+                    }
+                    */
+                    
+                } catch (error) {
+                    console.error('Error loading stats:', error);
+                    document.getElementById('totalCalls').textContent = 'Error';
+                    document.getElementById('avgBrightness').textContent = 'Error';
+                }
+            }
+
+            async function loadSpotifyStats() {
+                const contentDiv = document.getElementById('spotify-content')
+                
+                try {
+                    const response = await fetch(`${API_URL}/spotify_stats.json`, {
+                        headers: {
+                            'ngrok-skip-browser-warning': 'true'
+                        }
+                    })
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}`)
+                    }
+                    
+                    const data = await response.json()
+                    
+                    if (data.artists && data.artists.length > 0) {
+                        const artistsHtml = data.artists.map(artist => `
+                            <div class="artist-card">
+                                ${artist.image_url 
+                                    ? `<img src="${artist.image_url}" alt="${artist.name}" class="artist-image" />`
+                                    : `<div class="artist-placeholder">🎵</div>`
+                                }
+                                <div class="artist-name">${artist.name}</div>
+                            </div>
+                        `).join('')
+                        
+                        const lastUpdated = new Date(data.last_updated_utc).toLocaleDateString('en-US', {
+                            month: 'short',
+                            day: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        })
+                        
+                        contentDiv.innerHTML = `
+                            <div class="artists-grid">
+                                ${artistsHtml}
+                            </div>
+                            <div class="last-updated">Last updated: ${lastUpdated}</div>
+                        `
+                    } else {
+                        contentDiv.innerHTML = `
+                            <div style="padding: 2rem; opacity: 0.8;">
+                                No recent listening data available—perhaps I've been too focused on coding!
+                            </div>
+                        `
+                    }
+                } catch (error) {
+                    console.error('Failed to load Spotify stats:', error)
+                    contentDiv.innerHTML = `
+                        <div style="padding: 2rem; opacity: 0.8;">
+                            🎵 Musical data temporarily unavailable—my Pi might be taking a break
+                        </div>
+                    `
+                }
+            }
+            
+            // Load stats on page load
+            document.addEventListener('DOMContentLoaded', () => {
+                loadStats();
+                loadSpotifyStats();
+            });
+            
+            // Refresh stats once per day (stats update daily)
+            setInterval(loadStats, 86400000);
+        </script>
+    </body>
+</html>
