@@ -494,15 +494,63 @@ a.button:hover::after {
     letter-spacing: -0.02em;
 }
 
+/* Interactive Section Styles */
+.interactive-section {
+    margin-bottom: 2rem;
+}
+
+.interactive-game-title {
+    color: #4a90e2;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+@keyframes gentle-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+.interactive-game-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
 .projects-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
-    align-items: stretch;
-    justify-content: center;
-    max-width: 600px;
-    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
 }
+
+/* Make Connect 4 project larger and more prominent */
+.connect4-project {
+    grid-column: span 1;
+    transform: scale(1.05);
+    z-index: 2;
+    position: relative;
+}
+
+/* Add a badge to the Connect 4 project */
+.connect4-project::before {
+    content: "🎮 PLAYABLE NOW!";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: linear-gradient(45deg, #4a90e2, #5ba0f2);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    z-index: 3;
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.4);
+}
+
+/* Remove pointing arrow and animations */
 
 .project-item {
     display: flex;
@@ -605,14 +653,14 @@ a.button:hover::after {
 }
 
 .skill-item {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     background: #e8f0fe;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #4a90e2;
     transition: all 0.3s ease;
 }
@@ -851,11 +899,31 @@ a.button:hover::after {
     position: relative;
     cursor: pointer;
     transition: all 0.3s ease;
+    border: 3px solid #4a90e2;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
+}
+
+.connect4-project .project-name {
+    color: #4a90e2;
+    font-weight: 700;
+}
+
+@keyframes pulse-glow {
+    from {
+        box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
+        border-color: #4a90e2;
+    }
+    to {
+        box-shadow: 0 0 30px rgba(74, 144, 226, 0.6);
+        border-color: #5ba0f2;
+    }
 }
 
 .connect4-project:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(74, 144, 226, 0.4);
+    border-color: #5ba0f2;
 }
 
 .play-now-overlay {
@@ -864,16 +932,23 @@ a.button:hover::after {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 102, 204, 0.9);
+    background: linear-gradient(45deg, rgba(74, 144, 226, 0.95), rgba(74, 144, 226, 0.95));
     color: white;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.play-now-overlay .play-icon {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
 }
 
 .connect4-project:hover .play-now-overlay {
