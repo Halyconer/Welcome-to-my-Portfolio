@@ -41,10 +41,9 @@ def get_bulb():
         return None
 
 @app.before_request
-@cross_origin()
 def check_auth():
     if request.endpoint != 'set_brightness':
-         return  
+        return  
 
     # Skip authentication checks in development mode
     if DEVELOPMENT_MODE:
