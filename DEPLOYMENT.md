@@ -108,6 +108,15 @@ sudo systemctl status connect4-api
 sudo systemctl status nginx
 ```
 
+### Check if Flask Apps Are Running
+```bash
+# Check for running Python/Flask processes
+ps aux | grep -E "(python|flask)" | grep -v grep
+
+# Check if ports are listening
+sudo netstat -tlnp | grep -E ":500[12]"
+```
+
 ### View Logs
 ```bash
 # Flask app logs
@@ -121,14 +130,43 @@ sudo tail -f /var/log/nginx/error.log
 
 ### Common Issues
 
-1. **502 Bad Gateway**: Flask apps not running
+1. **502 Bad Gateway - Flask apps not running** (Most Common)
+   
+   **Symptoms:** `ps aux | grep python` shows no Flask apps
+   
+   **Solutions:**
    ```bash
+   # Option 1: Restart systemd services
    sudo systemctl restart lighting-api connect4-api
+   
+   # Option 2: Manual start for debugging
+   cd /home/pi/portfolio/backend
+   source venv/bin/activate
+   python app.py &
+   
+   cd /home/pi/portfolio/connectX
+   source .venv/bin/activate
+   python app.py &
+   
+   # Option 3: Re-run setup script
+   cd /home/pi/portfolio
+   ./setup.sh
    ```
 
-2. **CORS Errors**: Check nginx CORS headers in config
+2. **Services exist but won't start**
+   ```bash
+   # Check service files exist
+   ls -la /etc/systemd/system/*-api.service
+   
+   # Reload systemd and try again
+   sudo systemctl daemon-reload
+   sudo systemctl enable lighting-api connect4-api
+   sudo systemctl start lighting-api connect4-api
+   ```
 
-3. **ngrok Browser Warning**: Ensure `ngrok-skip-browser-warning` header is set
+3. **CORS Errors**: Check nginx CORS headers in config
+
+4. **ngrok Browser Warning**: Ensure `ngrok-skip-browser-warning` header is set
 
 ## Benefits of This Setup
 
@@ -158,3 +196,29 @@ ngrok http --domain=valid-goblin-full.ngrok-free.app 8080
 ```
 
 That's it! Your portfolio will be live and accessible from anywhere. 🚀
+
+## Quick Diagnostic Commands
+
+If something isn't working, run these commands to diagnose:
+
+```bash
+# 1. Check if Flask apps are running
+ps aux | grep -E "(python|flask)" | grep -v grep
+
+# 2. Check if ports are listening
+sudo netstat -tlnp | grep -E ":500[12]|:8080"
+
+# 3. Check service status
+sudo systemctl status lighting-api connect4-api nginx
+
+# 4. Test local endpoints
+curl http://localhost:5001/health 2>/dev/null && echo "✅ Lighting API OK" || echo "❌ Lighting API DOWN"
+curl http://localhost:5002/game_state 2>/dev/null && echo "✅ Connect4 API OK" || echo "❌ Connect4 API DOWN"
+curl http://localhost:8080/health 2>/dev/null && echo "✅ Nginx OK" || echo "❌ Nginx DOWN"
+```
+
+**Expected output when everything works:**
+- 2-3 Python processes running
+- Ports 5001, 5002, 8080 listening
+- All services "active (running)"
+- All curl tests return "OK"
