@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify, send_file
-from flask_cors import CORS
-from yeelight import Bulb
+from flask_cors import CORS, cross_origin
 import sqlite3
 from dotenv import load_dotenv
 from datetime import datetime

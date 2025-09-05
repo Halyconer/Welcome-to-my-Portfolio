@@ -36,8 +36,8 @@
             <div class="light-control-wrapper">
                 <h2>Control My Room Lights</h2>
                 <p>
-                    From anywhere in the world, adjust the ambient lighting in
-                    my NYU dorm. A simple hello becomes a connected experience.
+                    From anywhere in the world, adjust my lighting to say hi!
+                    Feel free to navigate to my developer section to see how it works, along with live data. 
                 </p>
 
                 <div class="minimal-slider-container">
@@ -119,6 +119,9 @@
                             <ul>
                                 <li>Control room lighting from anywhere in the world</li>
                                 <li>Flask API with real-time hardware integration</li>
+                                <li>Raspberry Pi deployment with GPIO control</li>
+                                <li>Web-based interface with brightness adjustment</li>
+                                <li>Secure remote access via ngrok tunneling</li>
                             </ul>
                         </div>
                     </a>
@@ -132,24 +135,30 @@
                             <ul>
                                 <li>Economic policy analysis and recommendations</li>
                                 <li>Data visualization of monetary policy impacts</li>
+                                <li>Federal Reserve data integration and analysis</li>
+                                <li>Team collaboration on macroeconomic forecasting</li>
+                                <li>Presentation to Federal Reserve Bank officials</li>
                             </ul>
                         </div>
                     </a>
 
-                    <a href="dev-roadtrip.html" class="project-item">
+                    <a href="financial-models.html" class="project-item">
                         <div class="project-logo">
-                            <img src="assets/spotify.png" alt="Spotify" class="project-image" />
+                            <img src="assets/Screenshot 2025-09-04 at 11.46.01.png" alt="Financial Models" class="project-image" />
                         </div>
-                        <h3 class="project-name">Spotify Analysis</h3>
+                        <h3 class="project-name">Financial Pricing Models</h3>
                         <div class="project-description">
                             <ul>
-                                <li>Real-time music listening habit tracking</li>
-                                <li>API integration with data visualization</li>
+                                <li>Black-Scholes, Monte Carlo & CAPM implementations</li>
+                                <li>Interactive React frontend with Plotly visualizations</li>
+                                <li>FastAPI backend with comprehensive testing suite</li>
+                                <li>Hull-White and Heston stochastic models</li>
+                                <li>Real-time DCF and options pricing calculations</li>
                             </ul>
                         </div>
                     </a>
 
-                    <a href="racing-telemetry.html" class="project-item">
+                    <div class="project-item connect4-project" onclick="showConnect4Game()">
                         <div class="project-logo">
                             <img src="assets/connect4.jpg" alt="Connect 4" class="project-image" />
                         </div>
@@ -158,9 +167,11 @@
                             <ul>
                                 <li>Minimax algorithm with alpha-beta pruning</li>
                                 <li>Interactive game with AI difficulty levels</li>
+                                <li>Flask backend deployed on Raspberry Pi</li>
+                                <li>Real-time game state management and validation</li>
                             </ul>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -187,7 +198,7 @@
             })
 
             btn.addEventListener('click', () => {
-                const brightness = slider.value
+            const brightness = slider.value
                 msg.textContent = `Setting brightness to ${brightness}%...`
 
                 btn.disabled = true
@@ -258,6 +269,197 @@
                     })
                 })
             })
+        </script>
+
+        <!-- Connect4 Game Modal -->
+        <div id="connect4Modal" class="connect4-modal">
+            <div class="connect4-modal-content">
+                <div class="connect4-header">
+                    <h2>Connect 4 vs AI</h2>
+                    <span class="connect4-close" onclick="closeConnect4Game()">&times;</span>
+                </div>
+                
+                <div class="connect4-status" id="connect4Status">Click "New Game" to start!</div>
+                
+                <div class="connect4-controls">
+                    <button id="connect4NewGameBtn" onclick="newConnect4Game()">New Game</button>
+                </div>
+                
+                <div class="connect4-board" id="connect4Board"></div>
+            </div>
+        </div>
+
+        <script>
+            // Connect4 Game Integration with Flask API
+            const CONNECT4_API_BASE = 'http://localhost:5002'; // Your Connect4 Flask server
+            let connect4GameState = null;
+            let isConnect4Processing = false;
+
+            // Initialize empty board display
+            function createConnect4Board() {
+                const board = document.getElementById('connect4Board');
+                board.innerHTML = '';
+                
+                // Create 42 cells (6 rows × 7 cols), displayed top to bottom
+                for (let row = 5; row >= 0; row--) {
+                    for (let col = 0; col < 7; col++) {
+                        const cell = document.createElement('div');
+                        cell.className = 'connect4-cell';
+                        cell.dataset.row = row;
+                        cell.dataset.col = col;
+                        cell.onclick = () => makeConnect4Move(col);
+                        board.appendChild(cell);
+                    }
+                }
+            }
+
+            // Update board display based on game state
+            function updateConnect4Board() {
+                if (!connect4GameState) return;
+                
+                const cells = document.querySelectorAll('.connect4-cell');
+                cells.forEach(cell => {
+                    cell.className = 'connect4-cell';
+                    const row = parseInt(cell.dataset.row); 
+                    const col = parseInt(cell.dataset.col);
+                    const piece = connect4GameState.board[row][col];
+                    
+                    if (piece === 1) cell.classList.add('player1');
+                    if (piece === 2) cell.classList.add('player2');
+                });
+            }
+
+            // Update status message
+            function updateConnect4Status(message) {
+                document.getElementById('connect4Status').textContent = message;
+            }
+
+            // API request function
+            async function connect4ApiRequest(endpoint, method = 'GET', data = null) {
+                try {
+                    const options = {
+                        method,
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    };
+                    
+                    if (data) {
+                        options.body = JSON.stringify(data);
+                    }
+                    
+                    const response = await fetch(CONNECT4_API_BASE + endpoint, options);
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    return await response.json();
+                } catch (error) {
+                    console.error('Connect4 API request failed:', error);
+                    updateConnect4Status('Connection error! Make sure the game server is running on your Pi.');
+                    return null;
+                }
+            }
+
+            async function startConnect4Game() {
+                isConnect4Processing = true;
+                updateConnect4Status('Starting new game...');
+                
+                const response = await connect4ApiRequest('/play', 'POST');
+                console.log('New Connect4 game response:', response);
+                
+                if (response) {
+                    connect4GameState = response;
+                    createConnect4Board();
+                    updateConnect4Board();
+                    updateConnect4Status('Your turn! Click a column to drop your piece.');
+                } else {
+                    updateConnect4Status('Failed to start new game. Check server connection.');
+                }
+                
+                isConnect4Processing = false;
+            }
+
+            async function makeConnect4Move(col) {
+                console.log('Connect4 move called with column:', col);
+                
+                if (isConnect4Processing || !connect4GameState || connect4GameState.game_over) {
+                    console.log('Move blocked - processing:', isConnect4Processing, 'gameState exists:', !!connect4GameState);
+                    return;
+                }
+                
+                const validCols = connect4GameState.valid_cols || [];
+                console.log('Valid columns:', validCols, 'Clicked:', col);
+                
+                if (!validCols.includes(col)) {  
+                    updateConnect4Status('Invalid move! Column is full.');
+                    return;
+                }
+                
+                isConnect4Processing = true;
+                updateConnect4Status('Processing move...');
+                
+                const response = await connect4ApiRequest('/move', 'POST', { column: col });
+                
+                if (response) {
+                    if (response.game_over) {
+                        // Game over - show final state
+                        connect4GameState = { ...response, board: response.board_after_ai || response.board };
+                        updateConnect4Board();
+                        
+                        if (response.winner === 'player') {
+                            updateConnect4Status('🎉 You won! Great job!');
+                        } else if (response.winner === 'ai') {
+                            updateConnect4Status('🤖 AI wins! Try again?');
+                        } else if (response.winner === 'tie') {
+                            updateConnect4Status('🤝 It\'s a tie! Well played!');
+                        } else {
+                            updateConnect4Status('Game over!');
+                        }
+                    } else {
+                        // Show player's move first
+                        connect4GameState = { ...response, board: response.board_before_ai };
+                        updateConnect4Board();
+                        updateConnect4Status('Your move made! AI is thinking...');
+                        
+                        // Add delay before showing AI move
+                        setTimeout(() => {
+                            connect4GameState = { ...response, board: response.board_after_ai };
+                            updateConnect4Board();
+                            
+                            if (response.ai_move !== null && response.ai_move !== undefined) {
+                                updateConnect4Status(`AI dropped in column ${response.ai_move + 1}. Your turn!`);
+                            } else {
+                                updateConnect4Status('Your turn! Click a column to drop your piece.');
+                            }
+                        }, 1000);
+                    }
+                }
+                
+                isConnect4Processing = false;
+            }
+
+            // Modal functions
+            function showConnect4Game() {
+                document.getElementById('connect4Modal').style.display = 'flex';
+            }
+            
+            function closeConnect4Game() {
+                document.getElementById('connect4Modal').style.display = 'none';
+            }
+            
+            function newConnect4Game() {
+                startConnect4Game();
+            }
+            
+            // Close modal when clicking outside of it
+            window.addEventListener('click', function(event) {
+                const modal = document.getElementById('connect4Modal');
+                if (event.target === modal) {
+                    closeConnect4Game();
+                }
+            });
         </script>
 
         <footer>
