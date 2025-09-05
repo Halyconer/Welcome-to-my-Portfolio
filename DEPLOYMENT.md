@@ -1,13 +1,13 @@
-# Portfolio Deployment Guide: Nginx + Single ngrok
+# Portfolio Deployment Guide: Static Ngrok URL
 
-This guide walks you through deploying your portfolio with nginx routing and a single ngrok tunnel.
+This guide walks you through deploying your portfolio with nginx routing and a **static ngrok URL**.
 
 ## Architecture Overview
 
 ```
 GitHub Pages (Static Site)
          ↓
-    Single ngrok URL
+Static ngrok URL: https://valid-goblin-full.ngrok-free.app
          ↓
     Nginx (Port 8080)
     ├── /lighting/* → Flask App (Port 5001)
@@ -17,7 +17,7 @@ GitHub Pages (Static Site)
 ## Prerequisites
 
 - Raspberry Pi with internet connection
-- ngrok account and auth token
+- ngrok account with **static domain** configured
 - Both Flask apps working locally
 
 ## Step-by-Step Deployment
@@ -25,9 +25,9 @@ GitHub Pages (Static Site)
 ### 1. On Your Development Machine
 
 ✅ **Already Done:**
-- Updated HTML to use path-based routing
-- Created nginx configuration
-- Created setup script
+- Updated HTML to use static ngrok URL: `https://valid-goblin-full.ngrok-free.app`
+- Created nginx configuration for path-based routing
+- Created setup script for automated deployment
 
 ### 2. On Your Raspberry Pi
 
@@ -62,40 +62,40 @@ chmod +x setup.sh
 ./setup.sh
 ```
 
-#### D. Start ngrok
+#### D. Start ngrok with Static Domain
 ```bash
-# In a separate terminal
-ngrok http 8080
+# In a separate terminal - use your static domain
+ngrok http --domain=valid-goblin-full.ngrok-free.app 8080
 ```
 
-Copy the ngrok URL (e.g., `https://abc123.ngrok-free.app`)
+**Note:** Your static domain `valid-goblin-full.ngrok-free.app` is already configured in all frontend code, so no URL updates are needed!
 
-### 3. Update Your Frontend
+### 3. Deploy to GitHub Pages
 
-Update the `API_BASE_URL` in your HTML:
-```javascript
-const API_BASE_URL = 'https://your-actual-ngrok-url.ngrok-free.app'
+Since your frontend is already configured with the static ngrok URL, simply:
+```bash
+git add .
+git commit -m "Deploy with static ngrok configuration"
+git push origin main
 ```
 
-### 4. Deploy to GitHub Pages
-
-Commit and push your changes to deploy to GitHub Pages.
+Your GitHub Pages site will automatically use the correct API endpoints.
 
 ## Testing Your Setup
 
 ### Test nginx routing:
 ```bash
 # Health check
-curl https://your-ngrok-url.ngrok-free.app/health
+curl https://valid-goblin-full.ngrok-free.app/health
 
 # Test lighting API
-curl -X POST https://your-ngrok-url.ngrok-free.app/lighting/set_brightness \
+curl -X POST https://valid-goblin-full.ngrok-free.app/lighting/set_brightness \
   -H "Content-Type: application/json" \
   -H "ngrok-skip-browser-warning: true" \
   -d '{"brightness": 50}'
 
 # Test Connect4 API
-curl https://your-ngrok-url.ngrok-free.app/connect4/game_state \
+curl https://valid-goblin-full.ngrok-free.app/connect4/game_state \
   -H "ngrok-skip-browser-warning: true"
 ```
 
@@ -132,18 +132,29 @@ sudo tail -f /var/log/nginx/error.log
 
 ## Benefits of This Setup
 
+- ✅ **Static ngrok URL** - No need to update frontend code when restarting
 - ✅ **Single ngrok tunnel** (fits free tier)
 - ✅ **Centralized routing** via nginx
 - ✅ **Automatic service restart** via systemd
 - ✅ **Production-ready** with proper logging
-- ✅ **Easy to maintain** single configuration
+- ✅ **Easy to maintain** - deploy once, works forever
 
 ## URL Structure
 
-Your APIs will be available at:
-- Lighting: `https://your-ngrok-url/lighting/set_brightness`
-- Lighting Stats: `https://your-ngrok-url/lighting/stats.json`
-- Lighting Spotify: `https://your-ngrok-url/lighting/spotify_stats.json`
-- Connect4 Game: `https://your-ngrok-url/connect4/play`
-- Connect4 Move: `https://your-ngrok-url/connect4/move`
-- Connect4 State: `https://your-ngrok-url/connect4/game_state`
+Your APIs are available at these **static endpoints**:
+- Lighting: `https://valid-goblin-full.ngrok-free.app/lighting/set_brightness`
+- Lighting Stats: `https://valid-goblin-full.ngrok-free.app/lighting/stats.json`
+- Lighting Spotify: `https://valid-goblin-full.ngrok-free.app/lighting/spotify_stats.json`
+- Connect4 Game: `https://valid-goblin-full.ngrok-free.app/connect4/play`
+- Connect4 Move: `https://valid-goblin-full.ngrok-free.app/connect4/move`
+- Connect4 State: `https://valid-goblin-full.ngrok-free.app/connect4/game_state`
+
+## Quick Start Command
+
+Once everything is set up, start your entire system with:
+```bash
+# Start ngrok with your static domain
+ngrok http --domain=valid-goblin-full.ngrok-free.app 8080
+```
+
+That's it! Your portfolio will be live and accessible from anywhere. 🚀
