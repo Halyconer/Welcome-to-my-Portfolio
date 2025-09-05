@@ -167,14 +167,9 @@
                             <ul>
                                 <li>Minimax algorithm with alpha-beta pruning</li>
                                 <li>Interactive game with AI difficulty levels</li>
-                                <li>Click here to challenge the AI right now!</li>
                                 <li>Flask backend deployed on Raspberry Pi</li>
                                 <li>Real-time game state management and validation</li>
                             </ul>
-                        </div>
-                        <div class="play-now-overlay">
-                            <div class="play-icon">🎮</div>
-                            <span>Click to Play Now!</span>
                         </div>
                     </div>
                 </div>
@@ -203,7 +198,7 @@
             })
 
             btn.addEventListener('click', () => {
-                const brightness = slider.value
+            const brightness = slider.value
                 msg.textContent = `Setting brightness to ${brightness}%...`
 
                 btn.disabled = true
