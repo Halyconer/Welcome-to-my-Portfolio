@@ -291,7 +291,8 @@
 
         <script>
             // Connect4 Game Integration with Flask API
-            const CONNECT4_API_BASE = 'http://localhost:5002'; // Your Connect4 Flask server
+            // Use a relative URL for the API base, and allow override via window.CONNECT4_API_BASE
+            const CONNECT4_API_BASE = window.CONNECT4_API_BASE || '/api';
             let connect4GameState = null;
             let isConnect4Processing = false;
 
