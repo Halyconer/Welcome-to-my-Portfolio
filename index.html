@@ -186,7 +186,9 @@
         </section>
 
         <script>
-            const API_URL = 'https://valid-goblin-full.ngrok-free.app'
+            // Single API base URL for all services via nginx
+            const API_BASE_URL = 'https://valid-goblin-full.ngrok-free.app'
+            const LIGHTING_API_URL = API_BASE_URL + '/lighting'
             const slider = document.getElementById('brightnessSlider')
             const label = document.getElementById('brightnessValue')
             const btn = document.getElementById('setBrightnessBtn')
@@ -204,7 +206,7 @@
                 btn.disabled = true
                 btn.textContent = 'Sending...'
 
-                fetch(`${API_URL}/set_brightness`, {
+                fetch(`${LIGHTING_API_URL}/set_brightness`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -291,7 +293,7 @@
 
         <script>
             // Connect4 Game Integration with Flask API
-            const CONNECT4_API_BASE = 'http://localhost:5002'; // Your Connect4 Flask server
+            const CONNECT4_API_BASE = API_BASE_URL + '/connect4'; // Connect4 via nginx routing
             let connect4GameState = null;
             let isConnect4Processing = false;
 
@@ -341,6 +343,7 @@
                         method,
                         headers: {
                             'Content-Type': 'application/json',
+                            'ngrok-skip-browser-warning': 'true',
                         },
                     };
                     
