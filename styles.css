@@ -494,15 +494,65 @@ a.button:hover::after {
     letter-spacing: -0.02em;
 }
 
+/* Interactive Section Styles */
+.interactive-section {
+    margin-bottom: 2rem;
+}
+
+.interactive-game-title {
+    color: #4a90e2;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+@keyframes gentle-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+.interactive-game-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
 .projects-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
-    align-items: stretch;
-    justify-content: center;
-    max-width: 600px;
-    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
 }
+
+/* Make Connect 4 project larger and more prominent */
+.connect4-project {
+    grid-column: span 1;
+    transform: scale(1.05);
+    z-index: 2;
+    position: relative;
+}
+
+/* Add a banner above the Connect 4 project */
+.connect4-project::before {
+    content: "Click to Play";
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(45deg, #4a90e2, #5ba0f2);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 25px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 3;
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.4);
+    white-space: nowrap;
+}
+
+/* Remove pointing arrow and animations */
 
 .project-item {
     display: flex;
@@ -605,14 +655,14 @@ a.button:hover::after {
 }
 
 .skill-item {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     background: #e8f0fe;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #4a90e2;
     transition: all 0.3s ease;
 }
@@ -844,4 +894,220 @@ a.button:hover::after {
 
 .nav a:hover {
     background-color: #e9f5ff;
+}
+
+/* Connect4 Game Styles */
+.connect4-project {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 3px solid #4a90e2;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
+}
+
+.connect4-project .project-name {
+    color: #4a90e2;
+    font-weight: 700;
+}
+
+@keyframes pulse-glow {
+    from {
+        box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
+        border-color: #4a90e2;
+    }
+    to {
+        box-shadow: 0 0 30px rgba(74, 144, 226, 0.6);
+        border-color: #5ba0f2;
+    }
+}
+
+.connect4-project:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(74, 144, 226, 0.4);
+    border-color: #5ba0f2;
+}
+
+.play-now-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(74, 144, 226, 0.95), rgba(74, 144, 226, 0.95));
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.play-now-overlay .play-icon {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+}
+
+.connect4-project:hover .play-now-overlay {
+    opacity: 1;
+}
+
+.connect4-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.connect4-modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideIn 0.3s ease-in-out;
+}
+
+.connect4-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 15px;
+}
+
+.connect4-header h2 {
+    margin: 0;
+    color: #0d3b66;
+}
+
+.connect4-close {
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s ease;
+}
+
+.connect4-close:hover {
+    color: #ff4444;
+}
+
+.connect4-status {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 20px 0;
+    min-height: 25px;
+    color: #0d3b66;
+}
+
+.connect4-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.connect4-controls button {
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #0066cc;
+    color: white;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+}
+
+.connect4-controls button:hover {
+    background-color: #0052a3;
+}
+
+.connect4-controls button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.connect4-board {
+    display: grid;
+    grid-template-columns: repeat(7, 60px);
+    grid-template-rows: repeat(6, 60px);
+    gap: 5px;
+    background-color: #0066cc;
+    padding: 15px;
+    border-radius: 15px;
+    margin: 20px auto;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.connect4-cell {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid #004499;
+    cursor: pointer;
+    background-color: white;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.connect4-cell:hover:not(.player1):not(.player2) {
+    background-color: #e0e0e0;
+    transform: scale(1.05);
+}
+
+.connect4-cell.player1 {
+    background-color: #ff4444;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.connect4-cell.player2 {
+    background-color: #ffdd44;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+    .connect4-modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+    
+    .connect4-board {
+        grid-template-columns: repeat(7, 45px);
+        grid-template-rows: repeat(6, 45px);
+        gap: 3px;
+        padding: 10px;
+    }
+    
+    .connect4-cell {
+        width: 45px;
+        height: 45px;
+        border: 2px solid #004499;
+    }
+    
+    .connect4-controls button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
 }
