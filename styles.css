@@ -732,12 +732,12 @@ a.button:hover::after {
 /* Override specific hero animations */
 .hero h1 {
     opacity: 1;
-    animation: slideInFromLeft 1.2s ease-out 0.5s backwards;
+    animation: fadeInUp 1s ease-out 0.5s backwards;
 }
 
 .hero .subtitle {
     opacity: 1;
-    animation: slideInFromRight 1.2s ease-out 1s backwards;
+    animation: fadeInUp 1s ease-out 1s backwards;
 }
 
 .hero .button {
