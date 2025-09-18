@@ -87,7 +87,7 @@ h2 {
 }
 
 .resume-header h1 {
-    background: linear-gradient(135deg, #0d3b66 0%, #3a7ca5 100%);
+    background: linear-gradient(135deg, #0d3b66 0%, #2c5d8a 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -160,20 +160,20 @@ footer {
 }
 
 a {
-    color: #007acc;
+    color: #005c99;
     text-decoration: none;
     transition: color 0.2s ease-in-out;
 }
 
 a:hover {
     text-decoration: underline;
-    color: #005fa3;
+    color: #004c80;
 }
 
 /* Updated Button Styling */
 a.button {
     display: inline-block;
-    background: linear-gradient(135deg, #0d3b66 0%, #3a7ca5 100%);
+    background: linear-gradient(135deg, #0d3b66 0%, #2c5d8a 100%);
     color: white !important; /* Important to ensure text color is always white */
     padding: 0.8rem 1.8rem;
     border-radius: 6px;
@@ -345,7 +345,7 @@ a.button:hover::after {
 .brightness-percentage {
     font-size: 1rem;
     font-weight: 200;
-    color: #4a90e2;
+    color: #3a7cc2;
 }
 
 /* Minimal slider */
@@ -367,7 +367,7 @@ a.button:hover::after {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #4a90e2;
+    background: #3a7cc2;
     cursor: pointer;
     transition: all 0.2s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -375,7 +375,7 @@ a.button:hover::after {
 
 .minimal-slider::-webkit-slider-thumb:hover {
     transform: scale(1.2);
-    background: #357abd;
+    background: #2a6ab3;
     box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
 }
 
@@ -383,14 +383,14 @@ a.button:hover::after {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #4a90e2;
+    background: #3a7cc2;
     cursor: pointer;
     border: none;
     transition: all 0.2s ease;
 }
 
 .send-button {
-    background: #4a90e2;
+    background: #3a7cc2;
     color: white;
     border: none;
     padding: 14px 32px;
@@ -403,7 +403,7 @@ a.button:hover::after {
 }
 
 .send-button:hover {
-    background: #357abd;
+    background: #2a6ab3;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
 }
@@ -429,7 +429,7 @@ a.button:hover::after {
 }
 
 .tech-note a {
-    color: #4a90e2;
+    color: #3a7cc2;
     text-decoration: none;
     font-weight: 500;
 }
@@ -470,7 +470,7 @@ a.button:hover::after {
 }
 
 .floating-nav .nav a:hover {
-    color: #4a90e2;
+    color: #3a7cc2;
 }
 
 /* Projects Section Styles */
@@ -500,7 +500,7 @@ a.button:hover::after {
 }
 
 .interactive-game-title {
-    color: #4a90e2;
+    color: #3a7cc2;
     text-align: center;
     margin-bottom: 1rem;
     font-size: 1.3rem;
@@ -541,7 +541,7 @@ a.button:hover::after {
     top: -15px;
     left: 50%;
     transform: translateX(-50%);
-    background: linear-gradient(45deg, #4a90e2, #5ba0f2);
+    background: linear-gradient(45deg, #3a7cc2, #4a8ed2);
     color: white;
     padding: 6px 16px;
     border-radius: 25px;
@@ -578,8 +578,8 @@ a.button:hover::after {
 }
 
 .project-logo {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     background: #e8f0fe;
     border-radius: 50%;
     display: flex;
@@ -587,7 +587,7 @@ a.button:hover::after {
     justify-content: center;
     margin-bottom: 1.2rem;
     font-size: 1.2rem;
-    color: #4a90e2;
+    color: #3a7cc2;
     overflow: hidden;
 }
 
@@ -628,7 +628,7 @@ a.button:hover::after {
 
 .project-description li:before {
     content: "•";
-    color: #4a90e2;
+    color: #3a7cc2;
     font-weight: bold;
     position: absolute;
     left: 0;
@@ -663,12 +663,12 @@ a.button:hover::after {
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
-    color: #4a90e2;
+    color: #3a7cc2;
     transition: all 0.3s ease;
 }
 
 .skill-item:hover {
-    background: #4a90e2;
+    background: #3a7cc2;
     color: white;
     transform: translateY(-2px);
 }
@@ -783,7 +783,7 @@ a.button:hover::after {
     margin-bottom: 0.5rem;
     line-height: 1.1;
     letter-spacing: -1px;
-    background: linear-gradient(135deg, #0d3b66 0%, #3a7ca5 100%);
+    background: linear-gradient(135deg, #0d3b66 0%, #2c5d8a 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -826,7 +826,7 @@ a.button:hover::after {
 }
 
 .about-text a {
-    color: #3a7ca5;
+    color: #2c5d8a;
     font-weight: 600;
     border-bottom: 1px solid transparent;
     transition: all 0.2s;
@@ -834,7 +834,7 @@ a.button:hover::after {
 }
 
 .about-text a:hover {
-    border-bottom-color: #3a7ca5;
+    border-bottom-color: #2c5d8a;
 }
 
 /* Animations */
@@ -901,31 +901,31 @@ a.button:hover::after {
     position: relative;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 3px solid #4a90e2;
+    border: 3px solid #3a7cc2;
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
 }
 
 .connect4-project .project-name {
-    color: #4a90e2;
+    color: #3a7cc2;
     font-weight: 700;
 }
 
 @keyframes pulse-glow {
     from {
         box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
-        border-color: #4a90e2;
+        border-color: #3a7cc2;
     }
     to {
         box-shadow: 0 0 30px rgba(74, 144, 226, 0.6);
-        border-color: #5ba0f2;
+        border-color: #4a8ed2;
     }
 }
 
 .connect4-project:hover {
     transform: translateY(-8px) scale(1.02);
     box-shadow: 0 15px 30px rgba(74, 144, 226, 0.4);
-    border-color: #5ba0f2;
+    border-color: #4a8ed2;
 }
 
 .play-now-overlay {
@@ -1031,14 +1031,14 @@ a.button:hover::after {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    background-color: #0066cc;
+    background-color: #004d99;
     color: white;
     transition: background-color 0.3s ease;
     font-weight: 600;
 }
 
 .connect4-controls button:hover {
-    background-color: #0052a3;
+    background-color: #003366;
 }
 
 .connect4-controls button:disabled {
@@ -1051,7 +1051,7 @@ a.button:hover::after {
     grid-template-columns: repeat(7, 60px);
     grid-template-rows: repeat(6, 60px);
     gap: 5px;
-    background-color: #0066cc;
+    background-color: #004d99;
     padding: 15px;
     border-radius: 15px;
     margin: 20px auto;
@@ -1063,7 +1063,7 @@ a.button:hover::after {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    border: 3px solid #004499;
+    border: 3px solid #003366;
     cursor: pointer;
     background-color: white;
     transition: all 0.3s ease;
