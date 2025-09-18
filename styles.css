@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&display=swap');
 
 body {
     font-family: 'IBM Plex Mono', monospace;
+    font-weight: 300;
     color: #1a1a1a;
     background-color: #fdfdfd;
     line-height: 1.6;
@@ -23,7 +24,7 @@ body {
 .profile-pic {
     width: 160px;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
     animation: slideIn 1s ease-in;
 }
 
@@ -130,7 +131,7 @@ h2 {
     padding: 1.5rem 2rem;
     border-radius: 8px;
     background: white;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
     animation: fadeIn 0.8s ease-in-out;
 }
 
@@ -186,13 +187,13 @@ a.button {
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(13, 59, 102, 0.2);
+    box-shadow: 0 5px 15px rgba(13, 59, 102, 0.15);
 }
 
 a.button:hover {
     background: linear-gradient(135deg, #0a2d4d 0%, #2c5a7c 100%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(13, 59, 102, 0.25);
+    box-shadow: 0 8px 20px rgba(13, 59, 102, 0.2);
 }
 
 /* Button Animation Effects */
@@ -476,7 +477,7 @@ a.button:hover::after {
 /* Projects Section Styles */
 .projects-section {
     background: white;
-    padding: 4rem 2rem;
+    padding: 5rem 2rem;
     margin-bottom: 3rem;
 }
 
@@ -522,7 +523,7 @@ a.button:hover::after {
 .projects-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    gap: 2.5rem;
     margin-top: 2rem;
 }
 
@@ -562,7 +563,7 @@ a.button:hover::after {
     padding: 2rem 1.5rem;
     background: white;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 41, 162, 0.08);
+    box-shadow: 0 6px 25px rgba(0, 41, 162, 0.07);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid #e8f0fe;
     text-decoration: none;
@@ -572,7 +573,7 @@ a.button:hover::after {
 
 .project-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 41, 162, 0.15);
+    box-shadow: 0 10px 35px rgba(0, 41, 162, 0.12), 0 0 20px rgba(74, 144, 226, 0.3);
     text-decoration: none;
     color: inherit;
 }
@@ -649,7 +650,7 @@ a.button:hover::after {
 .skills-grid {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.5rem;
     margin-bottom: 1rem;
     flex-wrap: wrap;
 }
@@ -803,7 +804,7 @@ a.button:hover::after {
 
 /* About Me Section Refinements */
 .about-me {
-    padding: 0.5rem 10%;
+    padding: 2rem 10%;
     background-color: #fafafa;
 }
 
