@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
 
 body {
     font-family: 'IBM Plex Mono', monospace;
-    font-weight: 300;
     color: #1a1a1a;
     background-color: #fdfdfd;
     line-height: 1.6;
@@ -24,7 +23,7 @@ body {
 .profile-pic {
     width: 160px;
     border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     animation: slideIn 1s ease-in;
 }
 
@@ -88,7 +87,7 @@ h2 {
 }
 
 .resume-header h1 {
-    background: linear-gradient(135deg, #0d3b66 0%, #2c5d8a 100%);
+    background: linear-gradient(135deg, #0d3b66 0%, #3a7ca5 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -131,7 +130,7 @@ h2 {
     padding: 1.5rem 2rem;
     border-radius: 8px;
     background: white;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     animation: fadeIn 0.8s ease-in-out;
 }
 
@@ -161,20 +160,20 @@ footer {
 }
 
 a {
-    color: #005c99;
+    color: #007acc;
     text-decoration: none;
     transition: color 0.2s ease-in-out;
 }
 
 a:hover {
     text-decoration: underline;
-    color: #004c80;
+    color: #005fa3;
 }
 
 /* Updated Button Styling */
 a.button {
     display: inline-block;
-    background: linear-gradient(135deg, #0d3b66 0%, #2c5d8a 100%);
+    background: linear-gradient(135deg, #0d3b66 0%, #3a7ca5 100%);
     color: white !important; /* Important to ensure text color is always white */
     padding: 0.8rem 1.8rem;
     border-radius: 6px;
@@ -187,13 +186,13 @@ a.button {
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(13, 59, 102, 0.15);
+    box-shadow: 0 4px 12px rgba(13, 59, 102, 0.2);
 }
 
 a.button:hover {
     background: linear-gradient(135deg, #0a2d4d 0%, #2c5a7c 100%);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(13, 59, 102, 0.2);
+    box-shadow: 0 6px 15px rgba(13, 59, 102, 0.25);
 }
 
 /* Button Animation Effects */
@@ -346,7 +345,7 @@ a.button:hover::after {
 .brightness-percentage {
     font-size: 1rem;
     font-weight: 200;
-    color: #3a7cc2;
+    color: #4a90e2;
 }
 
 /* Minimal slider */
@@ -368,7 +367,7 @@ a.button:hover::after {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #3a7cc2;
+    background: #4a90e2;
     cursor: pointer;
     transition: all 0.2s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -376,7 +375,7 @@ a.button:hover::after {
 
 .minimal-slider::-webkit-slider-thumb:hover {
     transform: scale(1.2);
-    background: #2a6ab3;
+    background: #357abd;
     box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
 }
 
@@ -384,14 +383,14 @@ a.button:hover::after {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #3a7cc2;
+    background: #4a90e2;
     cursor: pointer;
     border: none;
     transition: all 0.2s ease;
 }
 
 .send-button {
-    background: #3a7cc2;
+    background: #4a90e2;
     color: white;
     border: none;
     padding: 14px 32px;
@@ -404,7 +403,7 @@ a.button:hover::after {
 }
 
 .send-button:hover {
-    background: #2a6ab3;
+    background: #357abd;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
 }
@@ -430,7 +429,7 @@ a.button:hover::after {
 }
 
 .tech-note a {
-    color: #3a7cc2;
+    color: #4a90e2;
     text-decoration: none;
     font-weight: 500;
 }
@@ -471,13 +470,13 @@ a.button:hover::after {
 }
 
 .floating-nav .nav a:hover {
-    color: #3a7cc2;
+    color: #4a90e2;
 }
 
 /* Projects Section Styles */
 .projects-section {
     background: white;
-    padding: 5rem 2rem;
+    padding: 4rem 2rem;
     margin-bottom: 3rem;
 }
 
@@ -501,7 +500,7 @@ a.button:hover::after {
 }
 
 .interactive-game-title {
-    color: #3a7cc2;
+    color: #4a90e2;
     text-align: center;
     margin-bottom: 1rem;
     font-size: 1.3rem;
@@ -523,7 +522,7 @@ a.button:hover::after {
 .projects-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2.5rem;
+    gap: 2rem;
     margin-top: 2rem;
 }
 
@@ -542,7 +541,7 @@ a.button:hover::after {
     top: -15px;
     left: 50%;
     transform: translateX(-50%);
-    background: linear-gradient(45deg, #3a7cc2, #4a8ed2);
+    background: linear-gradient(45deg, #4a90e2, #5ba0f2);
     color: white;
     padding: 6px 16px;
     border-radius: 25px;
@@ -563,7 +562,7 @@ a.button:hover::after {
     padding: 2rem 1.5rem;
     background: white;
     border-radius: 12px;
-    box-shadow: 0 6px 25px rgba(0, 41, 162, 0.07);
+    box-shadow: 0 4px 20px rgba(0, 41, 162, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid #e8f0fe;
     text-decoration: none;
@@ -573,14 +572,14 @@ a.button:hover::after {
 
 .project-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 35px rgba(0, 41, 162, 0.12), 0 0 20px rgba(74, 144, 226, 0.3);
+    box-shadow: 0 8px 30px rgba(0, 41, 162, 0.15);
     text-decoration: none;
     color: inherit;
 }
 
 .project-logo {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     background: #e8f0fe;
     border-radius: 50%;
     display: flex;
@@ -588,7 +587,7 @@ a.button:hover::after {
     justify-content: center;
     margin-bottom: 1.2rem;
     font-size: 1.2rem;
-    color: #3a7cc2;
+    color: #4a90e2;
     overflow: hidden;
 }
 
@@ -629,7 +628,7 @@ a.button:hover::after {
 
 .project-description li:before {
     content: "•";
-    color: #3a7cc2;
+    color: #4a90e2;
     font-weight: bold;
     position: absolute;
     left: 0;
@@ -650,7 +649,7 @@ a.button:hover::after {
 .skills-grid {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 1rem;
     margin-bottom: 1rem;
     flex-wrap: wrap;
 }
@@ -664,12 +663,12 @@ a.button:hover::after {
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
-    color: #3a7cc2;
+    color: #4a90e2;
     transition: all 0.3s ease;
 }
 
 .skill-item:hover {
-    background: #3a7cc2;
+    background: #4a90e2;
     color: white;
     transform: translateY(-2px);
 }
@@ -732,12 +731,12 @@ a.button:hover::after {
 /* Override specific hero animations */
 .hero h1 {
     opacity: 1;
-    animation: fadeInUp 1s ease-out 0.5s backwards;
+    animation: slideInFromLeft 1.2s ease-out 0.5s backwards;
 }
 
 .hero .subtitle {
     opacity: 1;
-    animation: fadeInUp 1s ease-out 1s backwards;
+    animation: slideInFromRight 1.2s ease-out 1s backwards;
 }
 
 .hero .button {
@@ -784,7 +783,7 @@ a.button:hover::after {
     margin-bottom: 0.5rem;
     line-height: 1.1;
     letter-spacing: -1px;
-    background: linear-gradient(135deg, #0d3b66 0%, #2c5d8a 100%);
+    background: linear-gradient(135deg, #0d3b66 0%, #3a7ca5 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -804,7 +803,7 @@ a.button:hover::after {
 
 /* About Me Section Refinements */
 .about-me {
-    padding: 2rem 10%;
+    padding: 0.5rem 10%;
     background-color: #fafafa;
 }
 
@@ -827,7 +826,7 @@ a.button:hover::after {
 }
 
 .about-text a {
-    color: #2c5d8a;
+    color: #3a7ca5;
     font-weight: 600;
     border-bottom: 1px solid transparent;
     transition: all 0.2s;
@@ -835,7 +834,7 @@ a.button:hover::after {
 }
 
 .about-text a:hover {
-    border-bottom-color: #2c5d8a;
+    border-bottom-color: #3a7ca5;
 }
 
 /* Animations */
@@ -902,31 +901,31 @@ a.button:hover::after {
     position: relative;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 3px solid #3a7cc2;
+    border: 3px solid #4a90e2;
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
 }
 
 .connect4-project .project-name {
-    color: #3a7cc2;
+    color: #4a90e2;
     font-weight: 700;
 }
 
 @keyframes pulse-glow {
     from {
         box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
-        border-color: #3a7cc2;
+        border-color: #4a90e2;
     }
     to {
         box-shadow: 0 0 30px rgba(74, 144, 226, 0.6);
-        border-color: #4a8ed2;
+        border-color: #5ba0f2;
     }
 }
 
 .connect4-project:hover {
     transform: translateY(-8px) scale(1.02);
     box-shadow: 0 15px 30px rgba(74, 144, 226, 0.4);
-    border-color: #4a8ed2;
+    border-color: #5ba0f2;
 }
 
 .play-now-overlay {
@@ -1032,14 +1031,14 @@ a.button:hover::after {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    background-color: #004d99;
+    background-color: #0066cc;
     color: white;
     transition: background-color 0.3s ease;
     font-weight: 600;
 }
 
 .connect4-controls button:hover {
-    background-color: #003366;
+    background-color: #0052a3;
 }
 
 .connect4-controls button:disabled {
@@ -1052,7 +1051,7 @@ a.button:hover::after {
     grid-template-columns: repeat(7, 60px);
     grid-template-rows: repeat(6, 60px);
     gap: 5px;
-    background-color: #004d99;
+    background-color: #0066cc;
     padding: 15px;
     border-radius: 15px;
     margin: 20px auto;
@@ -1064,7 +1063,7 @@ a.button:hover::after {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    border: 3px solid #003366;
+    border: 3px solid #004499;
     cursor: pointer;
     background-color: white;
     transition: all 0.3s ease;
@@ -1111,4 +1110,8 @@ a.button:hover::after {
         padding: 10px 20px;
         font-size: 14px;
     }
+}
+
+.body-with-floating-nav {
+    padding-top: 5rem;
 }
