@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'IBM Plex Mono', monospace;
     color: #1a1a1a;
     background-color: #fdfdfd;
     line-height: 1.6;
@@ -1110,4 +1110,8 @@ a.button:hover::after {
         padding: 10px 20px;
         font-size: 14px;
     }
+}
+
+.body-with-floating-nav {
+    padding-top: 5rem;
 }
