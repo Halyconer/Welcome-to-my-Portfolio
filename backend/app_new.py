@@ -29,9 +29,9 @@ if DEVELOPMENT_MODE:
     CORS(app)
     print("CORS enabled for all origins (Development Mode)")
 else:
-    # In production mode, don't configure CORS here - nginx handles it
-    # CORS(app, resources={r"/set_brightness": {"origins": ALLOWED_ORIGIN}})
-    print(f"CORS will be handled by nginx for: {ALLOWED_ORIGIN}")
+    # In production mode, only allow CORS from your GitHub Pages domain
+    CORS(app, resources={r"/set_brightness": {"origins": ALLOWED_ORIGIN}})
+    print(f"CORS restricted to: {ALLOWED_ORIGIN}")
 
 def get_bulb():
     try:
@@ -43,7 +43,7 @@ def get_bulb():
 @app.before_request
 def check_auth():
     if request.endpoint != 'set_brightness':
-        return  
+         return  
 
     # Skip authentication checks in development mode
     if DEVELOPMENT_MODE:
