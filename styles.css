@@ -94,11 +94,33 @@ h2 {
     text-shadow: 1px 1px 2px rgba(13, 59, 102, 0.05);
     animation: fadeUp 1s ease-out;
     margin-top: 0;
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
 }
 
 .contact-links {
     margin: 2rem 0;
     animation: fadeUp 1s ease-out 0.4s backwards;
+}
+
+/* Resume Preview Section */
+.resume-preview-section {
+    padding: 2rem 10%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.resume-preview {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+}
+
+.resume-preview embed {
+    border: 2px solid #0d3b66;
+    border-radius: 8px;
+    display: block;
 }
 
 /* Experience Items Styling */
@@ -577,6 +599,17 @@ a.button:hover::after {
     color: inherit;
 }
 
+/* Disabled project items (non-clickable) */
+.project-item.project-disabled {
+    cursor: default;
+    opacity: 0.7;
+}
+
+.project-item.project-disabled:hover {
+    transform: none;
+    box-shadow: 0 4px 20px rgba(0, 41, 162, 0.08);
+}
+
 .project-logo {
     width: 60px;
     height: 60px;
@@ -692,6 +725,40 @@ a.button:hover::after {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Resume Preview Embed */
+.resume-preview {
+    max-width: 900px;
+    margin: 2rem auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.resume-preview embed {
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+    display: block;
+}
+
+/* Resume Action Buttons */
+.resume-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.resume-actions .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.resume-actions .button i {
+    font-size: 1rem;
 }
 
 /* Animation keyframes */
