@@ -60,7 +60,7 @@ This portfolio features:
 │   ├── profile.jpg         # Profile photo
 │   ├── connect4.jpg        # Connect4 game preview
 │   ├── lightbulb_diagram.jpg # Smart home project visual
-│   └── Adrian_Eddy_Resume.pdf # Downloadable resume
+│   └── AdrianEddy.pdf # Downloadable resume
 ├── backend/                # Lighting control API
 │   ├── app.py              # Production Flask server (port 5001)
 │   ├── app_new.py          # Development version (not used in prod)
