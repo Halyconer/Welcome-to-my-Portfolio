@@ -11,6 +11,9 @@
         />
     </head>
     <body>
+        <!-- Scroll Progress Bar -->
+        <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
         <!-- Navigation -->
         <nav class="floating-nav">
             <ul class="nav">
@@ -25,8 +28,20 @@
             <div class="hero-text">
                 <h1>Hi, I'm Adrian.</h1>
                 <p class="subtitle">
-                    Economics @ NYU · Data, Markets & Machines
+                    Economics @ NYU | Data, Markets & Apple Watches
                 </p>
+                <p class="about-me with-margin">
+                        I am an Econ major with a passion for econometrics, financial markets, and programming.
+                        As of right now, I am learning more about IoT systems and AI Development with practical applications
+                        in trading and automation, while also exploring market anomalies and behavioral finance in my thesis.
+
+                </p>
+
+                <p class="about-me">
+                        Let's connect:
+                        <a href="mailto:ae2422@nyu.edu">ae2422@nyu.edu</a>
+                </p>
+
                 <div class="cta-buttons">
                     <a href="#resume" class="cta-resume">Skip to Resume</a>
                     <a href="#light-greeting" class="cta-lights">Room Lights</a>
@@ -37,9 +52,12 @@
         <!-- Interactive Light Control Section -->
         <section id="light-greeting">
             <div class="light-control-wrapper">
-                <h2>IoT Lighting Control</h2>
+                <h2>Wake me up!</h2>
                 <p>
-                    Live hardware integration via Flask API → Raspberry Pi → GPIO pins. Real-time remote control through secure ngrok tunnel.
+                    This is a little demonstration of what I can do: a live lighting control system that controls the lightbulb
+                    in my bedroom!
+                    It works via a Flask API served by my Raspberry Pi which
+                    acts like a mini home server operating through a secure ngrok tunnel and nginx.
                 </p>
 
                 <div class="minimal-slider-container">
@@ -69,23 +87,6 @@
             </div>
         </section>
 
-        <!-- About Me Section -->
-        <section id="about" class="about-me">
-            <div class="about-me-container">
-                <div class="about-text">
-                    <div class="about-content">
-                        <p>
-                            I thrive on challenges that merge data, markets, and technology.
-                        </p>
-                        <p>
-                            Let's connect:
-                            <a href="mailto:ae2422@nyu.edu">ae2422@nyu.edu</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Projects Section -->
         <section class="projects-section">
             <div class="projects-container">
@@ -102,8 +103,11 @@
                                 <li><strong>Relevance:</strong> Demonstrates algorithm design and game theory implementation</li>
                                 <li><strong>Summary:</strong> Interactive web-based Connect 4 game with AI opponent using minimax algorithm and alpha-beta pruning for optimal move calculation</li>
                                 <li><strong>Tech Stack:</strong> Python, Flask, JavaScript, deployed on Raspberry Pi</li>
-                                <li><button onclick="showConnect4Game()" class="play-button">Play Game</button></li>
                             </ul>
+                            <div class="project-buttons">
+                                <button onclick="showConnect4Game()" class="play-button">Play Game</button>
+                                <a href="https://github.com/Halyconer/ConnectX" target="_blank" rel="noopener" class="learn-more-button">Learn More</a>
+                            </div>
                         </div>
                     </div>
 
@@ -118,6 +122,9 @@
                                 <li><strong>Summary:</strong> Remote lighting control system accessible globally through web interface, featuring real-time hardware integration via Flask API</li>
                                 <li><strong>Tech Stack:</strong> Python, Flask, Raspberry Pi, GPIO, ngrok for secure tunneling</li>
                             </ul>
+                            <div class="project-buttons">
+                                <a href="https://github.com/Halyconer/Welcome-to-my-Portfolio" target="_blank" rel="noopener" class="learn-more-button">Learn More</a>
+                            </div>
                         </div>
                     </div>
 
@@ -132,6 +139,9 @@
                                 <li><strong>Summary:</strong> Comprehensive macroeconomic analysis and monetary policy recommendations presented to Federal Reserve Bank officials</li>
                                 <li><strong>Focus:</strong> Economic forecasting, data visualization, Federal Reserve policy analysis</li>
                             </ul>
+                            <div class="project-buttons">
+                                <a href="https://www.federalreserve.gov/conferences/fedchallenge.htm" target="_blank" rel="noopener" class="learn-more-button">Learn More</a>
+                            </div>
                         </div>
                     </div>
 
@@ -146,6 +156,26 @@
                                 <li><strong>Summary:</strong> Suite of financial modeling tools including Black-Scholes options pricing, Monte Carlo simulations, CAPM, and stochastic models (Hull-White, Heston)</li>
                                 <li><strong>Tech Stack:</strong> Python, React, FastAPI, Plotly for interactive visualizations</li>
                             </ul>
+                            <div class="project-buttons">
+                                <a href="https://github.com/thompgt/black-scholes" target="_blank" rel="noopener" class="learn-more-button">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-vertical">
+                        <div class="project-visual">
+                            <img src="assets/ibkr.jpg" alt="Trading Bot" />
+                        </div>
+                        <div class="project-content">
+                            <h3>Automated Trading Bot</h3>
+                            <ul>
+                                <li><strong>Relevance:</strong> Algorithmic trading and portfolio automation with real money execution</li>
+                                <li><strong>Summary:</strong> Autonomous trading system that calculates risk parity weights and executes trades in real-time to balance personal investment portfolio</li>
+                                <li><strong>Tech Stack:</strong> Python, IBKR API, Refinitiv Data API, risk parity algorithms</li>
+                            </ul>
+                            <div class="project-buttons">
+                                <a href="https://github.com/Halyconer/trading" target="_blank" rel="noopener" class="learn-more-button">Learn More</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -167,10 +197,11 @@
         </section>
 
         <script>
+            // Single API base URL for all services via nginx (global scope)
+            const API_BASE_URL = 'https://valid-goblin-full.ngrok-free.app'
+            
             // Wait for DOM to be fully loaded
             document.addEventListener('DOMContentLoaded', function() {
-                // Single API base URL for all services via nginx
-                const API_BASE_URL = 'https://valid-goblin-full.ngrok-free.app'
                 const LIGHTING_API_URL = API_BASE_URL + '/lighting'
                 const slider = document.getElementById('brightnessSlider')
                 const label = document.getElementById('brightnessValue')
@@ -266,6 +297,20 @@
                     })
                 })
             })
+        </script>
+
+        <script>
+            function showConnect4Game() {
+                document.getElementById('connect4Modal').style.display = 'flex';
+            }
+            
+            function closeConnect4Game() {
+                document.getElementById('connect4Modal').style.display = 'none';
+            }
+            
+            function newConnect4Game() {
+                startConnect4Game();
+            }
         </script>
 
         <!-- Connect4 Game Modal -->
@@ -438,25 +483,21 @@
                 isConnect4Processing = false;
             }
 
-            // Modal functions
-            function showConnect4Game() {
-                document.getElementById('connect4Modal').style.display = 'flex';
-            }
-            
-            function closeConnect4Game() {
-                document.getElementById('connect4Modal').style.display = 'none';
-            }
-            
-            function newConnect4Game() {
-                startConnect4Game();
-            }
-            
             // Close modal when clicking outside of it
             window.addEventListener('click', function(event) {
                 const modal = document.getElementById('connect4Modal');
                 if (event.target === modal) {
                     closeConnect4Game();
                 }
+            });
+
+            // Scroll Progress Bar
+            const scrollProgressBar = document.getElementById('scrollProgressBar');
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = docHeight > 0 ? scrollTop / docHeight : 0;
+                scrollProgressBar.style.transform = `scaleY(${scrollPercent})`;
             });
         </script>
 

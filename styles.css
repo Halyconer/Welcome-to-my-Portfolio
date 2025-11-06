@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
+/* Hide default scrollbar */
+html {
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     color: #1a1a1a;
@@ -318,7 +327,9 @@ a.button:hover::after {
 /* Light Greeting Section */
 #light-greeting {
     background: #f8f9fa;
-    padding: 1.5rem 2rem;
+    padding: 2rem 0.1rem;
+    min-height: auto;
+    scroll-margin-top: 150px;
 }
 
 .light-control-wrapper {
@@ -801,13 +812,18 @@ a.button:hover::after {
 }
 
 .hero .subtitle {
-    opacity: 1;
-    animation: slideInFromRight 1.2s ease-out 1s backwards;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 3.5s forwards;
+}
+
+.hero .about-me{
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 3.5s forwards;
 }
 
 .hero .button {
-    opacity: 1;
-    animation: fadeInUp 1s ease-out 1.5s backwards;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 3.5s forwards;
 }
 
 /* Mobile friendly */
@@ -854,17 +870,47 @@ a.button:hover::after {
     background-clip: text;
     color: transparent;
     text-shadow: 1px 1px 2px rgba(13, 59, 102, 0.05);
-    animation: fadeUp 1s ease-out;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid rgba(13, 59, 102, 0.7);
+    letter-spacing: .01em;
+    animation: typing 3.5s steps(40, end) forwards, 
+        blink-caret .75s step-end 3.5s 4;
+    width: 0;
+    max-width: fit-content;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 12.5ch; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: rgba(13, 59, 102, 0.7); }
 }
 
 .subtitle {
     font-size: 1.5rem;
     color: #555;
     margin-top: -0.4rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1rem;
     font-weight: 400;
     max-width: 600px;
     animation: fadeUp 1s ease-out 0.2s backwards;
+}
+
+.hero-text .about-me {
+    padding: 0;
+    background-color: transparent;
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.hero-text .about-me:first-of-type {
+    margin-bottom: 2.5rem;
 }
 
 /* About Me Section Refinements */
@@ -912,6 +958,17 @@ a.button:hover::after {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes typeWords {
+    0% {
+        width: 0;
+        opacity: 1;
+    }
+    100% {
+        width: 100%;
+        opacity: 1;
     }
 }
 
@@ -1184,6 +1241,8 @@ a.button:hover::after {
     gap: 1rem;
     margin-top: 2rem;
     flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 3.5s forwards;
 }
 
 .cta-resume,
@@ -1294,7 +1353,7 @@ a.button:hover::after {
 .projects-list-vertical {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1.5rem;
     margin-top: 2rem;
 }
 
@@ -1352,6 +1411,12 @@ a.button:hover::after {
     color: #1a1a1a;
 }
 
+.project-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
 .play-button {
     padding: 0.5rem 1rem;
     background: #4a90e2;
@@ -1367,6 +1432,24 @@ a.button:hover::after {
     background: #357abd;
 }
 
+.learn-more-button {
+    padding: 0.5rem 1rem;
+    background: white;
+    color: #4a90e2;
+    border: 1px solid #4a90e2;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.learn-more-button:hover {
+    background: #4a90e2;
+    color: white;
+}
+
 @media (max-width: 768px) {
     .project-vertical {
         flex-direction: column;
@@ -1375,4 +1458,17 @@ a.button:hover::after {
     .project-visual {
         width: 100%;
     }
+}
+
+/* Scroll Progress Bar */
+.scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 100%;
+    background: linear-gradient(to bottom, #4a90e2, #357abd);
+    transform: scaleY(0);
+    transform-origin: top;
+    z-index: 999;
 }

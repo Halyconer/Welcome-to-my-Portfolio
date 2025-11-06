@@ -311,11 +311,14 @@
         </style>
     </head>
     <body>
+        <!-- Scroll Progress Bar -->
+        <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
         <!-- Navigation -->
         <nav class="floating-nav">
             <ul class="nav">
                 <li><a href="index.html">About Me</a></li>
-                <li><a href="resume.html">Resume</a></li>
+                <li><a href="index.html#resume">Resume</a></li>
                 <li><a href="dev-roadtrip.html">Road Trip</a></li>
             </ul>
         </nav>
@@ -538,6 +541,14 @@
             
             // Refresh stats once per day (stats update daily)
             setInterval(loadStats, 86400000);
+
+            const scrollProgressBar = document.getElementById('scrollProgressBar');
+                window.addEventListener('scroll', function() {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = docHeight > 0 ? scrollTop / docHeight : 0;
+                scrollProgressBar.style.transform = `scaleY(${scrollPercent})`;
+            });
         </script>
     </body>
 </html>
