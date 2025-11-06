@@ -15,7 +15,7 @@
         <nav class="floating-nav">
             <ul class="nav">
                 <li><a href="index.html">About Me</a></li>
-                <li><a href="resume.html">Resume</a></li>
+                <li><a href="#resume">Resume</a></li>
                 <li><a href="dev-roadtrip.html">Road Trip</a></li>
             </ul>
         </nav>
@@ -27,17 +27,19 @@
                 <p class="subtitle">
                     Economics @ NYU · Data, Markets & Machines
                 </p>
-                <a href="#light-greeting" class="button">Say Hello</a>
+                <div class="cta-buttons">
+                    <a href="#resume" class="cta-resume">Skip to Resume</a>
+                    <a href="#light-greeting" class="cta-lights">Room Lights</a>
+                </div>
             </div>
         </section>
 
         <!-- Interactive Light Control Section -->
         <section id="light-greeting">
             <div class="light-control-wrapper">
-                <h2>Control My Room Lights</h2>
+                <h2>IoT Lighting Control</h2>
                 <p>
-                    From anywhere in the world, adjust my lighting to say hi!
-                    Feel free to navigate to my developer section to see how it works, along with live data. 
+                    Live hardware integration via Flask API → Raspberry Pi → GPIO pins. Real-time remote control through secure ngrok tunnel.
                 </p>
 
                 <div class="minimal-slider-container">
@@ -60,7 +62,7 @@
                 </div>
 
                 <button id="setBrightnessBtn" class="send-button">
-                    Send Greeting
+                    Send Command
                 </button>
 
                 <p id="brightnessStatus" class="status-text"></p>
@@ -73,12 +75,7 @@
                 <div class="about-text">
                     <div class="about-content">
                         <p>
-                            Economics student at NYU bridging analytical thinking with hands-on problem-solving. 
                             I thrive on challenges that merge data, markets, and technology.
-                        </p>
-                        <p>
-                            Self-taught programmer passionate about connecting economic theory with practical applications. 
-                            When not analyzing market trends, you'll find me on the football pitch or optimizing race performance through telemetry.
                         </p>
                         <p>
                             Let's connect:
@@ -92,83 +89,62 @@
         <!-- Projects Section -->
         <section class="projects-section">
             <div class="projects-container">
-                <h2>Featured Projects</h2>
+                <h2>Projects</h2>
                 
-                <!-- Programming Skills Section -->
-                        <div class="skills-section">
-            <p>I use these languages and technologies to build my projects</p>
-            <div class="skills-grid">
-                <div class="skill-item"><i class="fab fa-python"></i></div>
-                <div class="skill-item"><i class="fas fa-database"></i></div>
-                <div class="skill-item"><i class="fab fa-java"></i></div>
-                <div class="skill-item"><i class="fab fa-git-alt"></i></div>
-                <div class="skill-item"><i class="fab fa-node-js"></i></div>
-                <div class="skill-item"><i class="fab fa-html5"></i></div>
-                <div class="skill-item"><i class="fab fa-css3-alt"></i></div>
-                <div class="skill-item"><i class="fab fa-js"></i></div>
-            </div>
-        </div>
-
-                <div class="projects-list">
-                    <div class="project-item project-disabled">
-                        <div class="project-logo">
-                            <img src="assets/lightbulb_diagram.jpg" alt="Smart Home" class="project-image" />
+                <div class="projects-list-vertical">
+                    <div class="project-vertical">
+                        <div class="project-visual">
+                            <img src="assets/connect4.jpg" alt="Connect 4" />
                         </div>
-                        <h3 class="project-name">Smart Home IoT</h3>
-                        <div class="project-description">
+                        <div class="project-content">
+                            <h3>Connect 4 AI</h3>
                             <ul>
-                                <li>Control room lighting from anywhere in the world</li>
-                                <li>Flask API with real-time hardware integration</li>
-                                <li>Raspberry Pi deployment with GPIO control</li>
-                                <li>Web-based interface with brightness adjustment</li>
-                                <li>Secure remote access via ngrok tunneling</li>
+                                <li><strong>Relevance:</strong> Demonstrates algorithm design and game theory implementation</li>
+                                <li><strong>Summary:</strong> Interactive web-based Connect 4 game with AI opponent using minimax algorithm and alpha-beta pruning for optimal move calculation</li>
+                                <li><strong>Tech Stack:</strong> Python, Flask, JavaScript, deployed on Raspberry Pi</li>
+                                <li><button onclick="showConnect4Game()" class="play-button">Play Game</button></li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="project-item project-disabled">
-                        <div class="project-logo">
-                            <img src="assets/fed.png" alt="Federal Reserve" class="project-image" />
+                    <div class="project-vertical">
+                        <div class="project-visual">
+                            <img src="assets/lightbulb_diagram.jpg" alt="Smart Home" />
                         </div>
-                        <h3 class="project-name">NYU Fed Challenge</h3>
-                        <div class="project-description">
+                        <div class="project-content">
+                            <h3>Smart Home IoT System</h3>
                             <ul>
-                                <li>Economic policy analysis and recommendations</li>
-                                <li>Data visualization of monetary policy impacts</li>
-                                <li>Federal Reserve data integration and analysis</li>
-                                <li>Team collaboration on macroeconomic forecasting</li>
-                                <li>Presentation to Federal Reserve Bank officials</li>
+                                <li><strong>Relevance:</strong> Full-stack development with hardware integration and real-time control</li>
+                                <li><strong>Summary:</strong> Remote lighting control system accessible globally through web interface, featuring real-time hardware integration via Flask API</li>
+                                <li><strong>Tech Stack:</strong> Python, Flask, Raspberry Pi, GPIO, ngrok for secure tunneling</li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="project-item project-disabled">
-                        <div class="project-logo">
-                            <img src="assets/Screenshot 2025-09-04 at 11.46.01.png" alt="Financial Models" class="project-image" />
+                    <div class="project-vertical">
+                        <div class="project-visual">
+                            <img src="assets/fed.png" alt="Federal Reserve" />
                         </div>
-                        <h3 class="project-name">Financial Pricing Models</h3>
-                        <div class="project-description">
+                        <div class="project-content">
+                            <h3>NYU Fed Challenge</h3>
                             <ul>
-                                <li>Black-Scholes, Monte Carlo & CAPM implementations</li>
-                                <li>Interactive React frontend with Plotly visualizations</li>
-                                <li>FastAPI backend with comprehensive testing suite</li>
-                                <li>Hull-White and Heston stochastic models</li>
-                                <li>Real-time DCF and options pricing calculations</li>
+                                <li><strong>Relevance:</strong> Applied economic analysis and data-driven policy recommendations</li>
+                                <li><strong>Summary:</strong> Comprehensive macroeconomic analysis and monetary policy recommendations presented to Federal Reserve Bank officials</li>
+                                <li><strong>Focus:</strong> Economic forecasting, data visualization, Federal Reserve policy analysis</li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="project-item connect4-project" onclick="showConnect4Game()">
-                        <div class="project-logo">
-                            <img src="assets/connect4.jpg" alt="Connect 4" class="project-image" />
+                    <div class="project-vertical">
+                        <div class="project-visual">
+                            <img src="assets/Screenshot 2025-09-04 at 11.46.01.png" alt="Financial Models" />
                         </div>
-                        <h3 class="project-name">Connect 4 AI</h3>
-                        <div class="project-description">
+                        <div class="project-content">
+                            <h3>Financial Pricing Models</h3>
                             <ul>
-                                <li>Minimax algorithm with alpha-beta pruning</li>
-                                <li>Interactive game with AI difficulty levels</li>
-                                <li>Flask backend deployed on Raspberry Pi</li>
-                                <li>Real-time game state management and validation</li>
+                                <li><strong>Relevance:</strong> Quantitative finance and advanced mathematical modeling</li>
+                                <li><strong>Summary:</strong> Suite of financial modeling tools including Black-Scholes options pricing, Monte Carlo simulations, CAPM, and stochastic models (Hull-White, Heston)</li>
+                                <li><strong>Tech Stack:</strong> Python, React, FastAPI, Plotly for interactive visualizations</li>
                             </ul>
                         </div>
                     </div>
@@ -176,80 +152,99 @@
             </div>
         </section>
 
-        <!-- Bottom Resume Section -->
-        <section class="bottom-resume">
-            <h3>Ready to Connect?</h3>
-            <p>
-                Explore my full background, experience, and technical skills. 
-            </p>
-            <a href="resume.html" class="button">View My Resume</a>
+        <!-- Resume Section -->
+        <section id="resume" class="resume-embed-section">
+            <div class="resume-container">
+                <h2>Resume</h2>
+                <div class="resume-controls">
+                    <button id="openResumeFullscreen" class="resume-btn">Open Full Screen</button>
+                    <a href="/assets/AdrianEddy.pdf" download class="resume-btn">Download PDF</a>
+                </div>
+                <div class="resume-embed">
+                    <iframe src="/assets/AdrianEddy.pdf" id="resumeEmbed" title="Adrian Eddy Resume PDF"></iframe>
+                </div>
+            </div>
         </section>
 
         <script>
-            // Single API base URL for all services via nginx
-            const API_BASE_URL = 'https://valid-goblin-full.ngrok-free.app'
-            const LIGHTING_API_URL = API_BASE_URL + '/lighting'
-            const slider = document.getElementById('brightnessSlider')
-            const label = document.getElementById('brightnessValue')
-            const btn = document.getElementById('setBrightnessBtn')
-            const msg = document.getElementById('brightnessStatus')
+            // Wait for DOM to be fully loaded
+            document.addEventListener('DOMContentLoaded', function() {
+                // Single API base URL for all services via nginx
+                const API_BASE_URL = 'https://valid-goblin-full.ngrok-free.app'
+                const LIGHTING_API_URL = API_BASE_URL + '/lighting'
+                const slider = document.getElementById('brightnessSlider')
+                const label = document.getElementById('brightnessValue')
+                const btn = document.getElementById('setBrightnessBtn')
+                const msg = document.getElementById('brightnessStatus')
 
-            // Live-update the numeric readout
-            slider.addEventListener('input', () => {
-                label.textContent = slider.value
-            })
+                // Resume full screen functionality
+                const openResumeBtn = document.getElementById('openResumeFullscreen')
 
-            btn.addEventListener('click', () => {
-            const brightness = slider.value
-                msg.textContent = `Setting brightness to ${brightness}%...`
+                if (openResumeBtn) {
+                    openResumeBtn.addEventListener('click', () => {
+                        window.open('/assets/AdrianEddy.pdf', '_blank')
+                    })
+                }
 
-                btn.disabled = true
-                btn.textContent = 'Sending...'
+                // Live-update the numeric readout
+                if (slider && label) {
+                    slider.addEventListener('input', () => {
+                        label.textContent = slider.value
+                    })
+                }
 
-                fetch(`${LIGHTING_API_URL}/set_brightness`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'ngrok-skip-browser-warning': 'true',
-                        //'q7x!K3L9fN*zaP2vR1yW0hT8mB5sG4c': API_KEY
-                    },
-                    body: JSON.stringify({ brightness: parseInt(brightness) }),
-                })
-                    .then((response) => {
-                        if (!response.ok) {
-                            throw new Error(
-                                `HTTP ${response.status}: ${response.statusText}`
-                            )
-                        }
-                        return response.json()
+                if (btn && msg) {
+                    btn.addEventListener('click', () => {
+                        const brightness = slider.value
+                        msg.textContent = `Setting brightness to ${brightness}%...`
+
+                        btn.disabled = true
+                        btn.textContent = 'Sending...'
+
+                        fetch(`${LIGHTING_API_URL}/set_brightness`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'ngrok-skip-browser-warning': 'true',
+                            },
+                            body: JSON.stringify({ brightness: parseInt(brightness) }),
+                        })
+                            .then((response) => {
+                                if (!response.ok) {
+                                    throw new Error(
+                                        `HTTP ${response.status}: ${response.statusText}`
+                                    )
+                                }
+                                return response.json()
+                            })
+                            .then((data) => {
+                                if (data.status === 'success') {
+                                    msg.textContent = `✓ Lights set to ${data.brightness_set}% — thanks for the greeting!`
+                                } else {
+                                    msg.textContent = `× ${data.error || 'Unknown error'}`
+                                }
+                            })
+                            .catch((err) => {
+                                console.error('Fetch error:', err)
+                                if (
+                                    err.message.includes('Failed to fetch') ||
+                                    err.message.includes('NetworkError')
+                                ) {
+                                    msg.textContent = `× My personal high-tech self-built server is offline - please try again later`
+                                } else if (err.message.includes('404')) {
+                                    msg.textContent = `× Light control endpoint not found - I messed up the code...`
+                                } else if (err.message.includes('500')) {
+                                    msg.textContent = `× Server error - my raspberry pi is probably overloaded`
+                                } else {
+                                    msg.textContent = `× Connection failed: ${err.message}`
+                                }
+                            })
+                            .finally(() => {
+                                btn.disabled = false
+                                btn.textContent = 'Send Command'
+                            })
                     })
-                    .then((data) => {
-                        if (data.status === 'success') {
-                            msg.textContent = `✓ Lights set to ${data.brightness_set}% — thanks for the greeting!`
-                        } else {
-                            msg.textContent = `× ${data.error || 'Unknown error'}`
-                        }
-                    })
-                    .catch((err) => {
-                        console.error('Fetch error:', err)
-                        // Provide more specific error messages
-                        if (
-                            err.message.includes('Failed to fetch') ||
-                            err.message.includes('NetworkError')
-                        ) {
-                            msg.textContent = `× My personal high-tech self-built server is offline - please try again later`
-                        } else if (err.message.includes('404')) {
-                            msg.textContent = `× Light control endpoint not found - I messed up the code...`
-                        } else if (err.message.includes('500')) {
-                            msg.textContent = `× Server error - my raspberry pi is probably overloaded`
-                        } else {
-                            msg.textContent = `× Connection failed: ${err.message}`
-                        }
-                    })
-                    .finally(() => {
-                        btn.disabled = false
-                        btn.textContent = 'Send Greeting'
-                    })
+                }
             })
         </script>
 
