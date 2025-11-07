@@ -13,7 +13,7 @@ load_dotenv()
 FLASK_ENV = os.getenv('FLASK_ENV', 'production')
 DEVELOPMENT_MODE = os.getenv('DEVELOPMENT_MODE', 'false').lower() == 'true'
 BULB_IP = os.getenv('BULB_IP', '192.168.1.210')
-ALLOWED_ORIGIN = os.getenv('ALLOWED_ORIGIN', 'https://halyconer.github.io/Welcome-to-my-Portfolio/')
+ALLOWED_ORIGIN = os.getenv('ALLOWED_ORIGIN', 'https://halyconer.github.io')
 
 # Print configuration on startup
 print(f"Flask Environment: {FLASK_ENV}")
