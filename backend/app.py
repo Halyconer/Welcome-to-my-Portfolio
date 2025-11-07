@@ -1,11 +1,8 @@
 from flask import Flask, request, jsonify, send_file
-from flask_cors import CORS, cross_origin
 import sqlite3
 import os
 from dotenv import load_dotenv
 from datetime import datetime
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
 
 load_dotenv() 
 
@@ -23,18 +20,13 @@ print(f"Bulb IP: {BULB_IP}")
 
 app = Flask(__name__)
 
-# Configure CORS - always enable for public endpoints
-# Private endpoints like /set_brightness are still protected by check_auth()
-CORS(app, resources={
-    r"/stats.json": {"origins": "*"},
-    r"/spotify_stats.json": {"origins": "*"},
-    r"/set_brightness": {"origins": ALLOWED_ORIGIN}
-})
+# CORS is handled by nginx - no Flask CORS configuration needed
+# This prevents duplicate CORS headers
 
 if DEVELOPMENT_MODE:
-    print("CORS enabled for all origins (Development Mode)")
+    print("Development mode - CORS handled by nginx")
 else:
-    print(f"CORS enabled for: {ALLOWED_ORIGIN}")
+    print(f"Production mode - CORS handled by nginx for: {ALLOWED_ORIGIN}")
 
 def get_bulb():
     try:
@@ -113,41 +105,31 @@ def set_brightness():
         return jsonify({"error": f"For Adrian: {e}"}), 500
 
 # Endpoint to serve the stats.json file
-@app.route('/stats.json', methods=['GET', 'OPTIONS'])
-@cross_origin()
+@app.route('/stats.json', methods=['GET'])
 def serve_stats():
     try:
-        response = send_file('stats.json', mimetype='application/json')
-        response.headers['Access-Control-Allow-Origin'] = '*'
-        return response
+        return send_file('stats.json', mimetype='application/json')
     except FileNotFoundError:
         # Return empty stats if file doesn't exist yet
-        response = jsonify({
+        return jsonify({
             "last_updated": datetime.now().isoformat(),
             "collection_period": "24_hours",
             "update_frequency": "daily", 
             "total_calls_all_time": 0,
             "avg_brightness_all_time": 0
         })
-        response.headers['Access-Control-Allow-Origin'] = '*'
-        return response
 
 # Endpoint to serve the spotify stats file
-@app.route('/spotify_stats.json', methods=['GET', 'OPTIONS'])
-@cross_origin()
+@app.route('/spotify_stats.json', methods=['GET'])
 def serve_spotify_stats():
     try:
-        response = send_file('spotify_top_artists.json', mimetype='application/json')
-        response.headers['Access-Control-Allow-Origin'] = '*'
-        return response
+        return send_file('spotify_top_artists.json', mimetype='application/json')
     except FileNotFoundError:
         # Return empty stats if file doesn't exist yet
-        response = jsonify({
+        return jsonify({
             "last_updated_utc": datetime.utcnow().isoformat(),
             "artists": []
         })
-        response.headers['Access-Control-Allow-Origin'] = '*'
-        return response
 
 # Development mode endpoint for testing
 @app.route('/dev/status')
