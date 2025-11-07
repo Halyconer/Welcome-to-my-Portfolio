@@ -23,15 +23,18 @@ print(f"Bulb IP: {BULB_IP}")
 
 app = Flask(__name__)
 
-# Configure CORS based on environment
+# Configure CORS - always enable for public endpoints
+# Private endpoints like /set_brightness are still protected by check_auth()
+CORS(app, resources={
+    r"/stats.json": {"origins": "*"},
+    r"/spotify_stats.json": {"origins": "*"},
+    r"/set_brightness": {"origins": ALLOWED_ORIGIN}
+})
+
 if DEVELOPMENT_MODE:
-    # In development mode, allow CORS from any origin
-    CORS(app)
     print("CORS enabled for all origins (Development Mode)")
 else:
-    # In production mode, don't configure CORS here - nginx handles it
-    # CORS(app, resources={r"/set_brightness": {"origins": ALLOWED_ORIGIN}})
-    print(f"CORS will be handled by nginx for: {ALLOWED_ORIGIN}")
+    print(f"CORS enabled for: {ALLOWED_ORIGIN}")
 
 def get_bulb():
     try:
@@ -110,31 +113,41 @@ def set_brightness():
         return jsonify({"error": f"For Adrian: {e}"}), 500
 
 # Endpoint to serve the stats.json file
-@app.route('/stats.json')
+@app.route('/stats.json', methods=['GET', 'OPTIONS'])
+@cross_origin()
 def serve_stats():
     try:
-        return send_file('stats.json', mimetype='application/json')
+        response = send_file('stats.json', mimetype='application/json')
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
     except FileNotFoundError:
         # Return empty stats if file doesn't exist yet
-        return jsonify({
+        response = jsonify({
             "last_updated": datetime.now().isoformat(),
             "collection_period": "24_hours",
             "update_frequency": "daily", 
             "total_calls_all_time": 0,
             "avg_brightness_all_time": 0
         })
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
 
 # Endpoint to serve the spotify stats file
-@app.route('/spotify_stats.json')
+@app.route('/spotify_stats.json', methods=['GET', 'OPTIONS'])
+@cross_origin()
 def serve_spotify_stats():
     try:
-        return send_file('spotify_top_artists.json', mimetype='application/json')
+        response = send_file('spotify_top_artists.json', mimetype='application/json')
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
     except FileNotFoundError:
         # Return empty stats if file doesn't exist yet
-        return jsonify({
+        response = jsonify({
             "last_updated_utc": datetime.utcnow().isoformat(),
             "artists": []
         })
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
 
 # Development mode endpoint for testing
 @app.route('/dev/status')
