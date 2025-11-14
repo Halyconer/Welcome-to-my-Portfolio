@@ -25,126 +25,130 @@
 
         <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-text">
-                <h1>Hi, I'm Adrian.</h1>
-                <p class="subtitle">
-                    Economics @ NYU | Data, Markets & Apple Watches
-                </p>
-                <p class="about-me with-margin">
-                        I am an Econ major with a passion for econometrics, financial markets, and programming.
-                        As of right now, I am learning more about IoT systems and AI Development with practical applications
-                        in trading and automation, while also exploring market anomalies and behavioral finance in my thesis.
+            <div class="hero-content">
+                <div class="hero-image">
+                    <img src="assets/profile-photo.jpg" alt="Adrian Eddy" />
+                </div>
+                <div class="hero-text">
+                    <h1>Hi, I'm Adrian.</h1>
+                    <p class="nice-to-meet-you">Nice to meet you.</p>
+                    <p class="subtitle">
+                        Economics @ NYU | Data, Markets & Apple Watches
+                    </p>
+                    <p class="about-me with-margin">
+                            I am an Econ major with a passion for econometrics, financial markets, and programming.
+                            As of right now, I am learning more about IoT systems and AI Development with practical applications
+                            in trading and automation, while also exploring market anomalies and behavioral finance in my thesis.
 
-                </p>
+                    </p>
 
-                <p class="about-me">
-                        Let's connect:
-                        <a href="mailto:ae2422@nyu.edu">ae2422@nyu.edu</a>
-                </p>
+                    <p class="about-me">
+                            Let's connect:
+                            <a href="mailto:ae2422@nyu.edu">ae2422@nyu.edu</a>
+                    </p>
 
-                <div class="cta-buttons">
-                    <a href="#resume" class="cta-resume">Skip to Resume</a>
-                    <a href="#light-greeting" class="cta-lights">Room Lights</a>
+                    <div class="cta-buttons">
+                        <a href="#resume" class="cta-resume">Skip to Resume</a>
+                        <a href="#light-greeting" class="cta-lights">Room Lights</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Interactive Light Control Section -->
-        <section id="light-greeting">
-            <div class="light-control-wrapper">
-                <h2>Wake me up!</h2>
-                <p>
-                    This is a little demonstration of what I can do: a live lighting control system that controls the lightbulb
-                    in my bedroom!
-                    It works via a Flask API served by my Raspberry Pi which
-                    acts like a mini home server operating through a secure ngrok tunnel and nginx.
+        <!-- Interactive Demo Section -->
+        <section id="light-greeting" class="interactive-demo-section">
+            <div class="interactive-demo-wrapper">
+                <h2>Gimme a go</h2>
+                <p class="demo-intro">
+                    Two live demos powered by my Raspberry Pi. Choose wisely—one might wake me up, the other might bruise your ego.
                 </p>
 
-                <div class="minimal-slider-container">
-                    <div class="brightness-label">
-                        <span>Brightness</span>
-                        <div class="brightness-percentage">
-                            <span id="brightnessValue">75</span>%
+                <div class="demo-cards">
+                    <!-- Wake Me Up Card -->
+                    <div class="demo-card">
+                        <div class="demo-card-header">
+                            <h3>Wake Me Up</h3>
+                            <p class="demo-tagline">Control my bedroom lights remotely</p>
+                        </div>
+                        <div class="demo-card-body">
+                            <p class="demo-description">
+                                A live lighting control system via Flask API running on my Raspberry Pi. 
+                                Works through ngrok tunnel and nginx—because who doesn't need internet-controlled bedroom lights?
+                            </p>
+
+                            <div class="minimal-slider-container">
+                                <div class="brightness-label">
+                                    <span>Brightness</span>
+                                    <div class="brightness-percentage">
+                                        <span id="brightnessValue">75</span>%
+                                    </div>
+                                </div>
+                                <label for="brightnessSlider" class="visually-hidden">Adjust Brightness</label>
+                                <input
+                                    type="range"
+                                    id="brightnessSlider"
+                                    min="1"
+                                    max="100"
+                                    value="75"
+                                    class="minimal-slider"
+                                    title="Adjust Brightness"
+                                />
+                            </div>
+
+                            <button id="setBrightnessBtn" class="send-button">
+                                Send Command
+                            </button>
+
+                            <p id="brightnessStatus" class="status-text"></p>
                         </div>
                     </div>
-                    <label for="brightnessSlider" class="visually-hidden">Adjust Brightness</label>
-                    <input
-                        type="range"
-                        id="brightnessSlider"
-                        min="1"
-                        max="100"
-                        value="75"
-                        class="minimal-slider"
-                        title="Adjust Brightness"
-                    />
+
+                    <!-- Connect4 Card -->
+                    <div class="demo-card">
+                        <div class="demo-card-header">
+                            <h3>Challenge My AI</h3>
+                            <p class="demo-tagline">Try to beat my Connect 4 algorithm</p>
+                        </div>
+                        <div class="demo-card-body">
+                            <div class="demo-image">
+                                <img src="assets/connect4.jpg" alt="Connect 4 Game" />
+                            </div>
+                            <p class="demo-image-caption">Interactive game board with AI-powered opponent</p>
+
+                            <button onclick="showConnect4Game()" class="play-button-large">
+                                Start Game
+                            </button>
+                            
+                            <p class="demo-description demo-description-below">
+                                Play against my minimax algorithm with alpha-beta pruning. 
+                                Spoiler: it's unbeaten so far. But hey, maybe you'll be the first?
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
-                <button id="setBrightnessBtn" class="send-button">
-                    Send Command
-                </button>
+                <div class="architecture-note">
+                    <p>
+                        <strong>How it works:</strong> Both demos hit my Raspberry Pi 4 through an ngrok tunnel → nginx reverse proxy → Flask APIs. 
+                        Real hardware, real algorithms, real over-engineering. <a href="dev-roadtrip.html">See the architecture</a>
+                    </p>
+                </div>
 
-                <p id="brightnessStatus" class="status-text"></p>
+                <div class="demo-navigation">
+                    <a href="#resume" class="demo-nav-link">View Work Experience →</a>
+                    <a href="#projects" class="demo-nav-link">See More Projects →</a>
+                </div>
             </div>
         </section>
 
         <!-- Projects Section -->
-        <section class="projects-section">
+        <section id="projects" class="projects-section">
             <div class="projects-container">
-                <h2>Projects</h2>
+                <h2>Other Projects</h2>
+                <p class="projects-subtitle">Finance, trading, and more nerdy endeavors</p>
                 
                 <div class="projects-list-vertical">
-                    <div class="project-vertical">
-                        <div class="project-visual">
-                            <img src="assets/connect4.jpg" alt="Connect 4" />
-                        </div>
-                        <div class="project-content">
-                            <h3>Connect 4 AI</h3>
-                            <ul>
-                                <li><strong>Relevance:</strong> Demonstrates algorithm design and game theory implementation</li>
-                                <li><strong>Summary:</strong> Interactive web-based Connect 4 game with AI opponent using minimax algorithm and alpha-beta pruning for optimal move calculation</li>
-                                <li><strong>Tech Stack:</strong> Python, Flask, JavaScript, deployed on Raspberry Pi</li>
-                            </ul>
-                            <div class="project-buttons">
-                                <button onclick="showConnect4Game()" class="play-button">Play Game</button>
-                                <a href="https://github.com/Halyconer/ConnectX" target="_blank" rel="noopener" class="learn-more-button">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-vertical">
-                        <div class="project-visual">
-                            <img src="assets/lightbulb_diagram.jpg" alt="Smart Home" />
-                        </div>
-                        <div class="project-content">
-                            <h3>Smart Home IoT System</h3>
-                            <ul>
-                                <li><strong>Relevance:</strong> Full-stack development with hardware integration and real-time control</li>
-                                <li><strong>Summary:</strong> Remote lighting control system accessible globally through web interface, featuring real-time hardware integration via Flask API</li>
-                                <li><strong>Tech Stack:</strong> Python, Flask, Raspberry Pi, GPIO, ngrok for secure tunneling</li>
-                            </ul>
-                            <div class="project-buttons">
-                                <a href="https://github.com/Halyconer/Welcome-to-my-Portfolio" target="_blank" rel="noopener" class="learn-more-button">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-vertical">
-                        <div class="project-visual">
-                            <img src="assets/fed.png" alt="Federal Reserve" />
-                        </div>
-                        <div class="project-content">
-                            <h3>NYU Fed Challenge</h3>
-                            <ul>
-                                <li><strong>Relevance:</strong> Applied economic analysis and data-driven policy recommendations</li>
-                                <li><strong>Summary:</strong> Comprehensive macroeconomic analysis and monetary policy recommendations presented to Federal Reserve Bank officials</li>
-                                <li><strong>Focus:</strong> Economic forecasting, data visualization, Federal Reserve policy analysis</li>
-                            </ul>
-                            <div class="project-buttons">
-                                <a href="https://www.federalreserve.gov/conferences/fedchallenge.htm" target="_blank" rel="noopener" class="learn-more-button">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-
+                    <!-- Financial Pricing Models -->
                     <div class="project-vertical">
                         <div class="project-visual">
                             <img src="assets/Screenshot 2025-09-04 at 11.46.01.png" alt="Financial Models" />
@@ -162,6 +166,7 @@
                         </div>
                     </div>
 
+                    <!-- Automated Trading Bot -->
                     <div class="project-vertical">
                         <div class="project-visual">
                             <img src="assets/ibkr.jpg" alt="Trading Bot" />
@@ -175,6 +180,42 @@
                             </ul>
                             <div class="project-buttons">
                                 <a href="https://github.com/Halyconer/trading" target="_blank" rel="noopener" class="learn-more-button">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NYU Fed Challenge -->
+                    <div class="project-vertical">
+                        <div class="project-visual">
+                            <img src="assets/fed.png" alt="Federal Reserve" />
+                        </div>
+                        <div class="project-content">
+                            <h3>NYU Fed Challenge</h3>
+                            <ul>
+                                <li><strong>Relevance:</strong> Applied economic analysis and data-driven policy recommendations</li>
+                                <li><strong>Summary:</strong> Comprehensive macroeconomic analysis and monetary policy recommendations presented to Federal Reserve Bank officials</li>
+                                <li><strong>Focus:</strong> Economic forecasting, data visualization, Federal Reserve policy analysis</li>
+                            </ul>
+                            <div class="project-buttons">
+                                <a href="https://www.federalreserve.gov/conferences/fedchallenge.htm" target="_blank" rel="noopener" class="learn-more-button">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NYU BioKind -->
+                    <div class="project-vertical">
+                        <div class="project-visual">
+                            <img src="assets/biokind.png" alt="NYU BioKind" />
+                        </div>
+                        <div class="project-content">
+                            <h3>NYU BioKind</h3>
+                            <ul>
+                                <li><strong>Relevance:</strong> Social entrepreneurship and community impact initiatives</li>
+                                <li><strong>Summary:</strong> Student-led organization focused on promoting sustainable living and environmental awareness through campus initiatives and community outreach programs</li>
+                                <li><strong>Role:</strong> Leadership and program development for sustainability projects at NYU</li>
+                            </ul>
+                            <div class="project-buttons">
+                                <a href="https://www.nyu.edu" target="_blank" rel="noopener" class="learn-more-button">Learn More</a>
                             </div>
                         </div>
                     </div>

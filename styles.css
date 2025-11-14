@@ -15,7 +15,7 @@ body {
     background-color: #fdfdfd;
     line-height: 1.6;
     padding: 2rem;
-    max-width: 800px;
+    max-width: 1400px;
     margin: 0 auto;
     animation: fadeIn 0.6s ease-in-out;
 }
@@ -115,7 +115,7 @@ h2 {
 /* Resume Preview Section */
 .resume-preview-section {
     padding: 2rem 10%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -332,6 +332,226 @@ a.button:hover::after {
     scroll-margin-top: 150px;
 }
 
+/* Interactive Demo Section */
+.interactive-demo-section {
+    background: #f8f9fa;
+    padding: 4rem 2rem;
+}
+
+.interactive-demo-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.interactive-demo-wrapper h2 {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.demo-intro {
+    color: #5a6c7d;
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+.demo-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.demo-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.demo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.demo-card-header h3 {
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 0.4rem;
+}
+
+.demo-tagline {
+    color: #4a90e2;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.demo-description {
+    color: #5a6c7d;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.demo-description-below {
+    margin-bottom: 0;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.demo-card-body {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.demo-image {
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+    max-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.demo-image img {
+    width: 100%;
+    height: auto;
+    max-height: 220px;
+    object-fit: contain;
+    display: block;
+    border-radius: 8px;
+}
+
+.demo-image-caption {
+    font-size: 0.85rem;
+    color: #5a6c7d;
+    font-style: italic;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+.play-button-large {
+    background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+    margin-top: auto;
+    height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-button-large:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+}
+
+.tech-stack-mini {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tech-badge {
+    background: #e0e7ff;
+    color: #4a90e2;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.architecture-note {
+    background: white;
+    border-left: 4px solid #4a90e2;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.architecture-note p {
+    color: #5a6c7d;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.architecture-note a {
+    color: #4a90e2;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.architecture-note a:hover {
+    text-decoration: underline;
+}
+
+.demo-navigation {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.demo-nav-link {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: white;
+    color: #4a90e2;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: 2px solid #4a90e2;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.1);
+}
+
+.demo-nav-link:hover {
+    background: #4a90e2;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+.demo-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #4a90e2;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.demo-link:hover {
+    color: #357abd;
+    transform: translateX(4px);
+}
+
 .light-control-wrapper {
     max-width: 450px;
     margin: 0 auto;
@@ -356,28 +576,29 @@ a.button:hover::after {
 .minimal-slider-container {
     background: white;
     border-radius: 8px;
-    padding: 1rem;
+    padding: 1.25rem;
     box-shadow: 0 2px 8px rgba(0, 41, 162, 0.06);
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
+    margin-top: auto;
 }
 
 .brightness-label {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
     color: #2c3e50;
 }
 
 .brightness-label span {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     opacity: 0.7;
 }
 
 .brightness-percentage {
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 200;
     color: #4a90e2;
 }
@@ -387,7 +608,7 @@ a.button:hover::after {
     width: 100%;
     height: 4px;
     border-radius: 2px;
-    background: #e0e7ff;
+    background: #fff3cd;
     outline: none;
     -webkit-appearance: none;
     appearance: none;
@@ -401,7 +622,7 @@ a.button:hover::after {
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    background: #4a90e2;
+    background: #ffc107;
     cursor: pointer;
     transition: all 0.2s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -409,15 +630,15 @@ a.button:hover::after {
 
 .minimal-slider::-webkit-slider-thumb:hover {
     transform: scale(1.2);
-    background: #357abd;
-    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
+    background: #e0a800;
+    box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3);
 }
 
 .minimal-slider::-moz-range-thumb {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #4a90e2;
+    background: #ffc107;
     cursor: pointer;
     border: none;
     transition: all 0.2s ease;
@@ -427,17 +648,24 @@ a.button:hover::after {
     background: #4a90e2;
     color: white;
     border: none;
-    padding: 10px 24px;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    font-weight: 500;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+    margin-top: 0.5rem;
+    height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .send-button:hover {
     background: #357abd;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
 }
 
 .send-button:active {
@@ -445,7 +673,7 @@ a.button:hover::after {
 }
 
 .status-text {
-    margin-top: 0.8rem;
+    margin-top: 0.5rem;
     font-size: 0.85rem;
     color: #5a6c7d;
     min-height: 1rem;
@@ -513,7 +741,7 @@ a.button:hover::after {
 }
 
 .projects-container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -522,8 +750,16 @@ a.button:hover::after {
     color: #2c3e50;
     font-size: 2.5rem;
     font-weight: 300;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     letter-spacing: -0.02em;
+}
+
+.projects-subtitle {
+    text-align: center;
+    color: #5a6c7d;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    font-style: italic;
 }
 
 /* Interactive Section Styles */
@@ -739,7 +975,7 @@ a.button:hover::after {
 
 /* Resume Preview Embed */
 .resume-preview {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 2rem auto;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -813,17 +1049,21 @@ a.button:hover::after {
 
 .hero .subtitle {
     opacity: 0;
-    animation: fadeInUp 1s ease-out 3.5s forwards;
+    animation: fadeInUp 1s ease-out 7.5s forwards;
 }
 
 .hero .about-me{
     opacity: 0;
-    animation: fadeInUp 1s ease-out 3.5s forwards;
+    animation: fadeInUp 1s ease-out 7.5s forwards;
 }
 
 .hero .button {
     opacity: 0;
-    animation: fadeInUp 1s ease-out 3.5s forwards;
+    animation: fadeInUp 1s ease-out 7.5s forwards;
+}
+
+.hero .nice-to-meet-you {
+    opacity: 1;
 }
 
 /* Mobile friendly */
@@ -845,22 +1085,61 @@ a.button:hover::after {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     padding: 0 10%;
     position: relative;
     background-color: #fdfdfd;
     margin-top: 80px;
 }
 
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    max-width: 1400px;
+    width: 100%;
+    flex-direction: row-reverse;
+}
+
 .hero-text {
     position: relative;
     z-index: 2;
+    flex: 1;
     max-width: 800px;
-    margin: 0 auto;
+}
+
+.hero-image {
+    flex: 0 0 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image img {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    border: 4px solid #fff;
+    opacity: 0;
+    animation: fadeInImage 1s ease-in 7.5s forwards;
+}
+
+@keyframes fadeInImage {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .hero-text h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
     line-height: 1.1;
@@ -874,8 +1153,10 @@ a.button:hover::after {
     white-space: nowrap;
     border-right: 3px solid rgba(13, 59, 102, 0.7);
     letter-spacing: .01em;
-    animation: typing 3.5s steps(40, end) forwards, 
-        blink-caret .75s step-end 3.5s 4;
+    animation: typing 2s steps(40, end) forwards, 
+        blink-caret .75s step-end 2s 2,
+        deleteText 0.5s steps(40, end) 3.5s forwards,
+        hideCaret 0.01s 4s forwards;
     width: 0;
     max-width: fit-content;
 }
@@ -885,9 +1166,57 @@ a.button:hover::after {
     to { width: 12.5ch; }
 }
 
+@keyframes deleteText {
+    from { width: 12.5ch; }
+    to { width: 0; }
+}
+
 @keyframes blink-caret {
     from, to { border-color: transparent; }
     50% { border-color: rgba(13, 59, 102, 0.7); }
+}
+
+@keyframes hideCaret {
+    to { 
+        border-right-color: transparent;
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* Nice to meet you text that types out in place of Hi, I'm Adrian */
+.nice-to-meet-you {
+    font-size: 4rem;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, #0d3b66 0%, #3a7ca5 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 1px 1px 2px rgba(13, 59, 102, 0.05);
+    margin-bottom: 1.5rem;
+    margin-top: -4.5rem;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid transparent;
+    letter-spacing: .01em;
+    width: 0;
+    max-width: fit-content;
+    animation: typingNice 2s steps(40, end) 4.5s forwards,
+        showCaret 0.01s 4.5s forwards,
+        blink-caret .75s step-end 6.5s 1;
+}
+
+@keyframes showCaret {
+    to {
+        border-right-color: rgba(13, 59, 102, 0.7);
+    }
+}
+
+@keyframes typingNice {
+    from { width: 0; }
+    to { width: 17ch; }
 }
 
 .subtitle {
@@ -897,7 +1226,8 @@ a.button:hover::after {
     margin-bottom: 1rem;
     font-weight: 400;
     max-width: 600px;
-    animation: fadeUp 1s ease-out 0.2s backwards;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 7.5s forwards;
 }
 
 .hero-text .about-me {
@@ -907,6 +1237,8 @@ a.button:hover::after {
     color: #555;
     margin-bottom: 1rem;
     margin-top: 0;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 7.5s forwards;
 }
 
 .hero-text .about-me:first-of-type {
@@ -920,7 +1252,7 @@ a.button:hover::after {
 }
 
 .about-me-container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -974,18 +1306,63 @@ a.button:hover::after {
 
 /* Responsive adjustments */
 @media (max-width: 900px) {
+    .demo-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .hero-image {
+        flex: 0 0 auto;
+        order: -1;
+    }
+
+    .hero-image img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .hero-text {
+        max-width: 100%;
+    }
+
     .hero-text h1 {
-        font-size: 3.5rem;
+        font-size: 4.5rem;
     }
 }
 
 @media (max-width: 600px) {
+    .demo-cards {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .demo-card {
+        padding: 1.5rem;
+    }
+
+    .interactive-demo-wrapper h2 {
+        font-size: 2rem;
+    }
+
     .hero {
         padding: 0 5%;
     }
 
+    .hero-content {
+        gap: 1rem;
+    }
+
+    .hero-image img {
+        width: 160px;
+        height: 160px;
+    }
+
     .hero-text h1 {
-        font-size: 3rem;
+        font-size: 3.5rem;
     }
 
     .about-me {
@@ -1242,7 +1619,7 @@ a.button:hover::after {
     margin-top: 2rem;
     flex-wrap: wrap;
     opacity: 0;
-    animation: fadeInUp 1s ease-out 3.5s forwards;
+    animation: fadeInUp 1s ease-out 7.5s forwards;
 }
 
 .cta-resume,
@@ -1286,7 +1663,7 @@ a.button:hover::after {
 }
 
 .resume-container {
-    max-width: 1000px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
