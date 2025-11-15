@@ -481,19 +481,23 @@ a.button:hover {
     text-decoration: underline;
 }
 
-/* Floating Navigation */
+/* Clean Floating Navigation */
 .floating-nav {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     background: rgba(255, 255, 255, 0.95);
-    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     z-index: 1000;
     padding: 1rem 0;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+}
+
+.floating-nav.scrolled {
+    padding: 0.75rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .floating-nav .nav {
@@ -506,14 +510,22 @@ a.button:hover {
 }
 
 .floating-nav .nav a {
-    color: #2c3e50;
+    color: #1a1a1a;
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
 }
 
 .floating-nav .nav a:hover {
     color: #4a90e2;
+    background: rgba(74, 144, 226, 0.1);
+}
+
+.floating-nav .nav a.active {
+    color: #4a90e2;
+    background: rgba(74, 144, 226, 0.15);
 }
 
 /* Projects Section Styles */
@@ -840,8 +852,38 @@ a.button:hover {
     align-items: center;
     padding: 0 10%;
     position: relative;
-    background-color: #fdfdfd;
+    background: linear-gradient(135deg, #fdfdfd 0%, #f8f9fa 100%);
     margin-top: 80px;
+    overflow: hidden;
+}
+
+/* Floating Dots Background */
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes floatAround {
+    0% { 
+        transform: translate(0, 0) scale(1); 
+    }
+    25% { 
+        transform: translate(30px, -40px) scale(0.8); 
+    }
+    50% { 
+        transform: translate(-20px, 60px) scale(1.2); 
+    }
+    75% { 
+        transform: translate(40px, 20px) scale(0.9); 
+    }
+    100% { 
+        transform: translate(0, 0) scale(1); 
+    }
 }
 
 .hero-content {
@@ -873,9 +915,41 @@ a.button:hover {
     height: 350px;
     border-radius: 8px;
     object-fit: cover;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     opacity: 0;
-    animation: fadeInUp 1s ease-out 5.8s forwards;
+    position: relative;
+    animation: fadeInUp 1s ease-out 5.8s forwards, profileGlow 3s ease-in-out 6s infinite;
+}
+
+/* Humorous Glowing Effect */
+@keyframes profileGlow {
+    0%, 100% { 
+        box-shadow: 
+            0 10px 40px rgba(0, 0, 0, 0.15),
+            0 0 20px rgba(74, 144, 226, 0.3),
+            0 0 40px rgba(74, 144, 226, 0.1);
+        filter: brightness(1);
+    }
+    25% { 
+        box-shadow: 
+            0 10px 40px rgba(0, 0, 0, 0.15),
+            0 0 30px rgba(255, 193, 7, 0.4),
+            0 0 60px rgba(255, 193, 7, 0.2);
+        filter: brightness(1.05);
+    }
+    50% { 
+        box-shadow: 
+            0 10px 40px rgba(0, 0, 0, 0.15),
+            0 0 25px rgba(76, 175, 80, 0.4),
+            0 0 50px rgba(76, 175, 80, 0.15);
+        filter: brightness(1.02);
+    }
+    75% { 
+        box-shadow: 
+            0 10px 40px rgba(0, 0, 0, 0.15),
+            0 0 35px rgba(156, 39, 176, 0.3),
+            0 0 70px rgba(156, 39, 176, 0.1);
+        filter: brightness(1.03);
+    }
 }
 
 @keyframes fadeInImage {
@@ -1534,6 +1608,60 @@ a.button:hover {
 
 .project-content li strong {
     color: #1a1a1a;
+}
+
+/* Tech Stack Badges */
+.tech-stack {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.tech-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: default;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Badge Color Schemes - Categorized by Skill Type 
+   
+   COLOR LEGEND:
+   BLUE - Technical/Programming Skills (Python, React, APIs, etc.)
+   GREEN - Finance/Economics Skills (Econometrics, Trading, Portfolio Theory)
+   ORANGE - Leadership/Communication Skills (Presentations, Team Management)
+   DARK GREEN - Social Impact/Sustainability (Environmental, Community)
+*/
+
+/* TECH/PROGRAMMING - Blue Shades */
+.tech-badge.python,
+.tech-badge.react,
+.tech-badge.api {
+    background: #3b82f6;
+    color: white;
+}
+
+/* FINANCE/ECONOMICS - Green Shades */
+.tech-badge.data,
+.tech-badge.algo {
+    background: #10b981;
+    color: white;
+}
+
+/* LEADERSHIP/SOFT SKILLS - Orange Shades */
+.tech-badge.leadership,
+.tech-badge.presentation {
+    background: #f97316;
+    color: white;
+}
+
+/* SUSTAINABILITY/SOCIAL IMPACT - Deep Green */
+.tech-badge.sustainability {
+    background: #22c55e;
+    color: white;
 }
 
 .project-buttons {

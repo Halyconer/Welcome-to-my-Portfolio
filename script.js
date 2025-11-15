@@ -7,6 +7,56 @@ let connect4GameState = null
 let isConnect4Processing = false
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Enhanced Navigation
+    const nav = document.querySelector('.floating-nav')
+    const navLinks = document.querySelectorAll('.floating-nav .nav a')
+    const sections = document.querySelectorAll('section[id]')
+    
+    // Add scroll effect to navigation
+    function handleNavScroll() {
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled')
+        } else {
+            nav.classList.remove('scrolled')
+        }
+    }
+    
+    // Highlight active section in navigation
+    function updateActiveNav() {
+        let current = ''
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100
+            const sectionHeight = section.offsetHeight
+            
+            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                current = section.getAttribute('id')
+            }
+        })
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active')
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active')
+            }
+            // Special case for home/about section
+            if (current === '' && link.getAttribute('href') === 'index.html') {
+                link.classList.add('active')
+            }
+        })
+    }
+    
+    window.addEventListener('scroll', () => {
+        handleNavScroll()
+        updateActiveNav()
+    })
+    
+    // Initialize
+    handleNavScroll()
+    updateActiveNav()
+    
+    // Create floating dots animation
+    createFloatingDots()
     // Resume controls
     const openResumeBtn = document.getElementById('openResumeFullscreen')
     if (openResumeBtn) {
@@ -244,3 +294,39 @@ window.addEventListener('click', function(event) {
     const modal = document.getElementById('connect4Modal')
     if (event.target === modal) closeConnect4Game()
 })
+
+// Floating Dots Animation
+function createFloatingDots() {
+    const heroBackground = document.querySelector('.hero-background')
+    if (!heroBackground) return
+    
+    const colors = ['#4a90e2', '#3a7ca5', '#0d3b66', '#10b981', '#f97316']
+    const dotCount = 8
+    
+    for (let i = 0; i < dotCount; i++) {
+        const dot = document.createElement('div')
+        dot.className = 'floating-dot'
+        
+        // Random positioning
+        const startX = Math.random() * 100
+        const startY = Math.random() * 100
+        const size = Math.random() * 8 + 4 // 4-12px
+        const color = colors[Math.floor(Math.random() * colors.length)]
+        const duration = Math.random() * 20 + 15 // 15-35s
+        const delay = Math.random() * 5
+        
+        dot.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            background: ${color};
+            border-radius: 50%;
+            opacity: 0.3;
+            left: ${startX}%;
+            top: ${startY}%;
+            animation: floatAround ${duration}s ease-in-out ${delay}s infinite;
+        `
+        
+        heroBackground.appendChild(dot)
+    }
+}
