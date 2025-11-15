@@ -5,10 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Adrian Eddy's Portfolio</title>
         <link rel="stylesheet" href="styles.css" />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     </head>
     <body>
         <!-- Scroll Progress Bar -->
@@ -27,7 +24,7 @@
         <section class="hero">
             <div class="hero-content">
                 <div class="hero-image">
-                    <img src="assets/profile-photo.jpg" alt="Adrian Eddy" />
+                    <img src="assets/img.JPG" alt="Adrian Eddy" />
                 </div>
                 <div class="hero-text">
                     <h1>Hi, I'm Adrian.</h1>
@@ -36,15 +33,12 @@
                         Economics @ NYU | Data, Markets & Apple Watches
                     </p>
                     <p class="about-me with-margin">
-                            I am an Econ major with a passion for econometrics, financial markets, and programming.
-                            As of right now, I am learning more about IoT systems and AI Development with practical applications
-                            in trading and automation, while also exploring market anomalies and behavioral finance in my thesis.
-
+                        I am an Econ major with a passion for econometrics, financial markets, and programming.
+                        As of right now, I am learning more about IoT systems and AI Development with practical applications
+                        in trading and automation, while also exploring market anomalies and behavioral finance in my thesis.
                     </p>
-
                     <p class="about-me">
-                            Let's connect:
-                            <a href="mailto:ae2422@nyu.edu">ae2422@nyu.edu</a>
+                        Let's connect: <a href="mailto:ae2422@nyu.edu">ae2422@nyu.edu</a>
                     </p>
 
                     <div class="cta-buttons">
@@ -103,28 +97,23 @@
                         </div>
                     </div>
 
-                    <!-- Connect4 Card -->
                     <div class="demo-card">
-                        <div class="demo-card-header">
-                            <h3>Challenge My AI</h3>
-                            <p class="demo-tagline">Try to beat my Connect 4 algorithm</p>
-                        </div>
-                        <div class="demo-card-body">
-                            <div class="demo-image">
-                                <img src="assets/connect4.jpg" alt="Connect 4 Game" />
-                            </div>
-                            <p class="demo-image-caption">Interactive game board with AI-powered opponent</p>
-
-                            <button onclick="showConnect4Game()" class="play-button-large">
-                                Start Game
-                            </button>
-                            
-                            <p class="demo-description demo-description-below">
-                                Play against my minimax algorithm with alpha-beta pruning. 
-                                Spoiler: it's unbeaten so far. But hey, maybe you'll be the first?
-                            </p>
-                        </div>
+                    <div class="demo-card-header">
+                        <h3>Challenge My AI</h3>
+                        <p class="demo-tagline">Try to beat my Connect 4 algorithm</p>
                     </div>
+                    <div class="demo-card-body">
+                        <div class="demo-image">
+                            <img src="assets/connect4.jpg" alt="Connect 4 Game" />
+                        </div>
+                        <p class="demo-image-caption">Interactive game board with AI-powered opponent</p>
+                        <button onclick="showConnect4Game()" class="play-button-large">Start Game</button>
+                        <p class="demo-description demo-description-below">
+                            Play against my minimax algorithm with alpha-beta pruning. 
+                            Spoiler: it's unbeaten so far. But hey, maybe you'll be the first?
+                        </p>
+                    </div>
+                </div>
                 </div>
 
                 <div class="architecture-note">
@@ -237,310 +226,22 @@
             </div>
         </section>
 
-        <script>
-            // Single API base URL for all services via nginx (global scope)
-            const API_BASE_URL = 'https://valid-goblin-full.ngrok-free.app'
-            
-            // Wait for DOM to be fully loaded
-            document.addEventListener('DOMContentLoaded', function() {
-                const LIGHTING_API_URL = API_BASE_URL + '/lighting'
-                const slider = document.getElementById('brightnessSlider')
-                const label = document.getElementById('brightnessValue')
-                const btn = document.getElementById('setBrightnessBtn')
-                const msg = document.getElementById('brightnessStatus')
+        <script src="script.js"></script>
 
-                // Resume full screen functionality
-                const openResumeBtn = document.getElementById('openResumeFullscreen')
-
-                if (openResumeBtn) {
-                    openResumeBtn.addEventListener('click', () => {
-                        window.open('assets/AdrianEddy.pdf', '_blank')
-                    })
-                }
-
-                // Live-update the numeric readout
-                if (slider && label) {
-                    slider.addEventListener('input', () => {
-                        label.textContent = slider.value
-                    })
-                }
-
-                if (btn && msg) {
-                    btn.addEventListener('click', () => {
-                        const brightness = slider.value
-                        msg.textContent = `Setting brightness to ${brightness}%...`
-
-                        btn.disabled = true
-                        btn.textContent = 'Sending...'
-
-                        fetch(`${LIGHTING_API_URL}/set_brightness`, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'ngrok-skip-browser-warning': 'true',
-                            },
-                            body: JSON.stringify({ brightness: parseInt(brightness) }),
-                        })
-                            .then((response) => {
-                                if (!response.ok) {
-                                    throw new Error(
-                                        `HTTP ${response.status}: ${response.statusText}`
-                                    )
-                                }
-                                return response.json()
-                            })
-                            .then((data) => {
-                                if (data.status === 'success') {
-                                    msg.textContent = `✓ Lights set to ${data.brightness_set}% — thanks for the greeting!`
-                                } else {
-                                    msg.textContent = `× ${data.error || 'Unknown error'}`
-                                }
-                            })
-                            .catch((err) => {
-                                console.error('Fetch error:', err)
-                                if (
-                                    err.message.includes('Failed to fetch') ||
-                                    err.message.includes('NetworkError')
-                                ) {
-                                    msg.textContent = `× My personal high-tech self-built server is offline - please try again later`
-                                } else if (err.message.includes('404')) {
-                                    msg.textContent = `× Light control endpoint not found - I messed up the code...`
-                                } else if (err.message.includes('500')) {
-                                    msg.textContent = `× Server error - my raspberry pi is probably overloaded`
-                                } else {
-                                    msg.textContent = `× Connection failed: ${err.message}`
-                                }
-                            })
-                            .finally(() => {
-                                btn.disabled = false
-                                btn.textContent = 'Send Command'
-                            })
-                    })
-                }
-            })
-        </script>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-                    anchor.addEventListener('click', function (e) {
-                        e.preventDefault()
-
-                        const targetId = this.getAttribute('href')
-                        const targetElement = document.querySelector(targetId)
-
-                        if (targetElement) {
-                            window.scrollTo({
-                                top: targetElement.offsetTop - 20,
-                                behavior: 'smooth',
-                            })
-                        }
-                    })
-                })
-            })
-        </script>
-
-        <script>
-            function showConnect4Game() {
-                document.getElementById('connect4Modal').style.display = 'flex';
-            }
-            
-            function closeConnect4Game() {
-                document.getElementById('connect4Modal').style.display = 'none';
-            }
-            
-            function newConnect4Game() {
-                startConnect4Game();
-            }
-        </script>
-
-        <!-- Connect4 Game Modal -->
         <div id="connect4Modal" class="connect4-modal">
             <div class="connect4-modal-content">
                 <div class="connect4-header">
                     <h2>Connect 4 vs AI</h2>
                     <span class="connect4-close" onclick="closeConnect4Game()">&times;</span>
                 </div>
-                
                 <div class="connect4-status" id="connect4Status">Click "New Game" to start!</div>
-                
                 <div class="connect4-controls">
                     <button id="connect4NewGameBtn" onclick="newConnect4Game()">New Game</button>
                 </div>
-                
                 <div class="connect4-board" id="connect4Board"></div>
             </div>
         </div>
 
-        <script>
-            // Connect4 Game Integration with Flask API
-            const CONNECT4_API_BASE = API_BASE_URL + '/connect4'; // Connect4 via nginx routing
-            let connect4GameState = null;
-            let isConnect4Processing = false;
-
-            // Initialize empty board display
-            function createConnect4Board() {
-                const board = document.getElementById('connect4Board');
-                board.innerHTML = '';
-                
-                // Create 42 cells (6 rows × 7 cols), displayed top to bottom
-                for (let row = 5; row >= 0; row--) {
-                    for (let col = 0; col < 7; col++) {
-                        const cell = document.createElement('div');
-                        cell.className = 'connect4-cell';
-                        cell.dataset.row = row;
-                        cell.dataset.col = col;
-                        cell.onclick = () => makeConnect4Move(col);
-                        board.appendChild(cell);
-                    }
-                }
-            }
-
-            // Update board display based on game state
-            function updateConnect4Board() {
-                if (!connect4GameState) return;
-                
-                const cells = document.querySelectorAll('.connect4-cell');
-                cells.forEach(cell => {
-                    cell.className = 'connect4-cell';
-                    const row = parseInt(cell.dataset.row); 
-                    const col = parseInt(cell.dataset.col);
-                    const piece = connect4GameState.board[row][col];
-                    
-                    if (piece === 1) cell.classList.add('player1');
-                    if (piece === 2) cell.classList.add('player2');
-                });
-            }
-
-            // Update status message
-            function updateConnect4Status(message) {
-                document.getElementById('connect4Status').textContent = message;
-            }
-
-            // API request function
-            async function connect4ApiRequest(endpoint, method = 'GET', data = null) {
-                try {
-                    const options = {
-                        method,
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'ngrok-skip-browser-warning': 'true',
-                        },
-                    };
-                    
-                    if (data) {
-                        options.body = JSON.stringify(data);
-                    }
-                    
-                    const response = await fetch(CONNECT4_API_BASE + endpoint, options);
-                    
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    
-                    return await response.json();
-                } catch (error) {
-                    console.error('Connect4 API request failed:', error);
-                    updateConnect4Status('Connection error! Make sure the game server is running on your Pi.');
-                    return null;
-                }
-            }
-
-            async function startConnect4Game() {
-                isConnect4Processing = true;
-                updateConnect4Status('Starting new game...');
-                
-                const response = await connect4ApiRequest('/play', 'POST');
-                console.log('New Connect4 game response:', response);
-                
-                if (response) {
-                    connect4GameState = response;
-                    createConnect4Board();
-                    updateConnect4Board();
-                    updateConnect4Status('Your turn! Click a column to drop your piece.');
-                } else {
-                    updateConnect4Status('Failed to start new game. Check server connection.');
-                }
-                
-                isConnect4Processing = false;
-            }
-
-            async function makeConnect4Move(col) {
-                console.log('Connect4 move called with column:', col);
-                
-                if (isConnect4Processing || !connect4GameState || connect4GameState.game_over) {
-                    console.log('Move blocked - processing:', isConnect4Processing, 'gameState exists:', !!connect4GameState);
-                    return;
-                }
-                
-                const validCols = connect4GameState.valid_cols || [];
-                console.log('Valid columns:', validCols, 'Clicked:', col);
-                
-                if (!validCols.includes(col)) {  
-                    updateConnect4Status('Invalid move! Column is full.');
-                    return;
-                }
-                
-                isConnect4Processing = true;
-                updateConnect4Status('Processing move...');
-                
-                const response = await connect4ApiRequest('/move', 'POST', { column: col });
-                
-                if (response) {
-                    if (response.game_over) {
-                        // Game over - show final state
-                        connect4GameState = { ...response, board: response.board_after_ai || response.board };
-                        updateConnect4Board();
-                        
-                        if (response.winner === 'player') {
-                            updateConnect4Status('🎉 You won! Great job!');
-                        } else if (response.winner === 'ai') {
-                            updateConnect4Status('🤖 AI wins! Try again?');
-                        } else if (response.winner === 'tie') {
-                            updateConnect4Status('🤝 It\'s a tie! Well played!');
-                        } else {
-                            updateConnect4Status('Game over!');
-                        }
-                    } else {
-                        // Show player's move first
-                        connect4GameState = { ...response, board: response.board_before_ai };
-                        updateConnect4Board();
-                        updateConnect4Status('Your move made! AI is thinking...');
-                        
-                        // Add delay before showing AI move
-                        setTimeout(() => {
-                            connect4GameState = { ...response, board: response.board_after_ai };
-                            updateConnect4Board();
-                            
-                            if (response.ai_move !== null && response.ai_move !== undefined) {
-                                updateConnect4Status(`AI dropped in column ${response.ai_move + 1}. Your turn!`);
-                            } else {
-                                updateConnect4Status('Your turn! Click a column to drop your piece.');
-                            }
-                        }, 1000);
-                    }
-                }
-                
-                isConnect4Processing = false;
-            }
-
-            // Close modal when clicking outside of it
-            window.addEventListener('click', function(event) {
-                const modal = document.getElementById('connect4Modal');
-                if (event.target === modal) {
-                    closeConnect4Game();
-                }
-            });
-
-            // Scroll Progress Bar
-            const scrollProgressBar = document.getElementById('scrollProgressBar');
-            window.addEventListener('scroll', function() {
-                const scrollTop = window.scrollY;
-                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-                const scrollPercent = docHeight > 0 ? scrollTop / docHeight : 0;
-                scrollProgressBar.style.transform = `scaleY(${scrollPercent})`;
-            });
-        </script>
 
         <footer>
             <p>© 2025 Adrian Eddy. All rights reserved.</p>

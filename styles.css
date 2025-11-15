@@ -1,13 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
-/* Hide default scrollbar */
-html {
-    scrollbar-width: none;
-}
-
-html::-webkit-scrollbar {
-    display: none;
-}
+html { scrollbar-width: none; }
+html::-webkit-scrollbar { display: none; }
 
 body {
     font-family: 'Inter', sans-serif;
@@ -17,189 +11,60 @@ body {
     padding: 2rem;
     max-width: 1400px;
     margin: 0 auto;
-    animation: fadeIn 0.6s ease-in-out;
 }
 
-.intro {
-    display: flex;
-    align-items: flex-start;
-    gap: 2rem;
-    margin-bottom: 2rem;
-    animation: fadeIn 1s ease-in-out;
-    flex-wrap: wrap;
-}
 
-.profile-pic {
-    width: 160px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    animation: slideIn 1s ease-in;
-}
-
-.intro-text p {
-    margin-bottom: 1.2rem;
-    font-size: 1rem;
-    line-height: 1.8;
-}
-
-/* Updated headings (removed bottom borders) */
-h1,
-h2,
-h3 {
+h1, h2, h3 {
     color: #0d3b66;
     font-weight: 600;
     padding-bottom: 0.3rem;
     margin-top: 2rem;
-    position: relative;
-    animation: slideIn 0.5s ease forwards;
 }
 
-/* Compact and super clean resume blocks */
 .resume-section {
     background-color: #fafafa;
-    border: none;
     border-radius: 6px;
     padding: 0.8rem 1rem;
     margin: 1rem 0;
-    box-shadow: none;
-    animation: fadeIn 0.8s ease-in;
 }
 
-hr {
-    display: none;
-}
+hr { display: none; }
 
-h1 {
-    font-size: 2.4rem;
-}
+h1 { font-size: 2.4rem; }
+h2 { font-size: 1.5rem; margin-top: 2rem; }
+.resume-section ul { padding-left: 1.2rem; margin: 0.5rem 0; }
+.resume-section li { margin-bottom: 0.4rem; }
 
-h2 {
-    font-size: 1.5rem;
-    margin-top: 2rem;
-}
-
-.resume-section ul {
-    padding-left: 1.2rem;
-    margin: 0.5rem 0;
-}
-
-.resume-section li {
-    margin-bottom: 0.4rem;
-}
-
-/* Additional CSS to add to your styles.css file */
-
-/* Resume Header - Matching the hero section styling */
-.resume-header {
-    padding: 6rem 10% 3rem;
-    animation: fadeIn 0.8s ease-in-out;
-}
-
+.resume-header { padding: 6rem 10% 3rem; }
 .resume-header h1 {
     background: linear-gradient(135deg, #0d3b66 0%, #3a7ca5 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: 1px 1px 2px rgba(13, 59, 102, 0.05);
-    animation: fadeUp 1s ease-out;
-    margin-top: 0;
     font-size: 3rem;
-    margin-bottom: 0.5rem;
+    margin: 0 0 0.5rem;
 }
+.contact-links { margin: 2rem 0; }
+.resume-preview-section { padding: 2rem 10%; max-width: 1400px; margin: 0 auto; }
+.resume-preview { box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; background: white; }
+.resume-preview embed { border: 2px solid #0d3b66; border-radius: 8px; display: block; }
+.section-content { padding: 0.5rem 0; }
+.experience-item { margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #eee; }
+.experience-item:last-child { border-bottom: none; margin-bottom: 0; }
 
-.contact-links {
-    margin: 2rem 0;
-    animation: fadeUp 1s ease-out 0.4s backwards;
-}
+.resume-section h2 { color: #0d3b66; margin: 0 0 1rem; }
+.resume-section { margin: 2rem 0; padding: 1.5rem 2rem; border-radius: 8px; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
 
-/* Resume Preview Section */
-.resume-preview-section {
-    padding: 2rem 10%;
-    max-width: 1400px;
-    margin: 0 auto;
-}
+footer { text-align: center; padding: 2rem 0; margin-top: 3rem; color: #777; font-size: 0.9rem; }
+.resume-section ul li { margin-bottom: 0.8rem; }
 
-.resume-preview {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    background: white;
-}
-
-.resume-preview embed {
-    border: 2px solid #0d3b66;
-    border-radius: 8px;
-    display: block;
-}
-
-/* Experience Items Styling */
-.section-content {
-    padding: 0.5rem 0;
-    animation: fadeUp 0.8s ease-out;
-}
-
-.experience-item {
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #eee;
-}
-
-.experience-item:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-}
-
-.resume-section h2 {
-    color: #0d3b66;
-    margin-top: 0;
-    margin-bottom: 1rem;
-    animation: slideIn 0.5s ease forwards;
-}
-
-.resume-section {
-    margin: 2rem 0;
-    padding: 1.5rem 2rem;
-    border-radius: 8px;
-    background: white;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    animation: fadeIn 0.8s ease-in-out;
-}
-
-footer {
-    text-align: center;
-    padding: 2rem 0;
-    margin-top: 3rem;
-    color: #777;
-    font-size: 0.9rem;
-}
-
-.resume-section ul li {
-    margin-bottom: 0.8rem;
-    position: relative;
-    animation: fadeUp 0.8s ease-out;
-}
-
-/* Responsive adjustments */
 @media (max-width: 600px) {
-    .resume-header {
-        padding: 3rem 5% 2rem;
-    }
-
-    .resume-section {
-        padding: 1.2rem 1.5rem;
-    }
+    .resume-header { padding: 3rem 5% 2rem; }
+    .resume-section { padding: 1.2rem 1.5rem; }
 }
 
-a {
-    color: #007acc;
-    text-decoration: none;
-    transition: color 0.2s ease-in-out;
-}
-
-a:hover {
-    text-decoration: underline;
-    color: #005fa3;
-}
+a { color: #007acc; text-decoration: none; transition: color 0.2s ease; }
+a:hover { text-decoration: underline; color: #005fa3; }
 
 /* Updated Button Styling */
 a.button {
@@ -226,103 +91,21 @@ a.button:hover {
     box-shadow: 0 6px 15px rgba(13, 59, 102, 0.25);
 }
 
-/* Button Animation Effects */
-a.button::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 5px;
-    height: 5px;
-    background: rgba(255, 255, 255, 0.3);
-    opacity: 0;
-    border-radius: 100%;
-    transform: scale(1, 1) translate(-50%);
-    transform-origin: 50% 50%;
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
-a.button:hover::after {
-    animation: ripple 1s ease-out;
-}
-
-/* Fun bounce effect for Say Hello button - starts after initial fade in */
-.hero .button[href="#light-greeting"] {
-    animation: fadeInUp 1s ease-out 1.5s forwards !important;
-    opacity: 1 !important;
-    margin-top: 1rem !important;
-    display: inline-block;
-    position: relative;
-    z-index: 10;
-}
-
-.hero .button[href="#light-greeting"]:hover {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: translateY(-2px) !important;
-}
-
-/* New Pulse Animation for Button */
-@keyframes ripple {
-    0% {
-        transform: scale(0, 0);
-        opacity: 0.5;
-    }
-    100% {
-        transform: scale(20, 20);
-        opacity: 0;
-    }
-}
-
-.animate-button {
-    position: relative;
-}
-
-.animate-button.pulse {
-    animation: buttonPulse 2s infinite;
-}
-
-@keyframes buttonPulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(13, 59, 102, 0.6);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(13, 59, 102, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(13, 59, 102, 0);
-    }
-}
-
-@keyframes gentleBounce {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-15px);
-    }
-}
-
-
-/* Standard Animations */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 @keyframes slideIn {
-    from {
-        transform: translateX(-20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
+    0% { transform: translateX(-20px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
 }
+
 
 /* Light Greeting Section */
 #light-greeting {
@@ -1008,38 +791,6 @@ a.button:hover::after {
 }
 
 /* Animation keyframes */
-@keyframes slideInFromLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInFromRight {
-    0% {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 /* Override specific hero animations */
 .hero h1 {
@@ -1281,28 +1032,6 @@ a.button:hover::after {
     border-bottom-color: #3a7ca5;
 }
 
-/* Animations */
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes typeWords {
-    0% {
-        width: 0;
-        opacity: 1;
-    }
-    100% {
-        width: 100%;
-        opacity: 1;
-    }
-}
 
 /* Responsive adjustments */
 @media (max-width: 900px) {
