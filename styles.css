@@ -792,25 +792,26 @@ a.button:hover {
 
 /* Animation keyframes */
 
-/* Override specific hero animations */
+/* Hero section animations - all content fades in together at 5.8s */
 .hero h1 {
     opacity: 1;
     animation: slideInFromLeft 1.2s ease-out 0.5s backwards;
 }
 
+/* TO CHANGE FADE-IN TIMING: Update the 5.8s value below */
 .hero .subtitle {
     opacity: 0;
-    animation: fadeInUp 1s ease-out 7.5s forwards;
+    animation: fadeInUp 1s ease-out 5.8s forwards;
 }
 
 .hero .about-me{
     opacity: 0;
-    animation: fadeInUp 1s ease-out 7.5s forwards;
+    animation: fadeInUp 1s ease-out 5.8s forwards;
 }
 
 .hero .button {
     opacity: 0;
-    animation: fadeInUp 1s ease-out 7.5s forwards;
+    animation: fadeInUp 1s ease-out 5.8s forwards;
 }
 
 .hero .nice-to-meet-you {
@@ -874,7 +875,7 @@ a.button:hover {
     object-fit: cover;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     opacity: 0;
-    animation: fadeInImage 1s ease-in 7.5s forwards;
+    animation: fadeInUp 1s ease-out 5.8s forwards;
 }
 
 @keyframes fadeInImage {
@@ -905,8 +906,8 @@ a.button:hover {
     letter-spacing: .01em;
     animation: typing 2s steps(40, end) forwards, 
         blink-caret .75s step-end 2s 2,
-        deleteText 0.5s steps(40, end) 3.5s forwards,
-        hideCaret 0.01s 4s forwards;
+        deleteText 0.5s steps(40, end) 3s forwards,
+        hideCaret 0.01s 3.5s forwards;
     width: 0;
     max-width: fit-content;
 }
@@ -934,6 +935,14 @@ a.button:hover {
     }
 }
 
+/* ANIMATION TIMING GUIDE:
+   0-2s: "Hi, I'm Adrian" types
+   2-3s: "Hi, I'm Adrian" stays + cursor blinks  
+   3-3.5s: "Hi, I'm Adrian" deletes
+   3.5-5.5s: "Nice to meet you" types
+   5.8s: All content fades in together
+*/
+
 /* Nice to meet you text that types out in place of Hi, I'm Adrian */
 .nice-to-meet-you {
     font-size: 4rem;
@@ -953,9 +962,10 @@ a.button:hover {
     letter-spacing: .01em;
     width: 0;
     max-width: fit-content;
-    animation: typingNice 2s steps(40, end) 4.5s forwards,
-        showCaret 0.01s 4.5s forwards,
-        blink-caret .75s step-end 6.5s 1;
+    /* START TYPING AT 3.5s (after first text deletes) */
+    animation: typingNice 2s steps(40, end) 3.5s forwards,
+        showCaret 0.01s 3.5s forwards,
+        blink-caret .75s step-end 5.5s 1;
 }
 
 @keyframes showCaret {
@@ -977,7 +987,7 @@ a.button:hover {
     font-weight: 400;
     max-width: 600px;
     opacity: 0;
-    animation: fadeInUp 1s ease-out 7.5s forwards;
+    animation: fadeInUp 1s ease-out 5.8s forwards;
 }
 
 .hero-text .about-me {
@@ -988,7 +998,7 @@ a.button:hover {
     margin-bottom: 1rem;
     margin-top: 0;
     opacity: 0;
-    animation: fadeInUp 1s ease-out 7.5s forwards;
+    animation: fadeInUp 1s ease-out 5.8s forwards;
 }
 
 .hero-text .about-me:first-of-type {
@@ -1347,41 +1357,51 @@ a.button:hover {
     margin-top: 2rem;
     flex-wrap: wrap;
     opacity: 0;
-    animation: fadeInUp 1s ease-out 7.5s forwards;
+    animation: fadeInUp 1s ease-out 5.8s forwards;
 }
 
 .cta-resume,
 .cta-lights {
     display: inline-block;
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
+    padding: 0.8rem 1.6rem;
+    border-radius: 6px;
     text-decoration: none;
     font-weight: 500;
-    font-size: 0.95rem;
-    transition: all 0.2s ease;
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
     border: none;
     cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .cta-resume {
     background: white;
-    color: #1a1a1a;
-    border: 1px solid #ddd;
+    color: #2c3e50;
+    border: 1.5px solid #e0e0e0;
 }
 
 .cta-resume:hover {
-    background: #f5f5f5;
-    border-color: #bbb;
+    background: #f8f9fa;
+    border-color: #4a90e2;
+    color: #4a90e2;
     text-decoration: none;
+    font-weight: 600;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.15);
 }
 
 .cta-lights {
-    background: #4a90e2;
+    background: linear-gradient(135deg, #4a90e2 0%, #5ba0f2 100%);
     color: white;
+    border: 1.5px solid transparent;
 }
 
 .cta-lights:hover {
-    background: #357abd;
+    background: linear-gradient(135deg, #357abd 0%, #4a90e2 100%);
+    font-weight: 600;
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.25);
 }
 
 /* Resume Embed Section */
