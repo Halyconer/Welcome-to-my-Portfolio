@@ -391,7 +391,7 @@ a.button:hover {
     width: 100%;
     height: 4px;
     border-radius: 2px;
-    background: #fff3cd;
+    background: #e3f2fd;
     outline: none;
     -webkit-appearance: none;
     appearance: none;
@@ -405,7 +405,7 @@ a.button:hover {
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    background: #ffc107;
+    background: #4a90e2;
     cursor: pointer;
     transition: all 0.2s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -413,15 +413,15 @@ a.button:hover {
 
 .minimal-slider::-webkit-slider-thumb:hover {
     transform: scale(1.2);
-    background: #e0a800;
-    box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3);
+    background: #357abd;
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
 }
 
 .minimal-slider::-moz-range-thumb {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #ffc107;
+    background: #4a90e2;
     cursor: pointer;
     border: none;
     transition: all 0.2s ease;
@@ -869,11 +869,10 @@ a.button:hover {
 
 .hero-image img {
     width: 280px;
-    height: 280px;
-    border-radius: 50%;
+    height: 350px;
+    border-radius: 8px;
     object-fit: cover;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-    border: 4px solid #fff;
     opacity: 0;
     animation: fadeInImage 1s ease-in 7.5s forwards;
 }
@@ -1051,7 +1050,7 @@ a.button:hover {
 
     .hero-image img {
         width: 200px;
-        height: 200px;
+        height: 250px;
     }
 
     .hero-text {
@@ -1087,7 +1086,7 @@ a.button:hover {
 
     .hero-image img {
         width: 160px;
-        height: 160px;
+        height: 200px;
     }
 
     .hero-text h1 {
