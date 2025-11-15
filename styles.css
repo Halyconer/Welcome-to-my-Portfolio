@@ -868,21 +868,26 @@ a.button:hover {
     z-index: 1;
 }
 
-@keyframes floatAround {
+@keyframes chartFloat {
     0% { 
         transform: translate(0, 0) scale(1); 
+        opacity: 0.1;
     }
     25% { 
-        transform: translate(30px, -40px) scale(0.8); 
+        transform: translate(20px, -15px) scale(1.05); 
+        opacity: 0.15;
     }
     50% { 
-        transform: translate(-20px, 60px) scale(1.2); 
+        transform: translate(-10px, 25px) scale(0.95); 
+        opacity: 0.12;
     }
     75% { 
-        transform: translate(40px, 20px) scale(0.9); 
+        transform: translate(15px, 10px) scale(1.02); 
+        opacity: 0.18;
     }
     100% { 
         transform: translate(0, 0) scale(1); 
+        opacity: 0.1;
     }
 }
 

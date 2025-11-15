@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateActiveNav()
     
     // Create floating dots animation
-    createFloatingDots()
+    // createFloatingDots()
     // Resume controls
     const openResumeBtn = document.getElementById('openResumeFullscreen')
     if (openResumeBtn) {
@@ -295,38 +295,115 @@ window.addEventListener('click', function(event) {
     if (event.target === modal) closeConnect4Game()
 })
 
-// Floating Dots Animation
+// Chart Line Animation
 function createFloatingDots() {
     const heroBackground = document.querySelector('.hero-background')
     if (!heroBackground) return
     
-    const colors = ['#4a90e2', '#3a7ca5', '#0d3b66', '#10b981', '#f97316']
-    const dotCount = 8
+    createAnimatedChart()
+}
+
+function createAnimatedChart() {
+    const heroBackground = document.querySelector('.hero-background')
+    const heroSection = document.querySelector('.hero')
     
-    for (let i = 0; i < dotCount; i++) {
-        const dot = document.createElement('div')
-        dot.className = 'floating-dot'
+    // Create canvas covering the entire hero section
+    const canvas = document.createElement('canvas')
+    canvas.className = 'chart-line'
+    
+    const rect = heroSection.getBoundingClientRect()
+    canvas.width = rect.width
+    canvas.height = rect.height
+    
+    canvas.style.cssText = `
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.15;
+        pointer-events: none;
+    `
+    
+    heroBackground.appendChild(canvas)
+    animateChartLine(canvas)
+}
+
+function animateChartLine(canvas) {
+    const ctx = canvas.getContext('2d')
+    const width = canvas.width
+    const height = canvas.height
+    
+    // Generate chart data points
+    const totalPoints = 100
+    const chartData = []
+    let currentY = height * 0.7 // Start at 70% down the screen
+    
+    for (let i = 0; i < totalPoints; i++) {
+        const x = (i / (totalPoints - 1)) * width
+        // Random walk with slight upward trend
+        const change = (Math.random() - 0.4) * 30
+        currentY += change
+        currentY = Math.max(height * 0.3, Math.min(height * 0.8, currentY))
         
-        // Random positioning
-        const startX = Math.random() * 100
-        const startY = Math.random() * 100
-        const size = Math.random() * 8 + 4 // 4-12px
-        const color = colors[Math.floor(Math.random() * colors.length)]
-        const duration = Math.random() * 20 + 15 // 15-35s
-        const delay = Math.random() * 5
-        
-        dot.style.cssText = `
-            position: absolute;
-            width: ${size}px;
-            height: ${size}px;
-            background: ${color};
-            border-radius: 50%;
-            opacity: 0.3;
-            left: ${startX}%;
-            top: ${startY}%;
-            animation: floatAround ${duration}s ease-in-out ${delay}s infinite;
-        `
-        
-        heroBackground.appendChild(dot)
+        chartData.push({ x, y: currentY })
     }
+    
+    // Animation state
+    let currentPoint = 0
+    const totalDuration = 5500 // 5.5 seconds to match "nice to meet you" completion
+    const pointsPerFrame = totalPoints / (totalDuration / 16) // 60fps
+    
+    function drawLine() {
+        ctx.clearRect(0, 0, width, height)
+        
+        if (currentPoint < totalPoints) {
+            // Create gradient for the line
+            const gradient = ctx.createLinearGradient(0, 0, width, 0)
+            gradient.addColorStop(0, '#4a90e2')
+            gradient.addColorStop(0.5, '#3a7ca5')
+            gradient.addColorStop(1, '#0d3b66')
+            
+            // Draw the line up to current point
+            ctx.strokeStyle = gradient
+            ctx.lineWidth = 3
+            ctx.lineCap = 'round'
+            ctx.lineJoin = 'round'
+            ctx.beginPath()
+            
+            for (let i = 0; i <= Math.floor(currentPoint); i++) {
+                const point = chartData[i]
+                if (i === 0) {
+                    ctx.moveTo(point.x, point.y)
+                } else {
+                    ctx.lineTo(point.x, point.y)
+                }
+            }
+            ctx.stroke()
+            
+            // Draw current point with glow effect
+            const currentData = chartData[Math.floor(currentPoint)]
+            if (currentData) {
+                // Glow effect
+                ctx.shadowColor = '#4a90e2'
+                ctx.shadowBlur = 10
+                ctx.fillStyle = '#4a90e2'
+                ctx.beginPath()
+                ctx.arc(currentData.x, currentData.y, 4, 0, Math.PI * 2)
+                ctx.fill()
+                ctx.shadowBlur = 0
+            }
+            
+            // Increment current point
+            currentPoint += pointsPerFrame
+            
+            // Continue animation
+            requestAnimationFrame(drawLine)
+        }
+    }
+    
+    // Start animation after a short delay
+    setTimeout(() => {
+        drawLine()
+    }, 500)
 }
