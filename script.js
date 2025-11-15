@@ -57,6 +57,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Create floating dots animation
     // createFloatingDots()
+    
+    // Cupcake popup
+    initCupcakePopup()
     // Resume controls
     const openResumeBtn = document.getElementById('openResumeFullscreen')
     if (openResumeBtn) {
@@ -406,4 +409,81 @@ function animateChartLine(canvas) {
     setTimeout(() => {
         drawLine()
     }, 500)
+}
+
+// Cupcake popup functionality
+function initCupcakePopup() {
+    // Always show the cupcake popup
+    
+    // Create popup HTML as bottom bar
+    const popup = document.createElement('div')
+    popup.className = 'cupcake-bar'
+    popup.innerHTML = `
+        <div class="cupcake-bar-content">
+            <div class="cupcake-message">
+                <span class="cupcake-text">This website uses chocolate to ensure you get the best experience on our website.</span>
+            </div>
+            <div class="cupcake-buttons">
+                <button class="cupcake-accept">Accept Chocolate</button>
+                <button class="cupcake-decline">Decline</button>
+            </div>
+        </div>
+    `
+    
+    document.body.appendChild(popup)
+    
+    // Show popup immediately
+    setTimeout(() => {
+        popup.classList.add('show')
+    }, 1000)
+    
+    // Handle button clicks
+    popup.querySelector('.cupcake-accept').addEventListener('click', () => {
+        popup.classList.add('hide')
+        setTimeout(() => popup.remove(), 400)
+        createFallingChocolate()
+        showPlusOneButton()
+    })
+    
+    popup.querySelector('.cupcake-decline').addEventListener('click', () => {
+        popup.classList.add('hide')
+        setTimeout(() => popup.remove(), 400)
+    })
+}
+
+function createFallingChocolate() {
+    const chocolate = document.createElement('div')
+    chocolate.className = 'falling-chocolate'
+    chocolate.textContent = '🍫'
+    
+    // Random horizontal position
+    chocolate.style.left = Math.random() * (window.innerWidth - 60) + 'px'
+    
+    document.body.appendChild(chocolate)
+    
+    // Remove after animation
+    setTimeout(() => {
+        if (chocolate.parentNode) {
+            chocolate.remove()
+        }
+    }, 3000)
+}
+
+function showPlusOneButton() {
+    const plusOneBtn = document.createElement('div')
+    plusOneBtn.className = 'plus-one-chocolate'
+    plusOneBtn.innerHTML = '+1 🍫'
+    
+    // Position to the right side
+    plusOneBtn.style.right = '30px'
+    plusOneBtn.style.top = '50%'
+    
+    document.body.appendChild(plusOneBtn)
+    
+    // Remove after animation
+    setTimeout(() => {
+        if (plusOneBtn.parentNode) {
+            plusOneBtn.remove()
+        }
+    }, 2000)
 }
