@@ -5,3 +5,7 @@ GEMINI.md
 __pycache__/
 refresh_token
 .venv/
+.DS_Store/
+.github/copilot-instructions.md
+.github/
+.claude/

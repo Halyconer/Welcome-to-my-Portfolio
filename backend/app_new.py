@@ -1,8 +1,11 @@
 from flask import Flask, request, jsonify, send_file
+from flask_cors import CORS, cross_origin
 import sqlite3
 import os
 from dotenv import load_dotenv
 from datetime import datetime
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
 load_dotenv() 
 
@@ -10,7 +13,7 @@ load_dotenv()
 FLASK_ENV = os.getenv('FLASK_ENV', 'production')
 DEVELOPMENT_MODE = os.getenv('DEVELOPMENT_MODE', 'false').lower() == 'true'
 BULB_IP = os.getenv('BULB_IP', '192.168.1.210')
-ALLOWED_ORIGIN = os.getenv('ALLOWED_ORIGIN', 'https://halyconer.github.io')
+ALLOWED_ORIGIN = os.getenv('ALLOWED_ORIGIN', 'https://halyconer.github.io/Welcome-to-my-Portfolio/')
 
 # Print configuration on startup
 print(f"Flask Environment: {FLASK_ENV}")
@@ -20,13 +23,15 @@ print(f"Bulb IP: {BULB_IP}")
 
 app = Flask(__name__)
 
-# CORS is handled by nginx - no Flask CORS configuration needed
-# This prevents duplicate CORS headers
-
+# Configure CORS based on environment
 if DEVELOPMENT_MODE:
-    print("Development mode - CORS handled by nginx")
+    # In development mode, allow CORS from any origin
+    CORS(app)
+    print("CORS enabled for all origins (Development Mode)")
 else:
-    print(f"Production mode - CORS handled by nginx for: {ALLOWED_ORIGIN}")
+    # In production mode, only allow CORS from your GitHub Pages domain
+    CORS(app, resources={r"/set_brightness": {"origins": ALLOWED_ORIGIN}})
+    print(f"CORS restricted to: {ALLOWED_ORIGIN}")
 
 def get_bulb():
     try:
@@ -38,7 +43,7 @@ def get_bulb():
 @app.before_request
 def check_auth():
     if request.endpoint != 'set_brightness':
-        return  
+         return  
 
     # Skip authentication checks in development mode
     if DEVELOPMENT_MODE:
@@ -105,7 +110,7 @@ def set_brightness():
         return jsonify({"error": f"For Adrian: {e}"}), 500
 
 # Endpoint to serve the stats.json file
-@app.route('/stats.json', methods=['GET'])
+@app.route('/stats.json')
 def serve_stats():
     try:
         return send_file('stats.json', mimetype='application/json')
@@ -120,7 +125,7 @@ def serve_stats():
         })
 
 # Endpoint to serve the spotify stats file
-@app.route('/spotify_stats.json', methods=['GET'])
+@app.route('/spotify_stats.json')
 def serve_spotify_stats():
     try:
         return send_file('spotify_top_artists.json', mimetype='application/json')

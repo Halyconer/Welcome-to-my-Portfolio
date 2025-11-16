@@ -1,57 +1,39 @@
 from flask import Flask, request, jsonify, send_file
+from flask_cors import CORS, cross_origin
 import sqlite3
-import os
 from dotenv import load_dotenv
 from datetime import datetime
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
 load_dotenv() 
 
-# Configuration from environment variables
-FLASK_ENV = os.getenv('FLASK_ENV', 'production')
-DEVELOPMENT_MODE = os.getenv('DEVELOPMENT_MODE', 'false').lower() == 'true'
-BULB_IP = os.getenv('BULB_IP', '192.168.1.210')
-ALLOWED_ORIGIN = os.getenv('ALLOWED_ORIGIN', 'https://halyconer.github.io')
-
-# Print configuration on startup
-print(f"Flask Environment: {FLASK_ENV}")
-print(f"Development Mode: {DEVELOPMENT_MODE}")
-print(f"Allowed Origin: {ALLOWED_ORIGIN}")
-print(f"Bulb IP: {BULB_IP}")
+# Configuration
+BULB_IP = "192.168.1.210"         # your bulb’s IP
+ALLOWED_ORIGIN = "https://halyconer.github.io/Welcome-to-my-Portfolio/"
 
 app = Flask(__name__)
 
-# CORS is handled by nginx - no Flask CORS configuration needed
-# This prevents duplicate CORS headers
-
-if DEVELOPMENT_MODE:
-    print("Development mode - CORS handled by nginx")
-else:
-    print(f"Production mode - CORS handled by nginx for: {ALLOWED_ORIGIN}")
+# Only allow CORS from your GitHub Pages domain on the /set_brightness route:
+CORS(app, resources={r"/set_brightness": {"origins": ALLOWED_ORIGIN}})
 
 def get_bulb():
     try:
-        from yeelight import Bulb  # Import here to avoid issues if library isn't installed
         return Bulb(BULB_IP, auto_on=True)
     except Exception:
         return None
 
 @app.before_request
+@cross_origin()
 def check_auth():
     if request.endpoint != 'set_brightness':
-        return  
-
-    # Skip authentication checks in development mode
-    if DEVELOPMENT_MODE:
-        print("Development mode: Skipping origin/referer checks")
-        return
+         return  
 
     origin = request.headers.get("Origin")
     referer = request.headers.get("Referer")
     
-    # origin and referrer are always automatically attached by browsers when making CORS requests
-    # this should block against curl or postman in production mode
-    if origin != ALLOWED_ORIGIN and (referer is None or not referer.startswith(ALLOWED_ORIGIN)):
-        print(f"Request blocked - Origin: {origin}, Referer: {referer}")
+    # origin and referrer are always automatically attached by browsers when making CO requests so this should block agains curl or postman
+    if origin != ALLOWED_ORIGIN  and (referer is None or not referer.startswith(ALLOWED_ORIGIN)):
         return jsonify({"error": "Request origin not allowed"}), 403
 
 # SQL database setup
@@ -89,12 +71,12 @@ def set_brightness():
 
     if not 1 <= br <= 100:
         log_call(br, 400)  # Log the failure
-        return jsonify({"error": "How the hell did you ask for something below 1 or above 100?"}), 400
+        return jsonify({"How the hell did you ask for something below 1 or above 100?"}), 400
 
     bulb = get_bulb()
     if bulb is None:
         log_call(br, 500)  # Log the failure
-        return jsonify({"error": "Either my Bulb is dead or you have a bad connection."}), 500
+        return jsonify({"Either my Bulb is dead or you have a bad connection."}), 500
 
     try:
         bulb.set_brightness(br)
@@ -102,10 +84,10 @@ def set_brightness():
         return jsonify({"status": "success", "brightness_set": br}), 200
     except Exception as e:
         log_call(br, 500)  # Log the failure
-        return jsonify({"error": f"For Adrian: {e}"}), 500
+        return jsonify({"error for some reason": f"For Adrian: {e}"}), 500
 
 # Endpoint to serve the stats.json file
-@app.route('/stats.json', methods=['GET'])
+@app.route('/stats.json')
 def serve_stats():
     try:
         return send_file('stats.json', mimetype='application/json')
@@ -118,9 +100,10 @@ def serve_stats():
             "total_calls_all_time": 0,
             "avg_brightness_all_time": 0
         })
+       
 
 # Endpoint to serve the spotify stats file
-@app.route('/spotify_stats.json', methods=['GET'])
+@app.route('/spotify_stats.json')
 def serve_spotify_stats():
     try:
         return send_file('spotify_top_artists.json', mimetype='application/json')
@@ -131,23 +114,9 @@ def serve_spotify_stats():
             "artists": []
         })
 
-# Development mode endpoint for testing
-@app.route('/dev/status')
-def dev_status():
-    """Development endpoint to check current configuration"""
-    if not DEVELOPMENT_MODE:
-        return jsonify({"error": "This endpoint is only available in development mode"}), 404
-    
-    return jsonify({
-        "flask_env": FLASK_ENV,
-        "development_mode": DEVELOPMENT_MODE,
-        "allowed_origin": ALLOWED_ORIGIN,
-        "bulb_ip": BULB_IP,
-        "request_origin": request.headers.get("Origin"),
-        "request_referer": request.headers.get("Referer"),
-        "user_agent": request.headers.get("User-Agent")
-    })
-
 if __name__ == '__main__': # Only to be run when this file is executed directly on the Pi
-    debug_mode = DEVELOPMENT_MODE or FLASK_ENV == 'development'
-    app.run(host='0.0.0.0', port=5001, debug=debug_mode)
+	app.run(host='0.0.0.0', port=5001, debug=False)
+
+
+
+

@@ -5,462 +5,242 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Adrian Eddy's Portfolio</title>
         <link rel="stylesheet" href="styles.css" />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     </head>
-    <body class="body-with-floating-nav">
+    <body>
+        <!-- Scroll Progress Bar -->
+        <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
         <!-- Navigation -->
         <nav class="floating-nav">
             <ul class="nav">
                 <li><a href="index.html">About Me</a></li>
-                <li><a href="resume.html">Resume</a></li>
+                <li><a href="#resume">Resume</a></li>
                 <li><a href="dev-roadtrip.html">Road Trip</a></li>
             </ul>
         </nav>
 
         <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-text">
-                <h1>Hi, I'm Adrian.</h1>
-                <p class="subtitle">
-                    Economics @ NYU · Data, Markets & Machines
-                </p>
-                <a href="#light-greeting" class="button">Say Hello</a>
+            <div class="hero-background"></div>
+            <div class="hero-content">
+                <div class="hero-image">
+                    <img src="assets/img.JPG" alt="Adrian Eddy" />
+                </div>
+                <div class="hero-text">
+                    <h1 class="typewrite" data-period="1500" data-type='["Hi, I&apos;m Adrian.", "Welcome."]'></h1>
+                    <p class="subtitle">
+                        Economics @ NYU 
+                    </p>
+                    <p class="about-me with-margin">
+                        I am an Econ major with a passion for econometrics, financial markets, and programming.
+                        As of right now, I am learning more about IoT systems and AI Development with practical applications
+                        in trading and automation, while also exploring market anomalies and behavioral finance in my thesis.
+                    </p>
+                    <p class="about-me">
+                        Let's connect: <a href="mailto:ae2422@nyu.edu">ae2422@nyu.edu</a>
+                    </p>
+
+                    <div class="cta-buttons">
+                        <a href="#resume" class="cta-resume">Skip to Resume</a>
+                        <a href="#light-greeting" class="cta-lights">Try me!</a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Interactive Light Control Section -->
-        <section id="light-greeting">
-            <div class="light-control-wrapper">
-                <h2>Control My Room Lights</h2>
-                <p>
-                    From anywhere in the world, adjust my lighting to say hi!
-                    Feel free to navigate to my developer section to see how it works, along with live data. 
+        <!-- Interactive Demo Section -->
+        <section id="light-greeting" class="interactive-demo-section">
+            <div class="interactive-demo-wrapper">
+                <h2>Interactive Demos</h2>
+                <p class="demo-intro">
+                    Two live demos powered by my home server. One could wake me up, the other is just digital matrix fun.
                 </p>
 
-                <div class="minimal-slider-container">
-                    <div class="brightness-label">
-                        <span>Brightness</span>
-                        <div class="brightness-percentage">
-                            <span id="brightnessValue">75</span>%
+                <div class="demo-cards">
+                    <!-- Wake Me Up Card -->
+                    <div class="demo-card">
+                        <div class="demo-card-header">
+                            <h3>Wake Me Up</h3>
+                            <p class="demo-tagline">Control my bedroom lights</p>
+                        </div>
+                        <div class="demo-card-body">
+                            <p class="demo-description">
+                                A live lighting control system via Flask API running on my Raspberry Pi. 
+                            </p>
+
+                            <div class="minimal-slider-container">
+                                <div class="brightness-label">
+                                    <span>Brightness</span>
+                                    <div class="brightness-percentage">
+                                        <span id="brightnessValue">75</span>%
+                                    </div>
+                                </div>
+                                <label for="brightnessSlider" class="visually-hidden">Adjust Brightness</label>
+                                <input
+                                    type="range"
+                                    id="brightnessSlider"
+                                    min="1"
+                                    max="100"
+                                    value="75"
+                                    class="minimal-slider"
+                                    title="Adjust Brightness"
+                                />
+                            </div>
+
+                            <button id="setBrightnessBtn" class="send-button">
+                                Send Command
+                            </button>
+
+                            <p id="brightnessStatus" class="status-text"></p>
+                            
+                            <div class="demo-links">
+                                <a href="https://github.com/Halyconer/Welcome-to-my-Portfolio" target="_blank" rel="noopener" class="demo-github-link">View Code →</a>
+                            </div>
                         </div>
                     </div>
-                    <label for="brightnessSlider" class="visually-hidden">Adjust Brightness</label>
-                    <input
-                        type="range"
-                        id="brightnessSlider"
-                        min="1"
-                        max="100"
-                        value="75"
-                        class="minimal-slider"
-                        title="Adjust Brightness"
-                    />
+
+                    <div class="demo-card">
+                    <div class="demo-card-header">
+                        <h3>Challenge My AI</h3>
+                        <p class="demo-tagline">Try to beat my Connect 4 algorithm</p>
+                    </div>
+                    <div class="demo-card-body">
+                        <div class="demo-image">
+                            <img src="assets/connect4.jpg" alt="Connect 4 Game" />
+                        </div>
+                        <button onclick="showConnect4Game()" class="play-button-large">Start Game</button>
+                        <p class="demo-description demo-description-below">
+                            Play against my minimax algorithm with alpha-beta pruning. 
+                        </p>
+                        
+                        <div class="demo-links">
+                            <a href="https://github.com/Halyconer/ConnectX/tree/8cbc4f50b5a8b9b04ce7dc9dd201a77d0539d8b8" target="_blank" rel="noopener" class="demo-github-link">View Code →</a>
+                        </div>
+                    </div>
+                </div>
                 </div>
 
-                <button id="setBrightnessBtn" class="send-button">
-                    Send Greeting
-                </button>
+                <div class="architecture-note">
+                    <p>
+                        <strong>How it works:</strong> Both demos hit my Raspberry Pi 4 through an ngrok tunnel → nginx reverse proxy → Flask APIs. 
+                        <a href="dev-roadtrip.html">See the architecture</a>
+                    </p>
+                </div>
 
-                <p id="brightnessStatus" class="status-text"></p>
-            </div>
-        </section>
-
-        <!-- About Me Section -->
-        <section id="about" class="about-me">
-            <div class="about-me-container">
-                <div class="about-text">
-                    <div class="about-content">
-                        <p>
-                            Economics student at NYU bridging analytical thinking with hands-on problem-solving. 
-                            I thrive on challenges that merge data, markets, and technology.
-                        </p>
-                        <p>
-                            Self-taught programmer passionate about connecting economic theory with practical applications. 
-                            When not analyzing market trends, you'll find me on the football pitch or optimizing race performance through telemetry.
-                        </p>
-                        <p>
-                            Let's connect:
-                            <a href="mailto:ae2422@nyu.edu">ae2422@nyu.edu</a>
-                        </p>
-                    </div>
+                <div class="demo-navigation">
+                    <a href="#resume" class="demo-nav-link">View Work Experience →</a>
+                    <a href="#projects" class="demo-nav-link">See More Projects →</a>
                 </div>
             </div>
         </section>
 
         <!-- Projects Section -->
-        <section class="projects-section">
+        <section id="projects" class="projects-section">
             <div class="projects-container">
-                <h2>Featured Projects</h2>
-                
-                <!-- Programming Skills Section -->
-                        <div class="skills-section">
-            <p>I use these languages and technologies to build my projects</p>
-            <div class="skills-grid">
-                <div class="skill-item"><i class="fab fa-python"></i></div>
-                <div class="skill-item"><i class="fas fa-database"></i></div>
-                <div class="skill-item"><i class="fab fa-java"></i></div>
-                <div class="skill-item"><i class="fab fa-git-alt"></i></div>
-                <div class="skill-item"><i class="fab fa-node-js"></i></div>
-                <div class="skill-item"><i class="fab fa-html5"></i></div>
-                <div class="skill-item"><i class="fab fa-css3-alt"></i></div>
-                <div class="skill-item"><i class="fab fa-js"></i></div>
-            </div>
-        </div>
-
-                <div class="projects-list">
-                    <a href="smart-home.html" class="project-item">
-                        <div class="project-logo">
-                            <img src="assets/lightbulb_diagram.jpg" alt="Smart Home" class="project-image" />
+                <h2>Featured Projects</h2>                
+                <div class="projects-grid">
+                    <!-- Financial Pricing Models -->
+                    <a href="https://github.com/thompgt/black-scholes" target="_blank" rel="noopener" class="project-card">
+                        <div class="project-icon">
+                            <img src="assets/Screenshot 2025-09-04 at 11.46.01.png" alt="Financial Models" />
                         </div>
-                        <h3 class="project-name">Smart Home IoT</h3>
-                        <div class="project-description">
-                            <ul>
-                                <li>Control room lighting from anywhere in the world</li>
-                                <li>Flask API with real-time hardware integration</li>
-                                <li>Raspberry Pi deployment with GPIO control</li>
-                                <li>Web-based interface with brightness adjustment</li>
-                                <li>Secure remote access via ngrok tunneling</li>
-                            </ul>
+                        <div class="project-content">
+                            <h3>Financial Derivatives Pricing Engine</h3>
+                            <p>Suite of financial modeling tools including Black-Scholes options pricing, Monte Carlo simulations, CAPM, and stochastic models</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge python">Python</span>
+                                <span class="tech-badge react">React</span>
+                                <span class="tech-badge api">FastAPI</span>
+                                <span class="tech-badge data">Quantitative Finance</span>
+                            </div>
                         </div>
                     </a>
 
-                    <a href="market-dashboard.html" class="project-item">
-                        <div class="project-logo">
-                            <img src="assets/fed.png" alt="Federal Reserve" class="project-image" />
+                    <!-- Automated Trading Bot -->
+                    <a href="https://github.com/Halyconer/trading" target="_blank" rel="noopener" class="project-card">
+                        <div class="project-icon">
+                            <img src="assets/ibkr.jpg" alt="Trading Bot" />
                         </div>
-                        <h3 class="project-name">NYU Fed Challenge</h3>
-                        <div class="project-description">
-                            <ul>
-                                <li>Economic policy analysis and recommendations</li>
-                                <li>Data visualization of monetary policy impacts</li>
-                                <li>Federal Reserve data integration and analysis</li>
-                                <li>Team collaboration on macroeconomic forecasting</li>
-                                <li>Presentation to Federal Reserve Bank officials</li>
-                            </ul>
-                        </div>
-                    </a>
-
-                    <a href="financial-models.html" class="project-item">
-                        <div class="project-logo">
-                            <img src="assets/Screenshot 2025-09-04 at 11.46.01.png" alt="Financial Models" class="project-image" />
-                        </div>
-                        <h3 class="project-name">Financial Pricing Models</h3>
-                        <div class="project-description">
-                            <ul>
-                                <li>Black-Scholes, Monte Carlo & CAPM implementations</li>
-                                <li>Interactive React frontend with Plotly visualizations</li>
-                                <li>FastAPI backend with comprehensive testing suite</li>
-                                <li>Hull-White and Heston stochastic models</li>
-                                <li>Real-time DCF and options pricing calculations</li>
-                            </ul>
+                        <div class="project-content">
+                            <h3>Algorithmic Trading System</h3>
+                            <p>Autonomous trading system that calculates risk parity weights and executes trades in real-time to balance personal investment portfolio</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge python">Python</span>
+                                <span class="tech-badge api">APIs</span>
+                                <span class="tech-badge data">Trading Systems</span>
+                                <span class="tech-badge algo">Portfolio Theory</span>
+                            </div>
                         </div>
                     </a>
 
-                    <div class="project-item connect4-project" onclick="showConnect4Game()">
-                        <div class="project-logo">
-                            <img src="assets/connect4.jpg" alt="Connect 4" class="project-image" />
+                    <!-- NYU Fed Challenge -->
+                    <a href="https://www.federalreserve.gov/conferences/fedchallenge.htm" target="_blank" rel="noopener" class="project-card">
+                        <div class="project-icon">
+                            <img src="assets/fed.png" alt="Federal Reserve" />
                         </div>
-                        <h3 class="project-name">Connect 4 AI</h3>
-                        <div class="project-description">
-                            <ul>
-                                <li>Minimax algorithm with alpha-beta pruning</li>
-                                <li>Interactive game with AI difficulty levels</li>
-                                <li>Flask backend deployed on Raspberry Pi</li>
-                                <li>Real-time game state management and validation</li>
-                            </ul>
+                        <div class="project-content">
+                            <h3>Federal Reserve Policy Analysis</h3>
+                            <p>Comprehensive macroeconomic analysis and monetary policy recommendations presented to Federal Reserve Bank officials</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge data">Econometrics</span>
+                                <span class="tech-badge algo">Monetary Policy</span>
+                                <span class="tech-badge presentation">Federal Reserve</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
+
+                    <!-- NYU BioKind -->
+                    <a href="https://github.com/Halyconer/biokind-projectteam1" target="_blank" rel="noopener" class="project-card">
+                        <div class="project-icon">
+                            <img src="assets/biokind.jpeg" alt="NYU BioKind" />
+                        </div>
+                        <div class="project-content">
+                            <h3>NYU BioKind - Technical Lead</h3>
+                            <p>Full-stack business intelligence applications with ML models for nonprofits, saving up to $10,000 in outsourcing costs</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge python">Python</span>
+                                <span class="tech-badge data">SQL</span>
+                                <span class="tech-badge api">JavaScript</span>
+                                <span class="tech-badge algo">Machine Learning</span>
+                                <span class="tech-badge leadership">Technical Leadership</span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Bottom Resume Section -->
-        <section class="bottom-resume">
-            <h3>Ready to Connect?</h3>
-            <p>
-                Explore my full background, experience, and technical skills. 
-            </p>
-            <a href="resume.html" class="button">View My Resume</a>
+        <!-- Resume Section -->
+        <section id="resume" class="resume-embed-section">
+            <div class="resume-container">
+                <h2>Professional Resume</h2>
+                <div class="resume-controls">
+                    <button id="openResumeFullscreen" class="resume-btn">Open Full Screen</button>
+                    <a href="assets/AdrianEddy.pdf" download class="resume-btn">Download PDF</a>
+                </div>
+                <div class="resume-embed">
+                    <iframe src="assets/AdrianEddy.pdf" id="resumeEmbed" title="Adrian Eddy Resume PDF"></iframe>
+                </div>
+            </div>
         </section>
 
-        <script>
-            const API_URL = 'https://valid-goblin-full.ngrok-free.app'
-            const slider = document.getElementById('brightnessSlider')
-            const label = document.getElementById('brightnessValue')
-            const btn = document.getElementById('setBrightnessBtn')
-            const msg = document.getElementById('brightnessStatus')
+        <script src="script.js"></script>
 
-            // Live-update the numeric readout
-            slider.addEventListener('input', () => {
-                label.textContent = slider.value
-            })
-
-            btn.addEventListener('click', () => {
-            const brightness = slider.value
-                msg.textContent = `Setting brightness to ${brightness}%...`
-
-                btn.disabled = true
-                btn.textContent = 'Sending...'
-
-                fetch(`${API_URL}/set_brightness`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'ngrok-skip-browser-warning': 'true',
-                        //'q7x!K3L9fN*zaP2vR1yW0hT8mB5sG4c': API_KEY
-                    },
-                    body: JSON.stringify({ brightness: parseInt(brightness) }),
-                })
-                    .then((response) => {
-                        if (!response.ok) {
-                            throw new Error(
-                                `HTTP ${response.status}: ${response.statusText}`
-                            )
-                        }
-                        return response.json()
-                    })
-                    .then((data) => {
-                        if (data.status === 'success') {
-                            msg.textContent = `✓ Lights set to ${data.brightness_set}% — thanks for the greeting!`
-                        } else {
-                            msg.textContent = `× ${data.error || 'Unknown error'}`
-                        }
-                    })
-                    .catch((err) => {
-                        console.error('Fetch error:', err)
-                        // Provide more specific error messages
-                        if (
-                            err.message.includes('Failed to fetch') ||
-                            err.message.includes('NetworkError')
-                        ) {
-                            msg.textContent = `× My personal high-tech self-built server is offline - please try again later`
-                        } else if (err.message.includes('404')) {
-                            msg.textContent = `× Light control endpoint not found - I messed up the code...`
-                        } else if (err.message.includes('500')) {
-                            msg.textContent = `× Server error - my raspberry pi is probably overloaded`
-                        } else {
-                            msg.textContent = `× Connection failed: ${err.message}`
-                        }
-                    })
-                    .finally(() => {
-                        btn.disabled = false
-                        btn.textContent = 'Send Greeting'
-                    })
-            })
-        </script>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-                    anchor.addEventListener('click', function (e) {
-                        e.preventDefault()
-
-                        const targetId = this.getAttribute('href')
-                        const targetElement = document.querySelector(targetId)
-
-                        if (targetElement) {
-                            window.scrollTo({
-                                top: targetElement.offsetTop - 20,
-                                behavior: 'smooth',
-                            })
-                        }
-                    })
-                })
-            })
-        </script>
-
-        <!-- Connect4 Game Modal -->
         <div id="connect4Modal" class="connect4-modal">
             <div class="connect4-modal-content">
                 <div class="connect4-header">
                     <h2>Connect 4 vs AI</h2>
                     <span class="connect4-close" onclick="closeConnect4Game()">&times;</span>
                 </div>
-                
                 <div class="connect4-status" id="connect4Status">Click "New Game" to start!</div>
-                
                 <div class="connect4-controls">
                     <button id="connect4NewGameBtn" onclick="newConnect4Game()">New Game</button>
                 </div>
-                
                 <div class="connect4-board" id="connect4Board"></div>
             </div>
         </div>
 
-        <script>
-            // Connect4 Game Integration with Flask API
-            const CONNECT4_API_BASE = 'http://localhost:5002'; // Your Connect4 Flask server
-            let connect4GameState = null;
-            let isConnect4Processing = false;
-
-            // Initialize empty board display
-            function createConnect4Board() {
-                const board = document.getElementById('connect4Board');
-                board.innerHTML = '';
-                
-                // Create 42 cells (6 rows × 7 cols), displayed top to bottom
-                for (let row = 5; row >= 0; row--) {
-                    for (let col = 0; col < 7; col++) {
-                        const cell = document.createElement('div');
-                        cell.className = 'connect4-cell';
-                        cell.dataset.row = row;
-                        cell.dataset.col = col;
-                        cell.onclick = () => makeConnect4Move(col);
-                        board.appendChild(cell);
-                    }
-                }
-            }
-
-            // Update board display based on game state
-            function updateConnect4Board() {
-                if (!connect4GameState) return;
-                
-                const cells = document.querySelectorAll('.connect4-cell');
-                cells.forEach(cell => {
-                    cell.className = 'connect4-cell';
-                    const row = parseInt(cell.dataset.row); 
-                    const col = parseInt(cell.dataset.col);
-                    const piece = connect4GameState.board[row][col];
-                    
-                    if (piece === 1) cell.classList.add('player1');
-                    if (piece === 2) cell.classList.add('player2');
-                });
-            }
-
-            // Update status message
-            function updateConnect4Status(message) {
-                document.getElementById('connect4Status').textContent = message;
-            }
-
-            // API request function
-            async function connect4ApiRequest(endpoint, method = 'GET', data = null) {
-                try {
-                    const options = {
-                        method,
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    };
-                    
-                    if (data) {
-                        options.body = JSON.stringify(data);
-                    }
-                    
-                    const response = await fetch(CONNECT4_API_BASE + endpoint, options);
-                    
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    
-                    return await response.json();
-                } catch (error) {
-                    console.error('Connect4 API request failed:', error);
-                    updateConnect4Status('Connection error! Make sure the game server is running on your Pi.');
-                    return null;
-                }
-            }
-
-            async function startConnect4Game() {
-                isConnect4Processing = true;
-                updateConnect4Status('Starting new game...');
-                
-                const response = await connect4ApiRequest('/play', 'POST');
-                console.log('New Connect4 game response:', response);
-                
-                if (response) {
-                    connect4GameState = response;
-                    createConnect4Board();
-                    updateConnect4Board();
-                    updateConnect4Status('Your turn! Click a column to drop your piece.');
-                } else {
-                    updateConnect4Status('Failed to start new game. Check server connection.');
-                }
-                
-                isConnect4Processing = false;
-            }
-
-            async function makeConnect4Move(col) {
-                console.log('Connect4 move called with column:', col);
-                
-                if (isConnect4Processing || !connect4GameState || connect4GameState.game_over) {
-                    console.log('Move blocked - processing:', isConnect4Processing, 'gameState exists:', !!connect4GameState);
-                    return;
-                }
-                
-                const validCols = connect4GameState.valid_cols || [];
-                console.log('Valid columns:', validCols, 'Clicked:', col);
-                
-                if (!validCols.includes(col)) {  
-                    updateConnect4Status('Invalid move! Column is full.');
-                    return;
-                }
-                
-                isConnect4Processing = true;
-                updateConnect4Status('Processing move...');
-                
-                const response = await connect4ApiRequest('/move', 'POST', { column: col });
-                
-                if (response) {
-                    if (response.game_over) {
-                        // Game over - show final state
-                        connect4GameState = { ...response, board: response.board_after_ai || response.board };
-                        updateConnect4Board();
-                        
-                        if (response.winner === 'player') {
-                            updateConnect4Status('🎉 You won! Great job!');
-                        } else if (response.winner === 'ai') {
-                            updateConnect4Status('🤖 AI wins! Try again?');
-                        } else if (response.winner === 'tie') {
-                            updateConnect4Status('🤝 It\'s a tie! Well played!');
-                        } else {
-                            updateConnect4Status('Game over!');
-                        }
-                    } else {
-                        // Show player's move first
-                        connect4GameState = { ...response, board: response.board_before_ai };
-                        updateConnect4Board();
-                        updateConnect4Status('Your move made! AI is thinking...');
-                        
-                        // Add delay before showing AI move
-                        setTimeout(() => {
-                            connect4GameState = { ...response, board: response.board_after_ai };
-                            updateConnect4Board();
-                            
-                            if (response.ai_move !== null && response.ai_move !== undefined) {
-                                updateConnect4Status(`AI dropped in column ${response.ai_move + 1}. Your turn!`);
-                            } else {
-                                updateConnect4Status('Your turn! Click a column to drop your piece.');
-                            }
-                        }, 1000);
-                    }
-                }
-                
-                isConnect4Processing = false;
-            }
-
-            // Modal functions
-            function showConnect4Game() {
-                document.getElementById('connect4Modal').style.display = 'flex';
-            }
-            
-            function closeConnect4Game() {
-                document.getElementById('connect4Modal').style.display = 'none';
-            }
-            
-            function newConnect4Game() {
-                startConnect4Game();
-            }
-            
-            // Close modal when clicking outside of it
-            window.addEventListener('click', function(event) {
-                const modal = document.getElementById('connect4Modal');
-                if (event.target === modal) {
-                    closeConnect4Game();
-                }
-            });
-        </script>
 
         <footer>
             <p>© 2025 Adrian Eddy. All rights reserved.</p>
