@@ -9,3 +9,5 @@ refresh_token
 .github/copilot-instructions.md
 .github/
 .claude/
+.node_modules/
+.vscode/
