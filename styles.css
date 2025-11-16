@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poly:ital@0;1&family=Inter:wght@400;600&display=swap');
 
 html { 
     scrollbar-width: none; 
@@ -7,9 +7,8 @@ html {
 html::-webkit-scrollbar { display: none; }
 
 body {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Poly', serif;
     color: #1a1a1a;
-    background-color: #fdfdfd;
     line-height: 1.6;
     padding: 2rem;
     max-width: 1400px;
@@ -61,7 +60,7 @@ h2 { font-size: 1.5rem; margin-top: 2rem; }
 .resume-section h2 { color: #0d3b66; margin: 0 0 1rem; }
 .resume-section { margin: 2rem 0; padding: 1.5rem 2rem; border-radius: 8px; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
 
-footer { text-align: center; padding: 2rem 0; margin-top: 3rem; color: #777; font-size: 0.9rem; }
+footer { text-align: center; padding: 1rem 0; margin-top: 1rem; color: #777; font-size: 0.9rem; }
 .resume-section ul li { margin-bottom: 0.8rem; }
 
 @media (max-width: 600px) {
@@ -118,6 +117,7 @@ a.button:hover {
     padding: 2rem 0.1rem;
     min-height: auto;
     scroll-margin-top: 150px;
+    margin-top: 2rem;
 }
 
 
@@ -129,60 +129,65 @@ a.button:hover {
 
 .interactive-demo-wrapper h2 {
     color: #2c3e50;
-    font-size: 2.5rem;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
     letter-spacing: -0.02em;
 }
 
 .demo-intro {
     color: #5a6c7d;
-    font-size: 1.1rem;
-    margin-bottom: 2.5rem;
-    line-height: 1.6;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
 }
 
 .demo-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
 }
 
 .demo-card {
     background: white;
-    border-radius: 12px;
-    padding: 2.5rem;
+    border-radius: 8px;
+    padding: 1.5rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
+    border: 1px solid #e0e0e0;
 }
 
 .demo-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border-color: #4a90e2;
+    box-shadow: 0 4px 20px rgba(74, 144, 226, 0.15);
+    transform: translateY(-2px);
 }
 
 .demo-card-header h3 {
     color: #2c3e50;
     font-size: 2rem;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.1rem;
+    margin-top: 0;
 }
 
 .demo-tagline {
     color: #4a90e2;
     font-size: 1rem;
     font-weight: 500;
-    margin-bottom: 1rem;
+    margin-bottom: 0.25rem;
+    margin-top: 0;
 }
 
 .demo-description {
     color: #5a6c7d;
     font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+    margin-top: 0;
 }
 
 .demo-description-below {
@@ -197,13 +202,14 @@ a.button:hover {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    margin-top: -5;
 }
 
 .demo-image {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
     border-radius: 8px;
     overflow: hidden;
-    max-height: 220px;
+    max-height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -212,8 +218,9 @@ a.button:hover {
 .demo-image img {
     width: 100%;
     height: auto;
-    max-height: 220px;
-    object-fit: contain;
+    max-height: 200px;
+    object-fit: cover;
+    object-position: top;
     border-radius: 8px;
 }
 
@@ -236,7 +243,7 @@ a.button:hover {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
-    margin-top: auto;
+    margin-top: 0.75rem;
     height: 52px;
     display: inline-flex;
     align-items: center;
@@ -244,9 +251,12 @@ a.button:hover {
 }
 
 .play-button-large:hover {
+    background: linear-gradient(135deg, #357abd 0%, #2c5a7c 100%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+    box-shadow: 0 6px 15px rgba(74, 144, 226, 0.4);
 }
+
+
 
 .tech-stack-mini {
     display: flex;
@@ -268,9 +278,9 @@ a.button:hover {
     background: white;
     border: 1px solid #e0e0e0;
     border-left: 4px solid #4a90e2;
-    padding: 1rem 1.5rem;
+    padding: 0.75rem 1rem;
     border-radius: 4px;
-    margin-top: 2rem;
+    margin-top: 1rem;
     text-align: left;
     transition: border-color 0.2s ease;
 }
@@ -299,9 +309,9 @@ a.button:hover {
 
 .demo-navigation {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: 1rem;
     flex-wrap: wrap;
 }
 
@@ -329,7 +339,7 @@ a.button:hover {
 .demo-link {
     display: inline-block;
     margin-top: 1rem;
-    color: #4a90e2;
+
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 600;
@@ -454,8 +464,10 @@ a.button:hover {
 .send-button:hover {
     background: #357abd;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+    box-shadow: 0 6px 15px rgba(74, 144, 226, 0.4);
 }
+
+
 
 .send-button:active {
     transform: translateY(0);
@@ -538,8 +550,8 @@ a.button:hover {
 /* Projects Section Styles */
 .projects-section {
     background: white;
-    padding: 2.5rem 1.5rem;
-    margin-bottom: 2rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .projects-container {
@@ -547,12 +559,79 @@ a.button:hover {
     margin: 0 auto;
 }
 
+@media (min-width: 1200px) {
+    .projects-container {
+        padding: 0 4rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .project-card {
+        padding: 1.5rem;
+        gap: 1rem;
+        min-height: 120px;
+    }
+    
+    .project-icon {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .project-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .project-card p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 1600px) {
+    .projects-container {
+        padding: 0 6rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 2rem;
+    }
+    
+    .project-card {
+        padding: 2rem;
+        gap: 1.5rem;
+        min-height: 140px;
+    }
+    
+    .project-icon {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .project-card h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .project-card p {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+    
+    .tech-badge {
+        padding: 0.2rem 0.6rem;
+        font-size: 0.75rem;
+    }
+}
+
 .projects-section h2 {
     text-align: center;
     color: #2c3e50;
     font-size: 2rem;
-    font-weight: 300;
-    margin-bottom: 0.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
     letter-spacing: -0.02em;
 }
 
@@ -817,20 +896,20 @@ a.button:hover {
     animation: slideInFromLeft 1.2s ease-out 0.5s backwards;
 }
 
-/* TO CHANGE FADE-IN TIMING: Update the 5.8s value below */
+/* TO CHANGE FADE-IN TIMING: Update the 4s value below */
 .hero .subtitle {
     opacity: 0;
-    animation: fadeInUp 1s ease-out 5.8s forwards;
+    animation: fadeInUp 1s ease-out 4s forwards;
 }
 
 .hero .about-me{
     opacity: 0;
-    animation: fadeInUp 1s ease-out 5.8s forwards;
+    animation: fadeInUp 1s ease-out 4s forwards;
 }
 
-.hero .button {
+.hero .cta-buttons {
     opacity: 0;
-    animation: fadeInUp 1s ease-out 5.8s forwards;
+    animation: fadeInUp 1s ease-out 4s forwards;
 }
 
 .hero .nice-to-meet-you {
@@ -859,8 +938,80 @@ a.button:hover {
     align-items: center;
     padding: 0 10%;
     position: relative;
-    margin-top: 80px;
+    margin-top: 0;
+    margin-bottom: 4rem;
     overflow: hidden;
+}
+
+/* Large screens - make text, buttons, and profile much larger */
+@media (min-width: 1200px) {
+    .hero {
+        margin-top: 2rem;
+    }
+    
+    .hero-text h1 {
+        font-size: 6rem !important;
+        min-height: 6.6rem;
+    }
+    
+    .subtitle {
+        font-size: 2rem !important;
+    }
+    
+    .hero-text .about-me {
+        font-size: 1.3rem !important;
+        line-height: 1.6;
+    }
+    
+    .hero-image {
+        flex: 0 0 350px;
+    }
+    
+    .hero-image img {
+        width: 350px !important;
+        height: 440px !important;
+    }
+    
+    .cta-resume,
+    .cta-lights {
+        padding: 1.2rem 2.4rem !important;
+        font-size: 1.1rem !important;
+    }
+}
+
+/* Extra large screens - even bigger text and elements */
+@media (min-width: 1600px) {
+    .hero {
+        margin-top: 3rem;
+    }
+    
+    .hero-text h1 {
+        font-size: 7.5rem !important;
+        min-height: 8.25rem;
+    }
+    
+    .subtitle {
+        font-size: 2.5rem !important;
+    }
+    
+    .hero-text .about-me {
+        font-size: 1.5rem !important;
+    }
+    
+    .hero-image {
+        flex: 0 0 400px;
+    }
+    
+    .hero-image img {
+        width: 400px !important;
+        height: 500px !important;
+    }
+    
+    .cta-resume,
+    .cta-lights {
+        padding: 1.5rem 3rem !important;
+        font-size: 1.3rem !important;
+    }
 }
 
 /* Floating Dots Background */
@@ -930,7 +1081,8 @@ a.button:hover {
     border-radius: 8px;
     object-fit: cover;
     position: relative;
-    animation: profileGlow 3s ease-in-out 2s infinite;
+    opacity: 0;
+    animation: fadeInImage 1s ease-out 4s forwards, profileGlow 3s ease-in-out 6s infinite;
 }
 
 /* Humorous Glowing Effect */
@@ -1179,6 +1331,11 @@ a.button:hover {
     .floating-nav .nav a {
         padding: 0.4rem 0.8rem;
         font-size: 0.9rem;
+    }
+    
+    /* Hide project descriptions on iPhone width */
+    .project-card p {
+        display: none;
     }
 }
 
@@ -1653,8 +1810,7 @@ a.button:hover {
 
 /* Resume Embed Section */
 .resume-embed-section {
-    padding: 4rem 2rem;
-    background-color: #fafafa;
+    padding: 1.5rem 2rem;
 }
 
 .resume-container {
@@ -1665,16 +1821,16 @@ a.button:hover {
 .resume-container h2 {
     text-align: center;
     color: #1a1a1a;
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
 }
 
 .resume-controls {
     display: flex;
     gap: 1rem;
     justify-content: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     flex-wrap: wrap;
 }
 
@@ -1792,9 +1948,9 @@ a.button:hover {
 }
 
 .tech-badge {
-    padding: 0.2rem 0.6rem;
-    border-radius: 4px;
-    font-size: 0.7rem;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.65rem;
     font-weight: 500;
     cursor: default;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1902,24 +2058,58 @@ a.button:hover {
 /* Projects Grid */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1rem;
-    margin-top: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Larger project cards for non-iPhone screens */
+@media (min-width: 400px) {
+    .projects-grid {
+        gap: 1rem;
+    }
+    
+    .project-card {
+        padding: 1.25rem;
+        gap: 1rem;
+        min-height: 120px;
+    }
+    
+    .project-icon {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .project-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .project-card p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    
+    .tech-badge {
+        padding: 0.25rem 0.6rem;
+        font-size: 0.75rem;
+    }
 }
 
 .project-card {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    gap: 1rem;
-    padding: 1.25rem;
+    gap: 0.5rem;
+    padding: 0.75rem;
     background: white;
     border: 1px solid #e0e0e0;
-    border-radius: 8px;
+    border-radius: 6px;
     text-decoration: none;
     color: inherit;
     transition: all 0.3s ease;
     cursor: pointer;
+    min-height: 80px;
 }
 
 .project-card:hover {
@@ -1931,10 +2121,10 @@ a.button:hover {
 }
 
 .project-icon {
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     flex-shrink: 0;
-    border-radius: 8px;
+    border-radius: 6px;
     overflow: hidden;
 }
 
@@ -1952,24 +2142,24 @@ a.button:hover {
 }
 
 .project-card h3 {
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 0.25rem 0;
     color: #1a1a1a;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
-    line-height: 1.3;
+    line-height: 1.2;
 }
 
 .project-card p {
     color: #555;
-    font-size: 0.85rem;
-    line-height: 1.5;
-    margin: 0 0 0.75rem 0;
+    font-size: 0.8rem;
+    line-height: 1.3;
+    margin: 0 0 0.5rem 0;
     flex-grow: 1;
 }
 
 .project-card .tech-stack {
     display: flex;
-    gap: 0.4rem;
+    gap: 0.3rem;
     flex-wrap: wrap;
     margin-top: auto;
 }
