@@ -537,8 +537,8 @@ a.button:hover {
 /* Projects Section Styles */
 .projects-section {
     background: white;
-    padding: 4rem 2rem;
-    margin-bottom: 3rem;
+    padding: 2.5rem 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .projects-container {
@@ -549,9 +549,9 @@ a.button:hover {
 .projects-section h2 {
     text-align: center;
     color: #2c3e50;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 300;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
     letter-spacing: -0.02em;
 }
 
@@ -928,9 +928,8 @@ a.button:hover {
     height: 350px;
     border-radius: 8px;
     object-fit: cover;
-    opacity: 0;
     position: relative;
-    animation: fadeInUp 1s ease-out 5.8s forwards, profileGlow 3s ease-in-out 6s infinite;
+    animation: profileGlow 3s ease-in-out 2s infinite;
 }
 
 /* Humorous Glowing Effect */
@@ -987,94 +986,19 @@ a.button:hover {
     background-clip: text;
     color: transparent;
     text-shadow: 1px 1px 2px rgba(13, 59, 102, 0.05);
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 3px solid rgba(13, 59, 102, 0.7);
-    letter-spacing: .01em;
-    animation: typing 2s steps(40, end) forwards, 
-        blink-caret .75s step-end 2s 2,
-        deleteText 0.5s steps(40, end) 3s forwards,
-        hideCaret 0.01s 3.5s forwards;
-    width: 0;
-    max-width: fit-content;
-}
-
-@keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-@keyframes deleteText {
-    from { width: 100%; }
-    to { width: 0; }
-}
-
-@keyframes blink-caret {
-    from, to { border-color: transparent; }
-    50% { border-color: rgba(13, 59, 102, 0.7); }
-}
-
-@keyframes hideCaret {
-    to { 
-        border-right-color: transparent;
-        opacity: 0;
-        visibility: hidden;
-    }
-}
-
-/* ANIMATION TIMING GUIDE:
-   0-2s: "Hi, I'm Adrian" types
-   2-3s: "Hi, I'm Adrian" stays + cursor blinks  
-   3-3.5s: "Hi, I'm Adrian" deletes
-   3.5-5.5s: "Nice to meet you" types
-   5.8s: All content fades in together
-*/
-
-/* Nice to meet you text that types out in place of Hi, I'm Adrian */
-.nice-to-meet-you {
-    font-size: 4rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    line-height: 1.1;
-    letter-spacing: -1px;
-    background: linear-gradient(135deg, #0d3b66 0%, #3a7ca5 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: 1px 1px 2px rgba(13, 59, 102, 0.05);
-    overflow: hidden;
+    min-height: 4.4rem;
     white-space: normal;
-    border-right: 3px solid transparent;
-    letter-spacing: .01em;
-    width: 0;
-    max-width: fit-content;
-    margin-top: -4.5rem;
-    /* START TYPING AT 3.5s (after first text deletes) */
-    animation: typingNice 2s steps(40, end) 3.5s forwards,
-        showCaret 0.01s 3.5s forwards,
-        blink-caret .75s step-end 5.5s 1;
+    word-wrap: break-word;
 }
 
-@keyframes showCaret {
-    to {
-        border-right-color: rgba(13, 59, 102, 0.7);
-    }
-}
-
-@keyframes typingNice {
-    from { width: 0; }
-    to { width: 100%; }
-}
 
 .subtitle {
     font-size: 1.5rem;
     color: #555;
-    margin-top: -0.4rem;
+    margin-top: 1rem;
     margin-bottom: 1rem;
     font-weight: 400;
     max-width: 600px;
-    opacity: 0;
-    animation: fadeInUp 1s ease-out 5.8s forwards;
 }
 
 .hero-text .about-me {
@@ -1084,8 +1008,6 @@ a.button:hover {
     color: #555;
     margin-bottom: 1rem;
     margin-top: 0;
-    opacity: 0;
-    animation: fadeInUp 1s ease-out 5.8s forwards;
 }
 
 .hero-text .about-me:first-of-type {
@@ -1209,21 +1131,8 @@ a.button:hover {
     
     .hero-text h1 {
         font-size: 2.8rem;
-        animation: none;
-        border-right: none;
-        opacity: 1;
-        width: auto;
         white-space: normal;
-    }
-    
-    .hero-text .nice-to-meet-you {
-        font-size: 2.8rem;
-        animation: fadeIn 1s ease-out 3.5s forwards;
-        border-right: none;
-        opacity: 0;
-        margin-top: 0;
-        width: auto;
-        white-space: normal;
+        min-height: 3.2rem;
     }
     
     .hero-text .subtitle {
@@ -1695,8 +1604,6 @@ a.button:hover {
     gap: 1rem;
     margin-top: 2rem;
     flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeInUp 1s ease-out 5.8s forwards;
 }
 
 .cta-resume,
@@ -1884,9 +1791,9 @@ a.button:hover {
 }
 
 .tech-badge {
-    padding: 0.25rem 0.75rem;
+    padding: 0.2rem 0.6rem;
     border-radius: 4px;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 500;
     cursor: default;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1989,4 +1896,111 @@ a.button:hover {
     transform: scaleY(0);
     transform-origin: top;
     z-index: 999;
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.project-card:hover {
+    border-color: #4a90e2;
+    box-shadow: 0 4px 20px rgba(74, 144, 226, 0.15);
+    transform: translateY(-2px);
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-icon {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.project-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.project-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card h3 {
+    margin: 0 0 0.5rem 0;
+    color: #1a1a1a;
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.project-card p {
+    color: #555;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0 0 0.75rem 0;
+    flex-grow: 1;
+}
+
+.project-card .tech-stack {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-top: auto;
+}
+
+@media (max-width: 768px) {
+    .projects-section {
+        padding: 2rem 1rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .project-card {
+        padding: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    
+    .project-icon {
+        width: 80px;
+        height: 80px;
+        align-self: flex-start;
+    }
+    
+    .project-content {
+        width: 100%;
+    }
+    
+    .projects-section h2 {
+        font-size: 1.75rem;
+    }
 }

@@ -28,8 +28,7 @@
                     <img src="assets/img.JPG" alt="Adrian Eddy" />
                 </div>
                 <div class="hero-text">
-                    <h1>Hi, I'm Adrian.</h1>
-                    <p class="nice-to-meet-you">Nice to meet you.</p>
+                    <h1 class="typewrite" data-period="1500" data-type='["Hi, I&apos;m Adrian.", "Welcome."]'></h1>
                     <p class="subtitle">
                         Economics @ NYU 
                     </p>
@@ -140,83 +139,65 @@
         <section id="projects" class="projects-section">
             <div class="projects-container">
                 <h2>Featured Projects</h2>                
-                <div class="projects-list-vertical">
+                <div class="projects-grid">
                     <!-- Financial Pricing Models -->
-                    <div class="project-vertical">
-                        <div class="project-visual">
+                    <a href="https://github.com/thompgt/black-scholes" target="_blank" rel="noopener" class="project-card">
+                        <div class="project-icon">
                             <img src="assets/Screenshot 2025-09-04 at 11.46.01.png" alt="Financial Models" />
                         </div>
                         <div class="project-content">
                             <h3>Financial Derivatives Pricing Engine</h3>
+                            <p>Suite of financial modeling tools including Black-Scholes options pricing, Monte Carlo simulations, CAPM, and stochastic models</p>
                             <div class="tech-stack">
                                 <span class="tech-badge python">Python</span>
                                 <span class="tech-badge react">React</span>
                                 <span class="tech-badge api">FastAPI</span>
                                 <span class="tech-badge data">Quantitative Finance</span>
                             </div>
-                            <ul>
-                                <li><strong>Relevance:</strong> Quantitative finance and advanced mathematical modeling</li>
-                                <li><strong>Summary:</strong> Suite of financial modeling tools including Black-Scholes options pricing, Monte Carlo simulations, CAPM, and stochastic models (Hull-White, Heston)</li>
-                            </ul>
-                            <div class="project-buttons">
-                                <a href="https://github.com/thompgt/black-scholes" target="_blank" rel="noopener" class="learn-more-button">Learn More</a>
-                            </div>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Automated Trading Bot -->
-                    <div class="project-vertical">
-                        <div class="project-visual">
+                    <a href="https://github.com/Halyconer/trading" target="_blank" rel="noopener" class="project-card">
+                        <div class="project-icon">
                             <img src="assets/ibkr.jpg" alt="Trading Bot" />
                         </div>
                         <div class="project-content">
                             <h3>Algorithmic Trading System</h3>
+                            <p>Autonomous trading system that calculates risk parity weights and executes trades in real-time to balance personal investment portfolio</p>
                             <div class="tech-stack">
                                 <span class="tech-badge python">Python</span>
                                 <span class="tech-badge api">APIs</span>
                                 <span class="tech-badge data">Trading Systems</span>
                                 <span class="tech-badge algo">Portfolio Theory</span>
                             </div>
-                            <ul>
-                                <li><strong>Relevance:</strong> Algorithmic trading and portfolio automation with real money execution</li>
-                                <li><strong>Summary:</strong> Autonomous trading system that calculates risk parity weights and executes trades in real-time to balance personal investment portfolio</li>
-                            </ul>
-                            <div class="project-buttons">
-                                <a href="https://github.com/Halyconer/trading" target="_blank" rel="noopener" class="learn-more-button">Learn More</a>
-                            </div>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- NYU Fed Challenge -->
-                    <div class="project-vertical">
-                        <div class="project-visual">
+                    <a href="https://www.federalreserve.gov/conferences/fedchallenge.htm" target="_blank" rel="noopener" class="project-card">
+                        <div class="project-icon">
                             <img src="assets/fed.png" alt="Federal Reserve" />
                         </div>
                         <div class="project-content">
                             <h3>Federal Reserve Policy Analysis</h3>
+                            <p>Comprehensive macroeconomic analysis and monetary policy recommendations presented to Federal Reserve Bank officials</p>
                             <div class="tech-stack">
                                 <span class="tech-badge data">Econometrics</span>
                                 <span class="tech-badge algo">Monetary Policy</span>
                                 <span class="tech-badge presentation">Federal Reserve</span>
                             </div>
-                            <ul>
-                                <li><strong>Relevance:</strong> Applied economic analysis and data-driven policy recommendations</li>
-                                <li><strong>Summary:</strong> Comprehensive macroeconomic analysis and monetary policy recommendations presented to Federal Reserve Bank officials</li>
-                                <li><strong>Focus:</strong> Economic forecasting, data visualization, Federal Reserve policy analysis</li>
-                            </ul>
-                            <div class="project-buttons">
-                                <a href="https://www.federalreserve.gov/conferences/fedchallenge.htm" target="_blank" rel="noopener" class="learn-more-button">Learn More</a>
-                            </div>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- NYU BioKind -->
-                    <div class="project-vertical">
-                        <div class="project-visual">
+                    <a href="https://github.com/Halyconer/biokind-projectteam1" target="_blank" rel="noopener" class="project-card">
+                        <div class="project-icon">
                             <img src="assets/biokind.jpeg" alt="NYU BioKind" />
                         </div>
                         <div class="project-content">
                             <h3>NYU BioKind - Technical Lead</h3>
+                            <p>Full-stack business intelligence applications with ML models for nonprofits, saving up to $10,000 in outsourcing costs</p>
                             <div class="tech-stack">
                                 <span class="tech-badge python">Python</span>
                                 <span class="tech-badge data">SQL</span>
@@ -224,17 +205,8 @@
                                 <span class="tech-badge algo">Machine Learning</span>
                                 <span class="tech-badge leadership">Technical Leadership</span>
                             </div>
-                            <ul>
-                                <li><strong>Role:</strong> Product Lead developing data analytics solutions for nonprofits in NYC, saving up to $10,000 in outsourcing costs</li>
-                                <li><strong>Development:</strong> Building full-stack business intelligence applications with Python, SQL, and JavaScript for data cleaning and insights</li>
-                                <li><strong>Innovation:</strong> Implementing ML models including regressions and Binary Trees, optimizing build speeds by over 50%</li>
-                                <li><strong>Leadership:</strong> Mentoring team members in technical expertise and professional practices</li>
-                            </ul>
-                            <div class="project-buttons">
-                                <a href="https://github.com/Halyconer/biokind-projectteam1" target="_blank" rel="noopener" class="learn-more-button">View Code</a>
-                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>
