@@ -220,7 +220,10 @@ a:hover {
 
 /* Base button styles - used by all buttons */
 .btn, .cta-resume, .cta-lights, .send-button, .play-button-large, .resume-btn, .connect4-controls button, .demo-nav-link {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     padding: 0.8rem 1.6rem;
     border-radius: 6px;
     font-weight: 500;
@@ -750,12 +753,44 @@ footer {
 
 @media (max-width: 600px) {
     body { padding: 1rem; }
-    .hero { padding: 0 5%; }
-    .hero-image img { width: 160px; height: 200px; }
+    .hero { padding: 0 5%; margin-top: 80px; min-height: calc(100vh - 80px); }
+    .hero-content { gap: 0.5rem; }
+    .hero-image img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; }
     .hero-text h1 { font-size: 3.5rem; }
     .demo-card { padding: 1.5rem; }
     .interactive-demo-wrapper h2 { font-size: 2rem; }
     .resume-embed { height: 500px; }
+    
+    /* Connect4 mobile improvements */
+    .connect4-modal-content {
+        width: 95%;
+        padding: 15px;
+        max-height: 90vh;
+        margin: 20px 10px;
+    }
+    
+    .connect4-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .connect4-status {
+        font-size: 16px;
+        margin: 15px 0;
+    }
+    
+    .connect4-board {
+        grid-template-columns: repeat(7, 35px);
+        grid-template-rows: repeat(6, 35px);
+        gap: 2px;
+        padding: 8px;
+        margin: 15px auto;
+    }
+    
+    .connect4-cell {
+        width: 35px;
+        height: 35px;
+        border: 2px solid #004499;
+    }
 }
 
 @media (max-width: 390px) {
@@ -764,10 +799,11 @@ footer {
         margin-top: 60px;
         min-height: calc(100vh - 60px);
     }
+    .hero-content { gap: 0.25rem; }
     .hero-text h1 { font-size: 2.8rem; min-height: 3.2rem; }
     .hero-text .subtitle { font-size: 1rem; }
     .hero-text .about-me { font-size: 0.9rem; }
-    .hero-image img { width: 140px; height: 180px; }
+    .hero-image img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; }
     .cta-buttons { flex-direction: column; align-items: center; gap: 0.5rem; }
     .cta-resume, .cta-lights { width: 100%; max-width: 200px; padding: 0.7rem 1.2rem; font-size: 0.85rem; }
     .floating-nav { padding: 0.5rem 1rem; }
