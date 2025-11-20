@@ -181,7 +181,7 @@ a:hover {
     margin: 1rem 0;
     font-weight: 400;
     opacity: 0;
-    animation: fadeInUp 1s ease-out 4s forwards;
+    animation: fadeInUp 1s ease-out 7.5s forwards;
 }
 
 .hero .about-me {
@@ -189,7 +189,7 @@ a:hover {
     color: #555;
     margin-bottom: 1rem;
     opacity: 0;
-    animation: fadeInUp 1s ease-out 4s forwards;
+    animation: fadeInUp 1s ease-out 7.5s forwards;
 }
 
 .hero-image {
@@ -205,7 +205,7 @@ a:hover {
     border-radius: 8px;
     object-fit: cover;
     opacity: 0;
-    animation: fadeInImage 1s ease-out 4s forwards, profileGlow 3s ease-in-out 6s infinite;
+    animation: fadeInImage 1s ease-out 7.5s forwards, profileGlow 3s ease-in-out 9.5s infinite;
 }
 
 /* Universal Button Styles */
@@ -215,7 +215,7 @@ a:hover {
     margin-top: 2rem;
     flex-wrap: wrap;
     opacity: 0;
-    animation: fadeInUp 1s ease-out 4s forwards;
+    animation: fadeInUp 1s ease-out 7.5s forwards;
 }
 
 /* Base button styles - used by all buttons */
@@ -506,22 +506,24 @@ a:hover {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     margin-top: 0.5rem;
 }
 
 .project-card {
     display: flex;
-    gap: 1rem;
-    padding: 1.25rem;
+    gap: 1.5rem;
+    padding: 1.5rem;
     background: white;
     border: 1px solid #e0e0e0;
-    border-radius: 6px;
+    border-radius: 8px;
     text-decoration: none;
     color: inherit;
     transition: all 0.3s ease;
     cursor: pointer;
+    min-height: 140px;
+    align-items: center;
 }
 
 .project-card:hover {
@@ -532,15 +534,16 @@ a:hover {
     color: inherit;
 }
 
-.project-icon {
-    width: 80px;
-    height: 80px;
+.project-image {
+    width: 120px;
+    height: 120px;
     flex-shrink: 0;
-    border-radius: 6px;
+    border-radius: 8px;
     overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.project-icon img {
+.project-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -749,6 +752,17 @@ footer {
     .hero-image img { width: 200px; height: 250px; }
     .hero-text h1 { font-size: 4.5rem; }
     .projects-grid { grid-template-columns: 1fr; }
+    
+    .project-card {
+        min-height: 120px;
+        gap: 1rem;
+        padding: 1.25rem;
+    }
+    
+    .project-image {
+        width: 100px;
+        height: 100px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -809,6 +823,21 @@ footer {
     .floating-nav { padding: 0.5rem 1rem; }
     .floating-nav .nav { gap: 1rem; flex-wrap: wrap; }
     .floating-nav .nav a { padding: 0.4rem 0.8rem; font-size: 0.9rem; }
+    .project-card { 
+        padding: 1rem;
+        min-height: 100px;
+        gap: 0.75rem;
+    }
+    
+    .project-image {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .project-card h3 {
+        font-size: 1rem;
+    }
+    
     .project-card p { display: none; }
     .connect4-board { grid-template-columns: repeat(7, 45px); grid-template-rows: repeat(6, 45px); gap: 3px; }
     .connect4-cell { width: 45px; height: 45px; border: 2px solid #004499; }

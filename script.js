@@ -29,13 +29,19 @@ TxtType.prototype.tick = function() {
     if (this.isDeleting) { delta /= 2; } // Even faster deleting: 20-40ms
 
     if (!this.isDeleting && this.txt === fullTxt) {
-        // If we're at the last text ("Welcome"), stop the animation
+        // If we're at the last text ("Enchanté"), add longer pause with blinking period
         if (this.loopNum === this.toRotate.length - 1) {
-            // Remove the cursor after a brief pause
+            // Keep cursor blinking during the pause, then add blinking period
             setTimeout(function() {
-                that.el.innerHTML = '<span class="wrap">' + that.txt + '</span>';
-                that.el.querySelector('.wrap').style.borderRight = 'none';
-            }, 1000);
+                // Add blinking period while keeping cursor
+                that.el.innerHTML = '<span class="wrap">' + that.txt + '<span class="blinking-period">.</span></span>';
+                
+                // Remove cursor and period after 2 more seconds
+                setTimeout(function() {
+                    that.el.innerHTML = '<span class="wrap">' + that.txt + '</span>';
+                    that.el.querySelector('.wrap').style.borderRight = 'none';
+                }, 2000);
+            }, 1500);
             return; // Stop the typewriter completely
         }
         delta = this.period;
@@ -62,10 +68,10 @@ window.addEventListener('load', function() {
         }
     }
     
-    // INJECT CSS for typewriter cursor
+    // INJECT CSS for typewriter cursor and blinking period
     var css = document.createElement("style");
     css.type = "text/css";
-    css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid rgba(13, 59, 102, 0.7); }";
+    css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid rgba(13, 59, 102, 0.7); } .blinking-period { animation: blink 0.6s infinite; } @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }";
     document.body.appendChild(css);
 });
 
