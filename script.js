@@ -29,19 +29,13 @@ TxtType.prototype.tick = function() {
     if (this.isDeleting) { delta /= 2; } // Even faster deleting: 20-40ms
 
     if (!this.isDeleting && this.txt === fullTxt) {
-        // If we're at the last text ("Enchanté"), add longer pause with blinking period
+        // If we're at the last text ("Enchanté"), remove cursor after a short delay
         if (this.loopNum === this.toRotate.length - 1) {
-            // Keep cursor blinking during the pause, then add blinking period
+            // Remove cursor after 500ms delay (no additional period delay)
             setTimeout(function() {
-                // Add blinking period while keeping cursor
-                that.el.innerHTML = '<span class="wrap">' + that.txt + '<span class="blinking-period">.</span></span>';
-                
-                // Remove cursor and period after 2 more seconds
-                setTimeout(function() {
-                    that.el.innerHTML = '<span class="wrap">' + that.txt + '</span>';
-                    that.el.querySelector('.wrap').style.borderRight = 'none';
-                }, 2000);
-            }, 1500);
+                that.el.innerHTML = '<span class="wrap">' + that.txt + '</span>';
+                that.el.querySelector('.wrap').style.borderRight = 'none';
+            }, 500);
             return; // Stop the typewriter completely
         }
         delta = this.period;
@@ -60,18 +54,21 @@ TxtType.prototype.tick = function() {
 // Initialize typewriter effect on window load
 window.addEventListener('load', function() {
     var elements = document.getElementsByClassName('typewrite');
-    for (var i=0; i<elements.length; i++) {
-        var toRotate = elements[i].getAttribute('data-type');
-        var period = elements[i].getAttribute('data-period');
-        if (toRotate) {
-            new TxtType(elements[i], JSON.parse(toRotate), period);
+    // Add delay before starting typewriter
+    setTimeout(function() {
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+                new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
         }
-    }
+    }, 800);
     
     // INJECT CSS for typewriter cursor and blinking period
     var css = document.createElement("style");
     css.type = "text/css";
-    css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid rgba(13, 59, 102, 0.7); } .blinking-period { animation: blink 0.6s infinite; } @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }";
+    css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid rgba(13, 59, 102, 0.7); }";
     document.body.appendChild(css);
 });
 
@@ -131,8 +128,6 @@ document.addEventListener('DOMContentLoaded', function() {
     handleNavScroll()
     updateActiveNav()
     
-    // Create floating dots animation
-    // createFloatingDots()
     
     // Cupcake popup
     initCupcakePopup()
@@ -374,122 +369,13 @@ window.addEventListener('click', function(event) {
     if (event.target === modal) closeConnect4Game()
 })
 
-// Chart Line Animation
-function createFloatingDots() {
-    const heroBackground = document.querySelector('.hero-background')
-    if (!heroBackground) return
-    
-    createAnimatedChart()
-}
-
-function createAnimatedChart() {
-    const heroBackground = document.querySelector('.hero-background')
-    const heroSection = document.querySelector('.hero')
-    
-    // Create canvas covering the entire hero section
-    const canvas = document.createElement('canvas')
-    canvas.className = 'chart-line'
-    
-    const rect = heroSection.getBoundingClientRect()
-    canvas.width = rect.width
-    canvas.height = rect.height
-    
-    canvas.style.cssText = `
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0.15;
-        pointer-events: none;
-    `
-    
-    heroBackground.appendChild(canvas)
-    animateChartLine(canvas)
-}
-
-function animateChartLine(canvas) {
-    const ctx = canvas.getContext('2d')
-    const width = canvas.width
-    const height = canvas.height
-    
-    // Generate chart data points
-    const totalPoints = 100
-    const chartData = []
-    let currentY = height * 0.7 // Start at 70% down the screen
-    
-    for (let i = 0; i < totalPoints; i++) {
-        const x = (i / (totalPoints - 1)) * width
-        // Random walk with slight upward trend
-        const change = (Math.random() - 0.4) * 30
-        currentY += change
-        currentY = Math.max(height * 0.3, Math.min(height * 0.8, currentY))
-        
-        chartData.push({ x, y: currentY })
-    }
-    
-    // Animation state
-    let currentPoint = 0
-    const totalDuration = 5500 // 5.5 seconds to match "nice to meet you" completion
-    const pointsPerFrame = totalPoints / (totalDuration / 16) // 60fps
-    
-    function drawLine() {
-        ctx.clearRect(0, 0, width, height)
-        
-        if (currentPoint < totalPoints) {
-            // Create gradient for the line
-            const gradient = ctx.createLinearGradient(0, 0, width, 0)
-            gradient.addColorStop(0, '#4a90e2')
-            gradient.addColorStop(0.5, '#3a7ca5')
-            gradient.addColorStop(1, '#0d3b66')
-            
-            // Draw the line up to current point
-            ctx.strokeStyle = gradient
-            ctx.lineWidth = 3
-            ctx.lineCap = 'round'
-            ctx.lineJoin = 'round'
-            ctx.beginPath()
-            
-            for (let i = 0; i <= Math.floor(currentPoint); i++) {
-                const point = chartData[i]
-                if (i === 0) {
-                    ctx.moveTo(point.x, point.y)
-                } else {
-                    ctx.lineTo(point.x, point.y)
-                }
-            }
-            ctx.stroke()
-            
-            // Draw current point with glow effect
-            const currentData = chartData[Math.floor(currentPoint)]
-            if (currentData) {
-                // Glow effect
-                ctx.shadowColor = '#4a90e2'
-                ctx.shadowBlur = 10
-                ctx.fillStyle = '#4a90e2'
-                ctx.beginPath()
-                ctx.arc(currentData.x, currentData.y, 4, 0, Math.PI * 2)
-                ctx.fill()
-                ctx.shadowBlur = 0
-            }
-            
-            // Increment current point
-            currentPoint += pointsPerFrame
-            
-            // Continue animation
-            requestAnimationFrame(drawLine)
-        }
-    }
-    
-    // Start animation after a short delay
-    setTimeout(() => {
-        drawLine()
-    }, 500)
-}
-
 // Cupcake popup functionality
 function initCupcakePopup() {
-    // Always show the cupcake popup
+    // Force show the cupcake popup every time - no storage checks
+    
+    // Remove any existing popups first
+    const existingPopups = document.querySelectorAll('.cupcake-bar')
+    existingPopups.forEach(popup => popup.remove())
     
     // Create popup HTML as bottom bar
     const popup = document.createElement('div')
@@ -508,7 +394,7 @@ function initCupcakePopup() {
     
     document.body.appendChild(popup)
     
-    // Show popup immediately
+    // Force show popup every time
     setTimeout(() => {
         popup.classList.add('show')
     }, 1000)
