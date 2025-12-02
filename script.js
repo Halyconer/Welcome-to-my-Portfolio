@@ -63,7 +63,7 @@ window.addEventListener('load', function() {
                 new TxtType(elements[i], JSON.parse(toRotate), period);
             }
         }
-    }, 800);
+    }, 1500);
     
     // INJECT CSS for typewriter cursor and blinking period
     var css = document.createElement("style");
@@ -73,8 +73,6 @@ window.addEventListener('load', function() {
 });
 
 const API_BASE_URL = 'https://valid-goblin-full.ngrok-free.app'
-const LIGHTING_API_URL = API_BASE_URL + '/lighting'
-const CONNECT4_API_BASE = API_BASE_URL + '/connect4'
 
 let connect4GameState = null
 let isConnect4Processing = false
@@ -154,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
             btn.disabled = true
             btn.textContent = 'Sending...'
 
-            fetch(`${LIGHTING_API_URL}/set_brightness`, {
+            fetch(`${API_BASE_URL}/lighting/set_brightness`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -276,7 +274,7 @@ async function connect4ApiRequest(endpoint, method = 'GET', data = null) {
         
         if (data) options.body = JSON.stringify(data)
         
-        const response = await fetch(CONNECT4_API_BASE + endpoint, options)
+        const response = await fetch(API_BASE_URL + '/connect4' + endpoint, options)
         
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
         

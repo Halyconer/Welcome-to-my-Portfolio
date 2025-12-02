@@ -9,18 +9,21 @@ html::-webkit-scrollbar { display: none; }
 body {
     font-family: 'Poly', serif;
     color: #1a1a1a;
-    line-height: 1.6;
-    padding: 2rem;
+    line-height: 1.5;
+    padding: 1rem;
     max-width: 1400px;
     margin: 0 auto;
     overflow-x: hidden;
     box-sizing: border-box;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 h1, h2, h3 {
     color: #0d3b66;
     font-weight: 600;
-    margin-top: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 a { 
@@ -136,8 +139,8 @@ a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 10%;
-    margin-bottom: 4rem;
+    padding: 0 5%;
+    margin-bottom: 2rem;
     overflow: hidden;
 }
 
@@ -176,15 +179,18 @@ a:hover {
     margin: 1rem 0;
     font-weight: 400;
     opacity: 0;
-    animation: fadeInUp 1s ease-out 6s forwards;
+    animation: fadeInUp 1s ease-out 2.5s forwards;
 }
 
 .hero .about-me {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #555;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     opacity: 0;
-    animation: fadeInUp 1s ease-out 6s forwards;
+    animation: fadeInUp 1s ease-out 3.5s forwards;
+    text-align: justify;
+    text-justify: inter-word;
+    line-height: 1.5;
 }
 
 .hero-image {
@@ -200,25 +206,24 @@ a:hover {
     border-radius: 8px;
     object-fit: cover;
     opacity: 0;
-    animation: fadeInImage 1s ease-out 6s forwards, profileGlow 3s ease-in-out 8s infinite;
+    animation: fadeInImage 1s ease-out 4s forwards, profileGlow 3s ease-in-out 6s infinite;
 }
 
 /* Universal Button Styles */
 .cta-buttons {
     display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
     flex-wrap: wrap;
     opacity: 0;
-    animation: fadeInUp 1s ease-out 6s forwards;
+    animation: fadeInUp 1s ease-out 4.5s forwards;
 }
 
-/* Base button styles - used by all buttons */
-.btn, .cta-resume, .cta-lights, .send-button, .play-button-large, .resume-btn, .connect4-controls button, .demo-nav-link {
+/* Base button styles */
+.btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
     padding: 0.8rem 1.6rem;
     border-radius: 6px;
     font-weight: 500;
@@ -230,13 +235,13 @@ a:hover {
     border: 1.5px solid transparent;
 }
 
-/* Primary button (blue) */
-.btn-primary, .cta-lights, .send-button, .play-button-large, .connect4-controls button {
+/* Button variants */
+.btn-primary {
     background: linear-gradient(135deg, #4a90e2 0%, #5ba0f2 100%);
     color: white;
 }
 
-.btn-primary:hover, .cta-lights:hover, .send-button:hover, .play-button-large:hover, .connect4-controls button:hover {
+.btn-primary:hover {
     background: linear-gradient(135deg, #357abd 0%, #4a90e2 100%);
     transform: translateY(-1px);
     box-shadow: 0 4px 15px rgba(74, 144, 226, 0.25);
@@ -244,7 +249,43 @@ a:hover {
     text-decoration: none;
 }
 
-/* Secondary button (white/outline) */
+.btn-secondary {
+    background: white;
+    color: #2c3e50;
+    border-color: #e0e0e0;
+}
+
+/* All buttons inherit base styles */
+.btn, .cta-resume, .cta-lights, .send-button, .play-button-large, .resume-btn, .demo-nav-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.6rem;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    border: 1.5px solid transparent;
+}
+
+/* Primary buttons */
+.btn-primary, .cta-lights, .send-button, .play-button-large {
+    background: linear-gradient(135deg, #4a90e2 0%, #5ba0f2 100%);
+    color: white;
+}
+
+.btn-primary:hover, .cta-lights:hover, .send-button:hover, .play-button-large:hover {
+    background: linear-gradient(135deg, #357abd 0%, #4a90e2 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.25);
+    border-color: #2c5a7c;
+    text-decoration: none;
+}
+
+/* Secondary buttons */
 .btn-secondary, .cta-resume, .resume-btn, .demo-nav-link {
     background: white;
     color: #2c3e50;
@@ -260,6 +301,12 @@ a:hover {
     text-decoration: none;
 }
 
+.demo-nav-link {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.85rem !important;
+}
+
+
 /* Special glow effect for "Try me!" button */
 .cta-lights {
     box-shadow: 0 0 10px rgba(74, 144, 226, 0.4);
@@ -273,8 +320,8 @@ a:hover {
 
 /* Interactive Demo Section */
 .interactive-demo-section {
-    padding: 2rem 0.1rem;
-    margin-top: 2rem;
+    padding: 1rem 0.1rem;
+    margin-top: 1rem;
 }
 
 .interactive-demo-wrapper {
@@ -292,51 +339,63 @@ a:hover {
 
 .demo-intro {
     color: #5a6c7d;
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    text-align: justify;
+    text-justify: inter-word;
+    line-height: 1.4;
 }
 
 .demo-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1rem;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
 }
 
 .demo-card {
     background: white;
-    border-radius: 8px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    padding: 0.75rem 1rem 0.5rem 1rem;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.12);
     text-align: center;
     transition: all 0.3s ease;
     border: 1px solid #e0e0e0;
+    cursor: pointer;
 }
 
 .demo-card:hover {
     border-color: #4a90e2;
-    box-shadow: 0 4px 20px rgba(74, 144, 226, 0.15);
+    box-shadow: 0 6px 25px rgba(74, 144, 226, 0.2);
+    transform: translateY(-2px);
     text-decoration: none;
+}
+
+.demo-card:active {
+    transform: translateY(0px);
+    box-shadow: 0 2px 12px rgba(74, 144, 226, 0.15);
 }
 
 .demo-card-header h3 {
     color: #2c3e50;
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin: 0 0 0.1rem 0;
 }
 
 .demo-tagline {
     color: #4a90e2;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 500;
-    margin: 0 0 0.25rem 0;
+    margin: 0 0 0.15rem 0;
 }
 
 .demo-description {
     color: #5a6c7d;
-    font-size: 0.95rem;
-    line-height: 1.4;
-    margin: 0 0 0.75rem 0;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    margin: 0 0 0.3rem 0;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 /* Demo Images */
@@ -458,9 +517,10 @@ a:hover {
     background: white;
     border: 1px solid #e0e0e0;
     border-left: 4px solid #4a90e2;
-    padding: 0.75rem 1rem;
+    padding: 0.4rem 0.6rem;
     border-radius: 4px;
-    margin-top: 1rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
     text-align: left;
 }
 
@@ -472,9 +532,10 @@ a:hover {
 
 .demo-navigation {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
     justify-content: center;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.3rem;
     flex-wrap: wrap;
 }
 
@@ -482,8 +543,8 @@ a:hover {
 /* Projects Section */
 .projects-section {
     background: white;
-    padding: 1rem 1.5rem;
-    margin-bottom: 0.5rem;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.25rem;
 }
 
 .projects-container {
@@ -494,39 +555,72 @@ a:hover {
 .projects-section h2 {
     text-align: center;
     color: #2c3e50;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
 }
 
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin-top: 0.5rem;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
 }
 
 .project-card {
     display: flex;
-    gap: 1.5rem;
-    padding: 1.5rem;
+    gap: 1rem;
+    padding: 1rem;
     background: white;
     border: 1px solid #e0e0e0;
-    border-radius: 8px;
+    border-radius: 6px;
     text-decoration: none;
     color: inherit;
     transition: all 0.3s ease;
     cursor: pointer;
-    min-height: 140px;
+    min-height: 120px;
     align-items: center;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
 }
 
 .project-card:hover {
     border-color: #4a90e2;
-    box-shadow: 0 4px 20px rgba(74, 144, 226, 0.15);
-    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(74, 144, 226, 0.25);
+    transform: translateY(-3px) scale(1.01);
     text-decoration: none;
     color: inherit;
+}
+
+.project-card:active {
+    transform: translateY(-1px) scale(1.005);
+    box-shadow: 0 4px 20px rgba(74, 144, 226, 0.2);
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.05);
+}
+
+.project-card:hover h3 {
+    color: #4a90e2;
+}
+
+/* Mobile touch feedback */
+@media (hover: none) and (pointer: coarse) {
+    .demo-card:hover {
+        transform: none;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.12);
+    }
+    
+    .project-card:hover {
+        transform: none;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .demo-card:active,
+    .project-card:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
 }
 
 .project-image {
@@ -536,12 +630,14 @@ a:hover {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
 .project-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
 .project-content {
@@ -549,28 +645,32 @@ a:hover {
 }
 
 .project-card h3 {
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 0.25rem 0;
     color: #1a1a1a;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
+    transition: color 0.3s ease;
 }
 
 .project-card p {
     color: #555;
-    font-size: 0.95rem;
-    margin: 0 0 1rem 0;
+    font-size: 0.9rem;
+    margin: 0 0 0.5rem 0;
+    text-align: justify;
+    text-justify: inter-word;
+    line-height: 1.4;
 }
 
 .tech-stack {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.25rem;
     flex-wrap: wrap;
 }
 
 .tech-badge {
-    padding: 0.25rem 0.6rem;
+    padding: 0.15rem 0.4rem;
     border-radius: 3px;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 500;
     color: white;
 }
@@ -761,7 +861,10 @@ footer {
 }
 
 @media (max-width: 600px) {
-    body { padding: 1rem; }
+    body { 
+        padding: 1rem; 
+        text-align: left; /* Override justify on very narrow screens */
+    }
     .hero { padding: 0 5%; margin-top: 80px; min-height: calc(100vh - 80px); }
     .hero-content { gap: 0.5rem; }
     .hero-image img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; }
@@ -769,6 +872,14 @@ footer {
     .demo-card { padding: 1.5rem; }
     .interactive-demo-wrapper h2 { font-size: 2rem; }
     .resume-embed { height: 500px; }
+    
+    /* Revert to left-align on narrow screens for better readability */
+    .hero .about-me,
+    .project-card p,
+    .demo-description,
+    .demo-intro {
+        text-align: left;
+    }
     
     /* Connect4 mobile improvements */
     .connect4-modal-content {
